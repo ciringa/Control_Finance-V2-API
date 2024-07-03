@@ -11,12 +11,11 @@ Esta é a segunda versão do control finance, um projeto FullStack em desenvolvi
 
 
 # Vantagens do Uso do TypeScript ⬆️
-TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação.
-
-**Vantagens do uso do TypeScript:**
-
+TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação. Durante o desenvolvimento do **Control Finance V2 API** as principais vantagens que me fizeram escolher o **TypeScript** foram: 
 1. **Tipagem estática:** Ajuda a detectar erros de tipo durante a compilação, aumentando a robustez do código.
 2. **Suporte a IDEs:** Ferramentas como Visual Studio Code oferecem autocompletar, refatoração e navegação de código aprimoradas.
 3. **Compatibilidade com JavaScript:** TypeScript é totalmente compatível com JavaScript, permitindo a adoção gradual e a utilização de bibliotecas JavaScript existentes.
 4. **Código mais legível e mantenível:** A tipagem explícita e os recursos de orientação a objetos melhoram a clareza e a organização do código.
 5. **Ferramentas de depuração melhoradas:** Oferece melhores mensagens de erro e facilita a depuração.
+
+Durante o desenvolvimento do CT2, o uso extensivo de TypeScript tornou-se crucial, oferecendo uma ampla gama de facilitadores que permitiram criar uma aplicação limpa, funcional e otimizada.
