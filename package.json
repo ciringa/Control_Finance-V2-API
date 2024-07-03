@@ -1,0 +1,19 @@
+{
+  "name": "controlfinancev2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.16.1",
+    "@types/node": "^20.14.9",
+    "prisma": "^5.16.1",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
+  }
+}
