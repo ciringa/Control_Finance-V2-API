@@ -1,5 +1,5 @@
 import { Prisma, User } from "@prisma/client";
-import { userRepositorie } from "../repositorie/userRepositorie";
+import { userRepositorie } from "../repositorie/user.repositorie";
 import { EmailAlreadyExists } from "./Error/ValidationErrors";
 
 //Expected parameter to provide

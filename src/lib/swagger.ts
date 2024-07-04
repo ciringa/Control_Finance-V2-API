@@ -6,6 +6,7 @@ import { jsonSchemaTransform } from "fastify-type-provider-zod";
 export async function  swagger(app:FastifyInstance) {
     app.register(fastifySwagger, {
         openapi: {
+        openapi: '3.1.0',
         info: {
             title: 'SampleApi',
             description: 'Sample backend service',
@@ -18,6 +19,9 @@ export async function  swagger(app:FastifyInstance) {
         ],
         servers: [],
         },
+        swagger:{
+            swagger:"2.0.0"
+        },
         transform: jsonSchemaTransform,
 
     });
@@ -26,3 +30,13 @@ export async function  swagger(app:FastifyInstance) {
         routePrefix: '/docs',
     });
 }
+
+/*
+
+tags:[
+            {name:"User",description:"Routes used to User management including registration and account delete functions"},
+            {name:"Auth",description:"Routes used to Authenticate an user including the return of profile and login using specific JWT validations"},
+            {name:"Account",description:"Routes used to Account management of an user. Most of these requires jwt token as headers. "},
+        ], 
+
+*/

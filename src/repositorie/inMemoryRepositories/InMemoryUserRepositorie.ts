@@ -1,6 +1,6 @@
 
 import { User, Prisma } from "@prisma/client"
-import { userRepositorie } from "../userRepositorie"
+import { userRepositorie } from "../user.repositorie"
 import { randomUUID } from "crypto"
 
 export class InMemoryUserRepositorie implements userRepositorie{
@@ -17,6 +17,10 @@ export class InMemoryUserRepositorie implements userRepositorie{
     }
    async findByEmail(Email: String){
         const returnObject = this.list.find(item => item.Email == Email)
+        return returnObject || null
+    }
+    async findById(Id: String) {
+        const returnObject = this.list.find(item => item.Id == Id)
         return returnObject || null
     }
 
