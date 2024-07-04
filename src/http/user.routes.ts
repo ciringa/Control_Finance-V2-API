@@ -5,5 +5,5 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 
 export async function userRoutes(app:FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().post("/users",RegisterUserSchema,RegisterUserControler)
+    app.withTypeProvider<ZodTypeProvider>().post("/users/register",RegisterUserSchema,RegisterUserControler)
 }

@@ -6,6 +6,7 @@ import { PrismaUsersRepositorie } from "../../repositorie/PrismaRepositories/Pri
 import { UserDoesNotExists } from "../../services/Error/MissedResourcesError";
 
 export async function CreateAccountControler(req:FastifyRequest, res:FastifyReply){
+    //in the future this needs to automatically pick the id based in the JWT Token Adress
     const bodySchema = z.object({
         Name:z.string(),
         Value:z.number().optional(),
@@ -16,7 +17,9 @@ export async function CreateAccountControler(req:FastifyRequest, res:FastifyRepl
     const Main = new CreateAccountUseCase(new PrismaAccountRepositorie, new PrismaUsersRepositorie)
 
     try{
+        //trys to run CreateAccountUseCase sending "data"
         const CreateAccount = await Main.execute({data})
+        //if success returns this
         res.status(201).send({
             Description:"successfully created",
             CreateAccount

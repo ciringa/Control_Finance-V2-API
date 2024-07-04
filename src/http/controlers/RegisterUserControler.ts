@@ -13,7 +13,7 @@ export async function RegisterUserControler(req:FastifyRequest,res:FastifyReply)
         UsernName: z.string(),
     })
     const data = bodySchema.parse(req.body)
-
+    console.log("data matches the schema")
     try{
         const createdObject = await Main.execute({
             data

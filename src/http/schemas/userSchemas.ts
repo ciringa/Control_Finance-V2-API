@@ -10,9 +10,6 @@ export const RegisterUserSchema = {
             UsernName: z.string(),
         }),
         response:{
-            default:z.object({
-                Description:z.string(),
-            }),
             201:z.object({
                 Description:z.string(),
             }),

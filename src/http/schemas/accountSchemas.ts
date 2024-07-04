@@ -6,9 +6,9 @@ export const CreateAccountSchema = {
         tags:["Account"],
         description:"Route Used to create accounts by recieving the account data. needs a JWT token Authentication",
         body:z.object({
-            Email:z.string().email(),
-            Senha: z.string(),
-            UsernName: z.string(),
+            Name:z.string(),
+            Value:z.number().optional(),
+            userId:z.string().uuid()
         }),
         response:{
             201:z.object({

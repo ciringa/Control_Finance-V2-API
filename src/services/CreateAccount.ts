@@ -16,7 +16,7 @@ export class CreateAccountUseCase {
         if(!doesTheProvidedUserIdExists){
             throw new UserDoesNotExists
         }
-
+        
         const createdObject = await this.accountRepositorie.create(data)
 
         return{
