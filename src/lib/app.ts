@@ -6,7 +6,8 @@ import fastifySwagger from "@fastify/swagger";
 import { swggerConfig } from "./swagger";
 import { userRoutes } from "../http/user.routes";
 import { AccountRoutes } from "../http/account.routes";
-
+import { fastifyJwt} from "@fastify/jwt";
+import { AutheticateRoutes } from "../http/auth.routes";
 
 export const app = fastify()
 
@@ -17,7 +18,10 @@ app.register(fastifySwagger, swggerConfig);
 app.register(fastifySwaggerUi, {
     routePrefix: '/docs',
 });
+app.register(fastifyJwt,{
+    secret: 'supersecret'
+})
 
-
+app.register(AutheticateRoutes)
 app.register(userRoutes)
 app.register(AccountRoutes)

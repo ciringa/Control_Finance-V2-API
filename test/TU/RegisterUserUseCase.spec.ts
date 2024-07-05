@@ -16,6 +16,7 @@ beforeEach(()=>{
 })
 
 
+
 it("should be able to generate an user",async()=>{
     const SUT = new RegisterUserUseCase(Repositorie)
 
