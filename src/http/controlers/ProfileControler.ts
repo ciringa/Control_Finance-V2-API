@@ -11,7 +11,7 @@ export async function ReturnProfile(req:FastifyRequest,res:FastifyReply) {
     try{
 
         const Profile = await Main.execute({Id})
-        console.log(Profile)
+        //console.log(Profile)
         res.status(200).send({
             Description:"successfully returned info",
             Profile:Profile.Profile

@@ -14,4 +14,8 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
         this.list.push(_data)
         return _data
     }
+    async findById(Id: string){
+        const returnSingle = this.list.find(item => item.Id == Id)
+        return returnSingle || null
+    }
 }

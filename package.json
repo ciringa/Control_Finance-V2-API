@@ -5,7 +5,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "dev": "tsx watch src/server"
+    "dev": "tsx watch src/server",
+    "dev:ui":"prisma studio"
   },
   "keywords": [],
   "author": "",

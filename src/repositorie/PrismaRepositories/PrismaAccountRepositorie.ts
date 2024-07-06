@@ -11,4 +11,12 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
         })
         return createdObject
     }
+    async findById(Id: string){
+        const returnSingle = await prisma.account.findUnique({
+            where:{
+                Id
+            }
+        })
+        return returnSingle 
+    }
 }

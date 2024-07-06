@@ -1,4 +1,5 @@
 import z from "zod";
+import { VerifyJWT } from "../midleware/VerifyJwt";
 
 
 export const CreateAccountSchema = {
@@ -8,7 +9,6 @@ export const CreateAccountSchema = {
         body:z.object({
             Name:z.string(),
             Value:z.number().optional(),
-            userId:z.string().uuid()
         }),
         response:{
             201:z.object({
@@ -26,5 +26,6 @@ export const CreateAccountSchema = {
                 Description:z.string(),
             })
         }
-    }
+    },
+    preHandler:[VerifyJWT]
 }

@@ -8,6 +8,7 @@ import { userRoutes } from "../http/user.routes";
 import { AccountRoutes } from "../http/account.routes";
 import { fastifyJwt} from "@fastify/jwt";
 import { AutheticateRoutes } from "../http/auth.routes";
+import { TransactionRoutes } from "../http/transaction.routes";
 
 export const app = fastify()
 
@@ -25,3 +26,4 @@ app.register(fastifyJwt,{
 app.register(AutheticateRoutes)
 app.register(userRoutes)
 app.register(AccountRoutes)
+app.register(TransactionRoutes)

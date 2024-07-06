@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import z from "zod";
 import { CreateAccountUseCase } from "../../services/CreateAccount";
-import { PrismaAccountRepositorie } from "../../repositorie/PrismaRepositories/inMemoryAccountRepositorie";
+import { PrismaAccountRepositorie } from "../../repositorie/PrismaRepositories/PrismaAccountRepositorie";
 import { PrismaUsersRepositorie } from "../../repositorie/PrismaRepositories/PrismaUserRepositorie";
 import { UserDoesNotExists } from "../../services/Error/MissedResourcesError";
 
@@ -10,15 +10,16 @@ export async function CreateAccountControler(req:FastifyRequest, res:FastifyRepl
     const bodySchema = z.object({
         Name:z.string(),
         Value:z.number().optional(),
-        userId:z.string().uuid()
     })
-    const data = bodySchema.parse(req.body)
-
+    const {Name,Value} = bodySchema.parse(req.body)
+    const userId = req.user.sub
     const Main = new CreateAccountUseCase(new PrismaAccountRepositorie, new PrismaUsersRepositorie)
 
     try{
         //trys to run CreateAccountUseCase sending "data"
-        const CreateAccount = await Main.execute({data})
+        const CreateAccount = await Main.execute({data:{
+            Name,Value,userId
+        }})
         //if success returns this
         res.status(201).send({
             Description:"successfully created",
