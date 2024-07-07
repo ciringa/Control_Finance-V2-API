@@ -13,7 +13,7 @@ export class PrismaTransactionsRepositorie implements TransactionsRepositorie{
         const returnList = await prisma.transaction.findMany({where:{
             accountId
         }})
-        return {List:returnList}
+        return returnList
     }
     async findById(Id: string){
         const returnSingle = await prisma.transaction.findUnique({where:{Id}})

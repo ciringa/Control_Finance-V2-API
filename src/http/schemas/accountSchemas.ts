@@ -29,3 +29,42 @@ export const CreateAccountSchema = {
     },
     preHandler:[VerifyJWT]
 }
+export const ReturnAccountDataSchema = {
+    schema:{
+        tags:["Account"],
+        description:"Route Used to return Account data by recieving it's ID, also provides info about withdraw, deposit and sum with the lists of transactions in the account. needs a JWT token Authentication",
+        params:z.object({
+            AcId:z.string().uuid()
+        }),
+        response:{
+            201:z.object({
+                Account:z.object({
+                    Id: z.string().uuid(),
+                    Name: z.string(),
+                    Value: z.number(),
+                    userId: z.string().uuid(),
+                }),
+                statistic:z.object({
+                        Deposit:z.number(),
+                        Withdraw:z.number(),
+                        Total:z.number(),
+                        sum:z.number(),
+                        TransactionAmount:z.number().nullable(),
+                    
+                }),
+                TransactionList:z.array(z.object({
+                    Id: z.string().uuid(),
+                    Title: z.string(),
+                    Value: z.number(),
+                    Type:  z.enum(["DEP","SAL"]),
+                    accountId:z.string().uuid(),
+                }))
+            }),
+            404:z.object({
+                Description:z.string(),
+            })
+            
+        }
+    },
+    preHandler:[VerifyJWT]
+}

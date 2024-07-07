@@ -1,6 +1,5 @@
 import fastify from "fastify";
-import { serializerCompiler, validatorCompiler,jsonSchemaTransform} from "fastify-type-provider-zod";
-
+import { serializerCompiler, validatorCompiler} from "fastify-type-provider-zod";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifySwagger from "@fastify/swagger";
 import { swggerConfig } from "./swagger";
@@ -9,6 +8,7 @@ import { AccountRoutes } from "../http/account.routes";
 import { fastifyJwt} from "@fastify/jwt";
 import { AutheticateRoutes } from "../http/auth.routes";
 import { TransactionRoutes } from "../http/transaction.routes";
+import { JWT_SECRET } from "./env";
 
 export const app = fastify()
 
@@ -20,7 +20,7 @@ app.register(fastifySwaggerUi, {
     routePrefix: '/docs',
 });
 app.register(fastifyJwt,{
-    secret: 'supersecret'
+    secret: JWT_SECRET
 })
 
 app.register(AutheticateRoutes)

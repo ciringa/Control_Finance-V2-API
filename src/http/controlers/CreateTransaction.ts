@@ -16,7 +16,8 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
     const Main = new CreateTransactionUseCase(new PrismaTransactionsRepositorie, new PrismaAccountRepositorie)
     //const doesTheLoggedInUserOwnsTheAccountThatWannaAccess = null
     try{
-        const Transaction = await Main.execute({data})
+        const Transaction =  (await Main.execute({data})).Transaction
+        //console.log(Transaction)
         res.status(201).send({
             Description:"created Transaction successfully",
             Transaction
@@ -26,5 +27,4 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
             res.status(404).send("Missing or invalid AccountId")
         }
     }
-
 }

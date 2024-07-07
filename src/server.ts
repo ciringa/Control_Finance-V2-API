@@ -8,5 +8,5 @@ app.listen({
     host,
     port
 },(err,path)=>{
-    console.log(err ? err : path + "\nSee documentation at "+path+"/docs")
+    console.log(err ? err : `Aplication Running at ${path} \nSee documentation at ${path}/docs`)
 }) 

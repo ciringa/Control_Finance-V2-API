@@ -39,3 +39,33 @@ it("should not be able to create a Transaction in a non existing Account",async(
         }
     })).rejects.toBeInstanceOf(AccountDoesNotExists)
 })
+
+it("should be able to update the value of the account based in the transaction",async()=>{
+    const {Id} = createdAccount
+    const SUT = await createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.DEP,Value:240,
+        }
+    })
+    expect(SUT.Account.Value).toBe(540)
+    expect(SUT.Account.Id).toBe(createdAccount.Id)
+})
+
+it("should be able to update the value based in transaction type",async()=>{
+    const {Id} = createdAccount
+    const SUT = await createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.DEP,Value:240,
+        }
+    })
+    expect(SUT.Account.Value).toBe(540)
+    expect(SUT.Account.Id).toBe(createdAccount.Id)
+
+    const second = await createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.SAL,Value:80,
+        }
+    })
+    expect(second.Account.Value).toBe(460)
+    expect(second.Account.Id).toBe(createdAccount.Id)
+})

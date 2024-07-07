@@ -17,7 +17,7 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
     }
     async findByAccount(accountId: string){
         const returnList = this.list.filter(item => item.accountId == accountId)
-        return {List:returnList}
+        return returnList
     }
     async findById(Id: string){
         const returnSingle = this.list.find(item => item.Id == Id)

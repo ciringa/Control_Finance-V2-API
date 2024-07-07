@@ -19,4 +19,23 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
         })
         return returnSingle 
     }
+    async updateAccountValue(Id: string, newValue: number){
+        const updatedValue = await prisma.account.update({
+            where:{
+                Id
+            },data:{
+                Value:newValue
+            }
+        })
+        return updatedValue
+    }
+
+    async findByUser(userId: string) {
+        const returnMany = await prisma.account.findMany({
+            where:{
+                userId
+            }
+        })
+        return returnMany 
+    }
 }

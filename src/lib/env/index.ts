@@ -4,8 +4,9 @@ import z from 'zod'
 const dotEnvSchema = z.object({
     HOST:z.string(),
     PORT:z.string(),
-    SALT:z.string()
+    SALT:z.string(),
+    JWT_SECRET:z.string()
 })
 
 //export these information if they are properly valid 
-export const {HOST,PORT,SALT} = dotEnvSchema.parse(process.env)
+export const {HOST,PORT,SALT,JWT_SECRET} = dotEnvSchema.parse(process.env)

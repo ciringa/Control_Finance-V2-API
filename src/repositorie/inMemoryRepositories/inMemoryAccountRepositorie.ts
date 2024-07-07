@@ -18,4 +18,14 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
         const returnSingle = this.list.find(item => item.Id == Id)
         return returnSingle || null
     }
+    async updateAccountValue(Id: string, newValue: number){
+        const updateIndex = this.list.findIndex(item=> item.Id == Id)
+        this.list[updateIndex].Value = newValue
+        const updatedAccount = this.list[updateIndex]
+        return updatedAccount
+    }
+    async findByUser(userId: string) {
+        const returnSingle = this.list.filter(item => item.userId == userId)
+        return returnSingle || null
+    }
 }

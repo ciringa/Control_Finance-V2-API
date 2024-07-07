@@ -10,6 +10,34 @@
 Esta é a segunda versão do control finance, um projeto FullStack em desenvolvimento com parceria do meu amigo <a href="https://github.com/ismael-henrique-dev">Ismael Henrique</a>. O projeto em questão objetiva aplicar em prática e desenvolver conhecimentos de alguns dos principais conceitos em uso no mercado.
 
 
+
+## Rodando o Projeto 🚀
+
+clone o repostirorio 
+```
+git clone https://github.com/ciringa/Control_Finance-V2-API
+```
+entre na pasta raiz do projeto 
+```
+cd Control_Finance-V2-API
+```
+instale as dependencias 
+```
+npm i
+```
+rode o projeto 
+```
+npm run dev
+```
+
+### Testes Automatizados ⚙️
+
+Para rodar testes automatizados 
+```
+npm run test:watch
+```
+Configs do Vitest e specs em /test
+
 # Vantagens do Uso do TypeScript ⬆️
 TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação. Durante o desenvolvimento do **Control Finance V2 API** as principais vantagens que me fizeram escolher o **TypeScript** foram: 
 1. **Tipagem estática:** Ajuda a detectar erros de tipo durante a compilação, aumentando a robustez do código.
