@@ -28,4 +28,9 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
         const returnSingle = this.list.filter(item => item.userId == userId)
         return returnSingle || null
     }
+    async delete(Id: string){
+        const findSingle = this.list.findIndex(item => item.Id == Id)
+        this.list.splice(findSingle)
+    }
+    
 }

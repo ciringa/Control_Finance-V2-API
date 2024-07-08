@@ -68,3 +68,24 @@ export const ReturnAccountDataSchema = {
     },
     preHandler:[VerifyJWT]
 }
+
+
+export const DelteAccountSchema = {
+    schema:{
+        tags:["Account"],
+        description:"Route Used to delete all the accounts and all the transactions inside this account. needs a JWT token Authentication",
+        params:z.object({
+            AcId:z.string().uuid()
+        }),
+        response:{
+            200:z.object({
+                Description:z.string(),
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            
+        }
+    },
+    preHandler:[VerifyJWT]
+}

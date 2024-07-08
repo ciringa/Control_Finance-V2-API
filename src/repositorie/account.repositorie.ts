@@ -7,4 +7,5 @@ export interface AccountRepositorie {
     findById(Id:string):Promise<Account | null>
     updateAccountValue(Id:string,newValue:number):Promise<Account>
     findByUser(userId:string):Promise<Account[] | null>
+    delete(Id:string):Promise<void>
 }

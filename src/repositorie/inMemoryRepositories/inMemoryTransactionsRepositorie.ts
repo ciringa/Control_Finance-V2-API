@@ -23,4 +23,15 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
         const returnSingle = this.list.find(item => item.Id == Id)
         return returnSingle || null
     }
+    async delete(Id: string){
+        const findSingle = this.list.findIndex(item => item.Id == Id)
+        this.list.splice(findSingle)
+    }
+    async deleteManyByAccount(AccountId: string){
+        for(let i = 0; i<this.list.length; i++){
+            if(this.list[i].accountId==AccountId){
+                this.list.slice(i)
+            }
+        }
+    }
 }

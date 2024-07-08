@@ -38,4 +38,7 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
         })
         return returnMany 
     }
+    async delete(Id: string){
+        await prisma.account.delete({where:{Id}})
+    }
 }

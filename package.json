@@ -6,13 +6,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "dev": "tsx watch src/server",
-    "dev:ui":"prisma studio"
+    "dev:ui": "prisma studio"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@fastify/jwt": "^8.0.1",
     "@fastify/swagger": "^8.14.0",
     "@fastify/swagger-ui": "^4.0.0",

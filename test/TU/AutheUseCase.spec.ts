@@ -4,14 +4,13 @@ import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositor
 import { Prisma, User } from "@prisma/client";
 import { AuthUseCase } from "../../src/services/Authenticate";
 import { RegisterUserUseCase } from "../../src/services/RegisterUser";
-import { hash } from "bcryptjs";
-import { SALT } from "../../src/lib/env";
+import { faker, Faker } from "@faker-js/faker";
 import { UserDoesNotExists } from "../../src/services/Error/MissedResourcesError";
 
 const Userdata:Prisma.UserCreateInput = {
-    Email:"testEmail@gmail.com",
-    Senha:"testPasword",
-    UsernName:"TestUser",
+    Email:faker.internet.email(),
+    Senha:faker.internet.password(),
+    UsernName:faker.person.firstName(),
 
 }
 var UserRepositorie:InMemoryUserRepositorie 
@@ -26,7 +25,7 @@ it("should be able to login",async()=>{
     const SUT = new AuthUseCase(UserRepositorie)
     const {Email,Senha} = Userdata
     const returnLogin = await SUT.execute({Email,Senha})
-
+    
     expect(returnLogin.id).toBe(testUser.Id)
 })
 

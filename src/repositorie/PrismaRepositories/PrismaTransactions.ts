@@ -19,4 +19,10 @@ export class PrismaTransactionsRepositorie implements TransactionsRepositorie{
         const returnSingle = await prisma.transaction.findUnique({where:{Id}})
         return returnSingle
     }
+    async delete(Id: string){
+        await prisma.transaction.delete({where:{Id}})
+    }
+    async deleteManyByAccount(AccountId: string){
+        await prisma.transaction.deleteMany({where:{accountId:AccountId}})
+    }
 }
