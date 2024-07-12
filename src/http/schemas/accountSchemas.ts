@@ -1,6 +1,6 @@
 import z from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
-
+import { ZodTypeProvider} from "fastify-type-provider-zod";
 
 export const CreateAccountSchema = {
     schema:{

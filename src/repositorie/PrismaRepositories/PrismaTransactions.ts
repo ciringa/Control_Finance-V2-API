@@ -1,6 +1,5 @@
-import { Prisma, Transaction, Type } from "@prisma/client";
+import { Prisma, Transaction } from "@prisma/client";
 import { TransactionsRepositorie } from "../transactions.repositorie";
-import { randomUUID } from "crypto";
 import { prisma } from "../../lib/prisma";
 
 export class PrismaTransactionsRepositorie implements TransactionsRepositorie{
@@ -24,5 +23,13 @@ export class PrismaTransactionsRepositorie implements TransactionsRepositorie{
     }
     async deleteManyByAccount(AccountId: string){
         await prisma.transaction.deleteMany({where:{accountId:AccountId}})
+    }
+    async updateTransaction(Id: string, data: Partial<Transaction>){
+        return await prisma.transaction.update({
+            where:{
+                Id
+            },
+            data
+        })
     }
 }

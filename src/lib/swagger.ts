@@ -8,7 +8,7 @@ export const swggerConfig =  {
     openapi: '3.1.0',
     info: {
         title: 'SampleApi',
-        description:`<h1>Control Finance V2 API Documentation</h1><br>Welcome this is the control finance api documentation Control finance 2 is a fullscale monetary management aplication\n`,
+        description:`<h1>Control Finance V2 API Documentation</h1><br>Welcome this is the control finance api documentation Control finance 2 is a fullscale monetary management aplication<ul><li><a href="https://github.com/ciringa">Creator Profile</a></li><li><a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">FrontEnd Example</a></li></ul>`,
         version: '1.0.0',
     },
     tags:[

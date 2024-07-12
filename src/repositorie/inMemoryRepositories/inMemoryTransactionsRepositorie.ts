@@ -34,4 +34,17 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
             }
         }
     }
+    //nunca ira chegar ate aqui se a transaçao nao existir 
+    async updateTransaction(Id:string, data: Partial<Transaction>){
+        const findIndex = this.list.findIndex(item => item.Id == Id)
+        const Original = this.list[findIndex]
+        this.list[findIndex] = {
+            accountId: data.accountId || Original.accountId,
+            Title: data.Title || Original.Title,
+            Type: data.Type || Original.Type,
+            Value: data.Value || Original.Value,
+            Id:Original.Id
+        }
+        return this.list[findIndex]
+    }
 }

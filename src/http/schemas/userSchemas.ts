@@ -25,9 +25,6 @@ export const ReturnAccountDataSchema = {
     schema:{
         tags:["User"],
         description:"Route Used to return User Account list and some more info like the sum of money of all accounts. Requires the JWT Token Validation",
-        params:z.object({
-            AcId:z.string().uuid()
-        }),
         response:{
             201:z.object({
                 Statics:z.object({

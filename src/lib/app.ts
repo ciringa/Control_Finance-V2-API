@@ -10,6 +10,7 @@ import { AutheticateRoutes } from "../http/auth.routes";
 import { TransactionRoutes } from "../http/transaction.routes";
 import { JWT_SECRET } from "./env";
 
+
 export const app = fastify()
 
 app.setValidatorCompiler(validatorCompiler);

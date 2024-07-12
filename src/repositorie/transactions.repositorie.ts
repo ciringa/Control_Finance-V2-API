@@ -6,4 +6,5 @@ export interface TransactionsRepositorie{
     findByAccount(accountId:string):Promise<Transaction[] | null>
     delete(Id:string):Promise<void>
     deleteManyByAccount(AccountId:string):Promise<void>
+    updateTransaction(Id:string,data:Partial<Transaction>):Promise<Transaction>
 }

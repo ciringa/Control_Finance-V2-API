@@ -32,5 +32,16 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
         const findSingle = this.list.findIndex(item => item.Id == Id)
         this.list.splice(findSingle)
     }
+    async update(Id:string, data: Partial<Account>){
+        const findIndex = this.list.findIndex(item => item.Id == Id)
+        const Original = this.list[findIndex]
+        this.list[findIndex] = {
+            userId: data.userId || Original.userId, 
+            Name:data.Name || Original.Name,
+            Value: data.Value || Original.Value,
+            Id:Original.Id
+        }
+        return this.list[findIndex]
+    }
     
 }

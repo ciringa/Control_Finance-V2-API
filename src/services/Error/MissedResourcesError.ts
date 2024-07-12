@@ -8,3 +8,8 @@ export class UserDoesNotExists extends Error{
 export class AccountDoesNotExists extends Error{
     constructor(){super("the specified Account does not exists")}
 }
+
+export class TransactionDoesNotExists extends Error{
+    constructor(){super("the specified Transaction does not exists")}
+}
+

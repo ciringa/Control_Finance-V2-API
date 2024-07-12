@@ -41,4 +41,12 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
     async delete(Id: string){
         await prisma.account.delete({where:{Id}})
     }
+    async update(Id: string, data: Partial<Account>){
+        return await prisma.account.update({
+            where:{
+                Id
+            },
+            data
+        })
+    }
 }
