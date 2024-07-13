@@ -5,6 +5,6 @@ import { CreateTransactionSchema, DeleteTransactionSchema } from "./schemas/Tran
 import { DeleteTransactionControler } from "./controlers/deleteTransactionControler";
 
 export async function TransactionRoutes(app:FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().post("/transaction/create",CreateTransactionSchema,CreateTransaction)
-    app.withTypeProvider<ZodTypeProvider>().delete("/transaction/create",DeleteTransactionSchema,DeleteTransactionControler)
+    app.withTypeProvider<ZodTypeProvider>().post("/create",CreateTransactionSchema,CreateTransaction)
+    app.withTypeProvider<ZodTypeProvider>().delete("/delete",DeleteTransactionSchema,DeleteTransactionControler)
 }

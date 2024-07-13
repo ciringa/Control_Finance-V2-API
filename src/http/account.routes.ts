@@ -6,7 +6,7 @@ import { ReturnAccountStatiscticControler } from "./controlers/ReturnAccountsSta
 import { DeleteAccountControler } from "./controlers/DeleteAccount";
 
 export async function  AccountRoutes(app:FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().post("/account/register",CreateAccountSchema,CreateAccountControler)
-    app.withTypeProvider<ZodTypeProvider>().get("/account/view/:AcId",ReturnAccountDataSchema,ReturnAccountStatiscticControler)
-    app.withTypeProvider<ZodTypeProvider>().delete("/account/delete/:AcId",DelteAccountSchema,DeleteAccountControler)
+    app.withTypeProvider<ZodTypeProvider>().post("/register",CreateAccountSchema,CreateAccountControler)
+    app.withTypeProvider<ZodTypeProvider>().get("/view/:AcId",ReturnAccountDataSchema,ReturnAccountStatiscticControler)
+    app.withTypeProvider<ZodTypeProvider>().delete("/delete/:AcId",DelteAccountSchema,DeleteAccountControler)
 }

@@ -32,4 +32,15 @@ export class PrismaTransactionsRepositorie implements TransactionsRepositorie{
             data
         })
     }
+    async findByQuery(Query: string, Page: number){
+        const returnQuery = await prisma.transaction.findMany({
+            where:{
+                Title:{
+                    contains:Query
+                }
+            },
+            take:Page*3,skip:(Page-1)*3
+        })
+        return returnQuery 
+    }
 }

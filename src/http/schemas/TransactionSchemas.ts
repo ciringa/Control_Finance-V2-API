@@ -34,7 +34,7 @@ export const CreateTransactionSchema = {
 export const DeleteTransactionSchema = {
     schema:{
         tags:["Transaction"],
-        description:"Route Used to create Transactions.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
+        description:"Route Used to delete Transactions.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
         body:z.object({
             Title: z.string(),
             Value: z.number(),

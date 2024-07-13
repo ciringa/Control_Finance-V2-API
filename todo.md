@@ -8,4 +8,5 @@
 
     - implements goals repositories 
     - when get/goals checks concluded ones and expired ones 
+    / when search also return goals
 

@@ -43,5 +43,9 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
         }
         return this.list[findIndex]
     }
+    async findByQuery(Query: string, Page: number){
+        const returnQuery = this.list.filter(item=> item.Name.includes(Query)).slice((Page-1)*3,Page*3)
+        return returnQuery 
+    }
     
 }

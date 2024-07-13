@@ -7,6 +7,6 @@ import { ReturnProfile } from "./controlers/ProfileControler";
 import { AutheticateUser } from "./controlers/AuthenticaControler";
 
 export async function AutheticateRoutes(app:FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().patch("/auth/login",LoginSchema,AutheticateUser)
-    app.withTypeProvider<ZodTypeProvider>().get("/auth/profile",ProfileSchema,ReturnProfile)
+    app.withTypeProvider<ZodTypeProvider>().patch("/login",LoginSchema,AutheticateUser)
+    app.withTypeProvider<ZodTypeProvider>().get("/profile",ProfileSchema,ReturnProfile)
 }

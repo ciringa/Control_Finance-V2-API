@@ -6,6 +6,6 @@ import z from "zod";
 import { ReturnAccountInfo } from "./controlers/returnUserAccountInfoControler";
 
 export async function userRoutes(app:FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().post("/users/register",RegisterUserSchema,RegisterUserControler)
-    app.withTypeProvider<ZodTypeProvider>().get("/users/account",ReturnAccountDataSchema,ReturnAccountInfo)
+    app.withTypeProvider<ZodTypeProvider>().post("/register",RegisterUserSchema,RegisterUserControler)
+    app.withTypeProvider<ZodTypeProvider>().get("account",ReturnAccountDataSchema,ReturnAccountInfo)
 }

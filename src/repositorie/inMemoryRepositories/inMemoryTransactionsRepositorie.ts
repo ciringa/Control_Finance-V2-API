@@ -47,4 +47,9 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
         }
         return this.list[findIndex]
     }
+
+    async findByQuery(Query: string, Page: number){
+        const returnQuery = this.list.filter(item=> item.Title.includes(Query)).slice((Page-1)*3,Page*3)
+        return returnQuery 
+    }
 }

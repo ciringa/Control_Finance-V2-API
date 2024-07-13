@@ -49,4 +49,16 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
             data
         })
     }
+    async findByQuery(Query: string, Page: number,userId:string){
+        const returnQuery = await prisma.account.findMany({
+            where:{
+                userId,
+                Name:{
+                    contains:Query
+                }
+            },
+            take:Page*3,skip:(Page-1)*3
+        })
+        return returnQuery 
+    }
 }

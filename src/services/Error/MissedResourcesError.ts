@@ -12,4 +12,8 @@ export class AccountDoesNotExists extends Error{
 export class TransactionDoesNotExists extends Error{
     constructor(){super("the specified Transaction does not exists")}
 }
+export class GoalDoesNotExists extends Error{
+    constructor(){super("the specified Goal does not exists")}
+}
+
 

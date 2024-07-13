@@ -8,5 +8,5 @@ app.listen({
     host,
     port
 },(err,path)=>{
-    console.log(err ? err : `Aplication Running at ${path} \nSee documentation at ${path}/docs`)
-}) 
+    console.log(err ? err : `\x1b[44m\x1b[30m\x1b[4mControl Finance V2\x1b[0m\nAplication V 1.0.2 \n\nAplication Running at \x1b[34m ${path}\x1b[0m \nSee documentation at \x1b[34m ${path}/docs\x1b[0m`)
+})
