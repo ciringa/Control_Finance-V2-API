@@ -43,7 +43,7 @@ Enquanto estiver rodando a aplicação acesse
 ```
 http://127.0.0.1:2333/docs
 ```
-Ou acesse <a href="https://control-finance-v2-api-1.onrender.com">Documentação</a>
+Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documentação</a>
 
 # Tech Stack 
 
