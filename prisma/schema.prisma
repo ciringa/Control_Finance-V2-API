@@ -35,6 +35,7 @@ model Goals{
   Id String @id @default(uuid())
   Title String
   Value Float @default(0)
+  TargetedValue Float @default(0)
 
   CreatedAt DateTime @default(now())
   CompletedAt DateTime? 

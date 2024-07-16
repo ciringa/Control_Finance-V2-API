@@ -13,7 +13,8 @@ export class InMemoryGoalsRepositorie implements goalsRepositorie{
             CreatedAt:new Date(),
             CompletedAt:null,
             Id:randomUUID(),
-            Value:Number(data.Value)
+            Value:Number(data.Value),
+            TargetedValue:Number(data.TargetedValue) || 0
         }
         this.list.push(_data)
         return _data

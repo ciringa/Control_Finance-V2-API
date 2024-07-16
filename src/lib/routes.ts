@@ -8,6 +8,9 @@ import { GoalsRoutes } from "../http/goals.routes";
 
 
 export async function Router(app:FastifyInstance) {
+    app.get("/",(req,res)=>{
+        res.redirect("/docs")
+    })
     app.register(AutheticateRoutes, {
         prefix:"/auth"
     })
