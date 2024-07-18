@@ -8,6 +8,7 @@ import { DeleteTransactionsUseCase } from "../../src/services/DeleteTransaction"
 import { TransactionDoesNotExists } from "../../src/services/Error/MissedResourcesError";
 import { CreateTransactionUseCase } from "../../src/services/CreateTransaction";
 import { UpdateTransactionUseCase } from "../../src/services/UpdateTransaction";
+import { CantUpdateInformedData } from "../../src/services/Error/WrongProvidedParams";
 
 
 const accountData:Prisma.AccountUncheckedCreateInput = {
@@ -58,4 +59,14 @@ it("should be able to change the account based in the transaction",async()=>{
     //expect(SUT.AccountValue.Old).toBe(250)
     expect(SUT.AccountValue.New).toBe(100)
 
+})
+it("should no be able to update an unauthorized data type(Id)",async()=>{
+    await expect(UseCase.execute({Id:createdTransaction.Id,data:{
+        Id:"jsakhskajsk"
+    }})).rejects.toBeInstanceOf(CantUpdateInformedData) 
+})
+it("should no be able to update an unauthorized data type(AccountId)",async()=>{
+    await expect(UseCase.execute({Id:createdTransaction.Id,data:{
+        accountId:"jsakhskajsk"
+    }})).rejects.toBeInstanceOf(CantUpdateInformedData) 
 })

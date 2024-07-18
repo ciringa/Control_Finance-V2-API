@@ -15,7 +15,7 @@ export async function Router(app:FastifyInstance) {
         prefix:"/auth"
     })
     app.register(userRoutes,{
-        prefix:"/users/"
+        prefix:"/users"
     })
     app.register(AccountRoutes,{
         prefix:"/account"

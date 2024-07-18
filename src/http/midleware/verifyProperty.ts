@@ -1,8 +1,11 @@
 //writes an route that cheks if the user is owner of the accessed value
 
-import { FastifyRequest } from "fastify/types/request";
+import { prisma } from "../../lib/prisma";
+import { UserIsNotOwnerOfTHeAccount } from "../Error/ownerShiptErros";
 
-export async function VerifyOwnershipFromAccount(req:FastifyRequest) {
-    const UserId = req.user.sub
-    
+export async function VerifyOwnershipFromAccount(userId:string, AccountId:string) {
+    const testObject = await prisma.account.findUnique({where:{Id:AccountId}})
+    if(!(testObject?.userId==userId)){
+        throw new UserIsNotOwnerOfTHeAccount
+    }
 }

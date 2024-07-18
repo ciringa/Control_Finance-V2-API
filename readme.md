@@ -1,13 +1,9 @@
+<h1 align="center">Control Finance V2 💵🪙</h1>
 <p align="center">
-
-<h1 align="center">Control Finance V2 💵🪙<h1>
-<img src = "https://img.shields.io/badge/NPM-10.5.2-gray?style=flat&labelColor=green">
-<img src = "https://img.shields.io/badge/TypeScript-5.4.5-gray?style=flat&labelColor=blue" >
-
+<img align="center" src = "https://img.shields.io/badge/NPM-10.5.2-gray?style=flat&labelColor=green">
+<img align="center" src = "https://img.shields.io/badge/TypeScript-5.4.5-gray?style=flat&labelColor=blue" >
 </p>
 
-
-# 
 Esta é a segunda versão do control finance, um projeto FullStack em desenvolvimento com parceria do meu amigo <a href="https://github.com/ismael-henrique-dev">Ismael Henrique</a>. O projeto em questão objetiva aplicar em prática e desenvolver conhecimentos de alguns dos principais conceitos em uso no mercado. Acesse o <a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">frontEnd da aplicação</a>
 
 
@@ -47,20 +43,17 @@ http://127.0.0.1:2333/docs
 Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documentação</a>
 
 # Tech Stack 
+<div align="center">
+<img alt="Static Badge" src="https://img.shields.io/badge/dotenv-16.4.5-blue?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/fastify-4.28.1-black?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/prisma-5.16.1-blue?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/typescript-5.5.3-blue?style=flat-square&logoColorr=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/vitest-1.6.0-orange?style=flat-square&logoColorr=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/zod-3.23.8-red?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/faker-8.4.1-green?style=flat-square&logoColor=blue">
+</div>
 
-![Static Badge](https://img.shields.io/badge/dotenv-16.4.5-blue?logoColor=blue)
 
-![Static Badge](https://img.shields.io/badge/fastify-4.28.1-black?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/prisma-5.16.1-blue?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/typescript-5.5.3-blue?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/vitest-1.6.0-orange?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/zod-3.23.8-red?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/faker-8.4.1-green?logoColor=blue)
 
 
 # Vantagens do Uso do TypeScript ⬆️
@@ -75,5 +68,8 @@ Durante o desenvolvimento do CT2, o uso extensivo de TypeScript tornou-se crucia
 
 ## Vantagens do Uso de Tokens JWT para aplicaçoes backend ⚙️
 
-O uso de tokens JWT (JSON Web Tokens) em aplicações backend oferece várias vantagens significativas. Primeiramente, os JWTs são auto-contidos, o que significa que todas as informações necessárias para a autenticação e autorização estão embutidas no próprio token, eliminando a necessidade de consultas constantes ao banco de dados. Além disso, eles são seguros e podem ser assinados digitalmente, garantindo a integridade dos dados e impedindo alterações maliciosas. A portabilidade dos tokens JWT facilita a implementação de autenticação entre diferentes serviços e plataformas, proporcionando uma experiência de usuário mais fluida. Por fim, os JWTs são leves e baseados em padrões amplamente adotados, como JSON, o que os torna eficientes para transmissões via HTTP e fáceis de implementar com
+O uso de tokens JWT (JSON Web Tokens) em aplicações backend oferece várias vantagens significativas. Primeiramente, os JWTs são auto-contidos, o que significa que todas as informações necessárias para a autenticação e autorização estão embutidas no próprio token, eliminando a necessidade de consultas constantes ao banco de dados. Além disso, eles são seguros e podem ser assinados digitalmente, garantindo a integridade dos dados e impedindo alterações maliciosas. A portabilidade dos tokens JWT facilita a implementação de autenticação entre diferentes serviços e plataformas, proporcionando uma experiência de usuári o mais fluida. Por fim, os JWTs são leves e baseados em padrões amplamente adotados, como JSON, o que os torna eficientes para transmissões via HTTP e fáceis de implementar com
 
+## por que usar testes automatizados (as vantagens do Vite)
+Usar <strong>testes automatizados</strong> é essencial para garantir a qualidade e a eficiência no desenvolvimento de software, e o <strong>Vite</strong>, uma ferramenta moderna de build, traz diversas vantagens nesse aspecto. Com sua velocidade impressionante, o Vite reduz significativamente o tempo de feedback durante os testes, permitindo detectar e corrigir erros mais rapidamente. Além disso, sua arquitetura baseada em módulos ES nativos facilita a configuração e a integração com bibliotecas de testes populares, como Jest e Cypress. Isso resulta em um ambiente de desenvolvimento mais ágil e produtivo, onde os desenvolvedores podem se concentrar mais na escrita de código de qualidade do que na resolução de problemas de configuração e desempenho. A adoção de testes automatizados com Vite não só melhora a confiabilidade do software, mas também aumenta a confiança da equipe de desenvolvimento na entrega contínua de novas funcionalidades. 
+O vite é a melhor escolha para a realizaçao de <strong>testes automatizados</strong> e no Control Finance V2 foi essencial para garantir o pleno funcionamento da aplicação dando ao desenvolvedor certeza absoluta de que a aplicaçao funcionará nos conformes do que é exigido pelo <strong>FrontEnd</strong> 

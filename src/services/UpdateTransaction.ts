@@ -2,6 +2,7 @@ import { Transaction } from "@prisma/client";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
 import { AccountDoesNotExists, TransactionDoesNotExists } from "./Error/MissedResourcesError";
 import { AccountRepositorie } from "../repositorie/account.repositorie";
+import { CantUpdateInformedData } from "./Error/WrongProvidedParams";
 
 interface UpdateTransactionRequest {
     Id:string,
@@ -21,6 +22,10 @@ export class UpdateTransactionUseCase {
         const doesTHeElementExists = await this.transactionRepositorie.findById(Id)
         if(!doesTHeElementExists){
             throw new TransactionDoesNotExists
+        }
+        //cant update some data values
+        if(data.Id || data.accountId){
+            throw new CantUpdateInformedData
         }
         //subtract the account value 
         var newAccountValue:number = 0

@@ -1,4 +1,4 @@
-import { beforeEach,it } from "vitest";
+import { beforeEach,expect,it } from "vitest";
 import { InMemoryGoalsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryGoalsRepositorie";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
 import { ReturnGoalListUseCase } from "../../src/services/ReturnGoalsList";
@@ -36,5 +36,6 @@ beforeEach(async()=>{
 
 it("should be able to return goals", async()=>{
     const SUT = await UseCase.execute({UserId:user.Id})
-    console.log(SUT)
+    //console.log(SUT)
+    expect(SUT.CompletedGoals[0].Title).toBe(goalRepositorie.list[0].Title)
 })

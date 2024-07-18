@@ -3,10 +3,11 @@ import { PrismaAccountRepositorie } from "../../repositorie/PrismaRepositories/P
 import { returnUserAccountInfoUseCase } from "../../services/returnUserAccountInfo";
 import { PrismaUsersRepositorie } from "../../repositorie/PrismaRepositories/PrismaUserRepositorie";
 import { UserDoesNotExists } from "../../services/Error/MissedResourcesError";
+import { PrismaTransactionsRepositorie } from "../../repositorie/PrismaRepositories/PrismaTransactions";
 
 export async function ReturnAccountInfo(req:FastifyRequest,res:FastifyReply) {
     const userId = req.user.sub
-    const Main = new returnUserAccountInfoUseCase(new PrismaUsersRepositorie,new PrismaAccountRepositorie)
+    const Main = new returnUserAccountInfoUseCase(new PrismaUsersRepositorie,new PrismaAccountRepositorie, new PrismaTransactionsRepositorie)
     try{
         const ReturnStatistics = await Main.execute({userId})
         //console.log(ReturnStatistics)

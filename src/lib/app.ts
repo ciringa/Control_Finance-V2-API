@@ -6,6 +6,8 @@ import { swggerConfig } from "./swagger";
 import { fastifyJwt} from "@fastify/jwt";
 import { JWT_SECRET } from "./env";
 import { Router } from "./routes";
+import { load } from "js-yaml";
+import { readFileSync } from "fs";
 
 
 export const app = fastify()

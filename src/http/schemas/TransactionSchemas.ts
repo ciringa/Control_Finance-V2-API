@@ -35,6 +35,9 @@ export const DeleteTransactionSchema = {
     schema:{
         tags:["Transaction"],
         description:"Route Used to delete Transactions.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
+        params:z.object({
+            TrId:z.string().uuid()
+        }),
         response:{
             201:z.object({
                 Transaction:z.object({
@@ -66,7 +69,7 @@ export const UpdateTransactionSchema = {
             Value:z.number().optional(),
             Type: z.enum(["DEP","SAL"]).optional(),
         }),
-        params:z.object({
+        paramm:z.object({
             TrId:z.string().uuid()
         }),
         response:{

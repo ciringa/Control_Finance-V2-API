@@ -8,8 +8,9 @@ export const RegisterGoalSchema = {
         tags:["Goals"],
         description:"Route used to register Goals, Requires A jwt token",
         body:z.object({
-            EndTime:z.date(),
+            EndTime:z.string(),
             Title:z.string(),
+            TargetedValue:z.number().optional(),
             Value:z.number().optional(),
         }),
         response:{
@@ -18,8 +19,9 @@ export const RegisterGoalSchema = {
                     Id:z.string().uuid(),
                     Title:z.string(),
                     Value: z.number(),
+                    TargetedValue:z.number(),
                     CreatedAt:z.date(),
-                    CompletedAt: z.date(),
+                    CompletedAt: z.date().nullable(),
                     EndTime:z.date(),
                     userId: z.string().uuid(),
                 })
@@ -36,7 +38,7 @@ export const ReturnGoalListValidated = {
         tags:["Goals"],
         description:"returns goals in 3 categories, expired (goals that can no longer be completed because they have expired), completed (routes that have already been completed) and ongoing. Requires A jwt token with user auth ",
         response:{
-            201:z.object({
+            200:z.object({
                 unCompletedGoals:z.array(z.object({
                     Id:z.string().uuid(),
                     Title:z.string(),
@@ -46,7 +48,7 @@ export const ReturnGoalListValidated = {
                     EndTime:z.date(),
                     userId: z.string().uuid(),
                     TargetedValue:z.string().nullable()
-                })),
+                }).nullable()),
                 ExpiredGoals:z.array(z.object({
                     Id:z.string().uuid(),
                     Title:z.string(),
@@ -56,7 +58,7 @@ export const ReturnGoalListValidated = {
                     EndTime:z.date(),
                     userId: z.string().uuid(),
                     TargetedValue:z.string().nullable()
-                })),
+                }).nullable()),
                 CompletedGoals:z.array(z.object({
                     Id:z.string().uuid(),
                     Title:z.string(),
@@ -66,7 +68,7 @@ export const ReturnGoalListValidated = {
                     EndTime:z.date(),
                     userId: z.string().uuid(),
                     TargetedValue:z.string().nullable()
-                })),
+                }).nullable()),
             }),
             400:z.object({
                 Description:z.string()

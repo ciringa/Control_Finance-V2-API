@@ -23,13 +23,19 @@ export const RegisterUserSchema = {
 
 export const ReturnAccountDataSchema = {
     schema:{
-        tags:["User"],
+        tags:["User","Statics"],
         description:"Route Used to return User Account list and some more info like the sum of money of all accounts. Requires the JWT Token Validation",
         response:{
             201:z.object({
                 Statics:z.object({
                     sum:z.number() 
                 }),
+                AccountStatics:z.array(z.object({
+                    sum:z.number(),
+                    WithdrawValue:z.number(),
+                    DepositValue:z.number(),
+                    accountTitle:z.string(),
+                }).nullable()),
                 AccountList:z.array(z.object({
                     Id: z.string().uuid(),
                     Name:z.string(),
@@ -45,3 +51,4 @@ export const ReturnAccountDataSchema = {
     },
     preHandler:[VerifyJWT]
 }
+
