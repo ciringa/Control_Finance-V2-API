@@ -47,20 +47,17 @@ http://127.0.0.1:2333/docs
 Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documentação</a>
 
 # Tech Stack 
+<div align="center">
+<img alt="Static Badge" src="https://img.shields.io/badge/dotenv-16.4.5-blue?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/fastify-4.28.1-black?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/prisma-5.16.1-blue?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/typescript-5.5.3-blue?style=flat-square&logoColorr=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/vitest-1.6.0-orange?style=flat-square&logoColorr=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/zod-3.23.8-red?style=flat-square&logoColor=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/faker-8.4.1-green?style=flat-square&logoColor=blue">
+</div>
 
-![Static Badge](https://img.shields.io/badge/dotenv-16.4.5-blue?logoColor=blue)
 
-![Static Badge](https://img.shields.io/badge/fastify-4.28.1-black?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/prisma-5.16.1-blue?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/typescript-5.5.3-blue?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/vitest-1.6.0-orange?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/zod-3.23.8-red?logoColor=blue)
-
-![Static Badge](https://img.shields.io/badge/faker-8.4.1-green?logoColor=blue)
 
 
 # Vantagens do Uso do TypeScript ⬆️
