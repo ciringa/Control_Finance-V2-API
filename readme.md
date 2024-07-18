@@ -1,12 +1,13 @@
 <p align="center">
 
+<h1 align="center">Control Finance V2 💵🪙<h1>
 <img src = "https://img.shields.io/badge/NPM-10.5.2-gray?style=flat&labelColor=green">
 <img src = "https://img.shields.io/badge/TypeScript-5.4.5-gray?style=flat&labelColor=blue" >
 
 </p>
 
 
-# Control Finance V2 💵🪙
+# 
 Esta é a segunda versão do control finance, um projeto FullStack em desenvolvimento com parceria do meu amigo <a href="https://github.com/ismael-henrique-dev">Ismael Henrique</a>. O projeto em questão objetiva aplicar em prática e desenvolver conhecimentos de alguns dos principais conceitos em uso no mercado. Acesse o <a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">frontEnd da aplicação</a>
 
 
@@ -47,13 +48,20 @@ Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documenta
 
 # Tech Stack 
 
-        dotenv: 16.4.5
-        fastify: 4.28.1
-        prisma: 5.16.1
-        typescript: 5.5.3
-        vitest: 1.6.0"
-        zod: 3.23.8"
-        faker":8.4.1
+![Static Badge](https://img.shields.io/badge/dotenv-16.4.5-blue?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/fastify-4.28.1-black?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/prisma-5.16.1-blue?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/typescript-5.5.3-blue?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/vitest-1.6.0-orange?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/zod-3.23.8-red?logoColor=blue)
+
+![Static Badge](https://img.shields.io/badge/faker-8.4.1-green?logoColor=blue)
+
 
 # Vantagens do Uso do TypeScript ⬆️
 TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação. Durante o desenvolvimento do **Control Finance V2 API** as principais vantagens que me fizeram escolher o **TypeScript** foram: 
