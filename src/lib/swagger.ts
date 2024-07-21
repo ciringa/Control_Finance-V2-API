@@ -16,7 +16,7 @@ export const swggerConfig =  {
         {name:"Goals",description:"Routes used to manage Goals Entity, goals are something you want to achieve in a defined space of time, the routes below are used to manage this functioning. Most of these require JWT Tokens validation"},
         {name:"Transaction",description:"Routes used to manage the Transactions data entity. all these routes require JWT token authentication. Every single transaction has on from two types SAL for withdraw moeny and DEP for Deposit money"},
         {name:"Utils",description:"Randonly usefull routes used to help the aplication"},
-        {name:"Statics",description:"Routes used to return general informations"},
+        {name:"Statics",description:"Routes used to return standard informations"},
     ],
     servers: [],
     },

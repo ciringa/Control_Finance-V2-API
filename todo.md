@@ -7,3 +7,9 @@
     - add mark goal as completed controler and all the http bullshit 
 
     - fix transaction /get route return
+
+## Front End request
+
+    Tags para transações 
+    create a Guest Route (X)
+    Oauth2 validaçao de login e senha usando o google 

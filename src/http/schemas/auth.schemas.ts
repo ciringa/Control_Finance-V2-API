@@ -25,6 +25,12 @@ export const LoginSchema = {
     }
 }
 
+export const loginAsGuestSchema = {
+    schema:{
+        tags:["Auth"],
+        description:"Route used to Login as a guest user(used in 'travelers mode'). Returns a JWT token with the travelers user ID",
+    }
+}
 export const ProfileSchema = {
     schema:{
         tags:["Auth"],
