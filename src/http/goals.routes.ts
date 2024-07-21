@@ -1,6 +1,5 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { RegisterUserControler } from "./controlers/RegisterUserControler";
 import { RegisterGoalSchema, ReturnGoalListValidated } from "./schemas/goalsSchema";
 import { ReturnGoalListControler } from "./controlers/ReturnGoalList";
 import { RegisterGoal } from "./controlers/RegisterGoalControler";

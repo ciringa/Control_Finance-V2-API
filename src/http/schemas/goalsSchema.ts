@@ -33,6 +33,7 @@ export const RegisterGoalSchema = {
     },preHandler:[VerifyJWT]
 }
 
+
 export const ReturnGoalListValidated = {
     schema:{
         tags:["Goals"],
@@ -44,30 +45,30 @@ export const ReturnGoalListValidated = {
                     Title:z.string(),
                     Value: z.number(),
                     CreatedAt:z.date(),
-                    CompletedAt: z.date(),
+                    CompletedAt: z.date().nullable(),
                     EndTime:z.date(),
                     userId: z.string().uuid(),
-                    TargetedValue:z.string().nullable()
+                    TargetedValue:z.number()
                 }).nullable()),
                 ExpiredGoals:z.array(z.object({
                     Id:z.string().uuid(),
                     Title:z.string(),
                     Value: z.number(),
                     CreatedAt:z.date(),
-                    CompletedAt: z.date(),
+                    CompletedAt: z.date().nullable(),
                     EndTime:z.date(),
                     userId: z.string().uuid(),
-                    TargetedValue:z.string().nullable()
+                    TargetedValue:z.number()
                 }).nullable()),
                 CompletedGoals:z.array(z.object({
                     Id:z.string().uuid(),
                     Title:z.string(),
                     Value: z.number(),
                     CreatedAt:z.date(),
-                    CompletedAt: z.date(),
+                    CompletedAt: z.date().nullable(),
                     EndTime:z.date(),
                     userId: z.string().uuid(),
-                    TargetedValue:z.string().nullable()
+                    TargetedValue:z.number()
                 }).nullable()),
             }),
             400:z.object({

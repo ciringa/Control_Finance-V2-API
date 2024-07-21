@@ -10,7 +10,7 @@ export async function ReturnGoalListControler(req:FastifyRequest,res:FastifyRepl
     const Main = new ReturnGoalListUseCase(new PrismaGoalRepositorie, new PrismaUsersRepositorie)
     try{
         const returned = await Main.execute({UserId})
-        console.log(returned)
+        //console.log(returned)
         res.status(200).send(returned)
     }catch(err){
         if(err instanceof UserDoesNotExists){

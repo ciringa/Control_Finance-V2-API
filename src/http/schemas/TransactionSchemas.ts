@@ -101,18 +101,10 @@ export const UpdateTransactionSchema = {
     preHandler:[VerifyJWT]
 }
 
-export const ReturnTransactionList = {
+export const ReturnTransactionLisSchemat = {
     schema:{
         tags:["Transaction"],
         description:"Route Used to return the Transactions List of an User.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
-        body:z.object({
-            Title:  z.string().optional(),
-            Value:z.number().optional(),
-            Type: z.enum(["DEP","SAL"]).optional(),
-        }),
-        params:z.object({
-            TrId:z.string().uuid()
-        }),
         response:{
             200:z.object({
                 TransactionList:z.array(z.object({

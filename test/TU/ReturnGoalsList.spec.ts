@@ -27,11 +27,11 @@ beforeEach(async()=>{
             Title:faker.word.sample(),
             Value:faker.number.int({min:100,max:200}),
             userId:user.Id,
-            TargetedValue:150,
+            TargetedValue:faker.number.int({min:100,max:200}),
     })
     }
-    
-    goalRepositorie.list[0].CompletedAt = new Date()
+    //se value for igual a 300 sempre vai ser completado ja que o maximo de target valu é 150
+    goalRepositorie.list[0].Value =300
 })
 
 it("should be able to return goals", async()=>{
