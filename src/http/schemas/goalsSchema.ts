@@ -33,6 +33,43 @@ export const RegisterGoalSchema = {
     },preHandler:[VerifyJWT]
 }
 
+export const UpdateGoalValueSchema = {
+    schema:{
+        tags:["Goals"],
+        description:"Route used to update the current Goal value by providing a GoalId, the provided value can only be positive, Requires A jwt token",
+        params:z.object({
+            GoalId:z.string(),
+            Value:z.string(),
+        }),
+        response:{
+            200:z.object({
+                updatedGoal:z.object({
+                    Id:z.string().uuid(),
+                    Title:z.string(),
+                    Value: z.number(),
+                    TargetedValue:z.number(),
+                    CreatedAt:z.date(),
+                    CompletedAt: z.date().nullable(),
+                    EndTime:z.date(),
+                    userId: z.string().uuid(),
+                }).nullable(),
+                OldGoal:z.object({
+                    Id:z.string().uuid(),
+                    Title:z.string(),
+                    Value: z.number(),
+                    TargetedValue:z.number(),
+                    CreatedAt:z.date(),
+                    CompletedAt: z.date().nullable(),
+                    EndTime:z.date(),
+                    userId: z.string().uuid(),
+                })
+            }),
+            400:z.object({
+                Description:z.string()
+            })
+        }
+    },preHandler:[VerifyJWT]
+}
 
 export const ReturnGoalListValidated = {
     schema:{

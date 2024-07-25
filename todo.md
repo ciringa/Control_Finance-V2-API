@@ -8,6 +8,9 @@
 
     - fix transaction /get route return
 
+    - in transaction /post substitute accountID by JWT token use 
+
+    - end the values updatea 
 ## Front End request
 
     Tags para transações 

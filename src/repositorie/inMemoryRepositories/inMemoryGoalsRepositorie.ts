@@ -1,6 +1,7 @@
 import { Prisma, Goals } from "@prisma/client";
 import { goalsRepositorie } from "../goals.repositorie";
 import { randomUUID } from "crypto";
+import { number } from "zod";
 
 
 export class InMemoryGoalsRepositorie implements goalsRepositorie{
@@ -35,5 +36,21 @@ export class InMemoryGoalsRepositorie implements goalsRepositorie{
         const index = this.list.findIndex(item=> item.Id==Id)
         this.list[index].CompletedAt = new Date()
         return this.list[index]
+    }
+    async updateGoal(Id:string,data: Partial<Prisma.GoalsUncheckedCreateInput>){
+        const findIndex = this.list.findIndex(item => item.Id == Id)
+        const current = this.list[findIndex]
+        this.list[findIndex] = {
+            CompletedAt:current.CompletedAt,
+            CreatedAt: current.CreatedAt, // cant be changed
+            EndTime: data.EndTime ? new Date(data.EndTime) : current.EndTime,
+            Id:current.Id,
+            TargetedValue: Number(data.TargetedValue) || current.TargetedValue,
+            Title: String(data.Title) || current.Title,
+            userId: current.userId,
+            Value: Number(data.Value) || current.Value
+        }
+
+        return this.list[findIndex] || null
     }
 }

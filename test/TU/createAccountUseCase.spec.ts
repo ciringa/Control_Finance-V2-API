@@ -5,7 +5,6 @@ import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryReposi
 import { Prisma, User } from "@prisma/client";
 import { CreateAccountUseCase } from "../../src/services/CreateAccount";
 import { UserDoesNotExists } from "../../src/services/Error/MissedResourcesError";
-import { compare } from "bcryptjs";
 
 
 const Userdata:Prisma.UserCreateInput = {

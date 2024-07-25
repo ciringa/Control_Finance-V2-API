@@ -51,4 +51,14 @@ export class PrismaGoalRepositorie implements goalsRepositorie{
         })
         return item
     }
+    async updateGoal(Id: string, data: Partial<Prisma.GoalsUncheckedCreateInput>){
+        const updatedGoal = await prisma.goals.update({
+            where:{
+                Id
+            },
+            data
+        })
+
+        return updatedGoal
+    }
 }
