@@ -23,7 +23,7 @@ export async function UpdateGoalControler(req:FastifyRequest,res:FastifyReply) {
     const Main = new UpdateGoalCValueUseCase(new PrismaGoalRepositorie)
     try{
         const returned = await Main.execute({GoalId,updateData:data})
-        //console.log(returned
+
         res.status(200).send(returned)
     }catch(err){
         if(err instanceof GoalDoesNotExists){
