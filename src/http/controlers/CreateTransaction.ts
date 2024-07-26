@@ -10,13 +10,13 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
         Title: z.string(),
         Value: z.number(),
         Type:  z.enum(["DEP","SAL"]),
-        accountId:z.string().uuid(),
     })
-    const data = bodySchema.parse(req.body)
+    const accountId = req.user.sub
+    const {Title,Type,Value} = bodySchema.parse(req.body)
     const Main = new CreateTransactionUseCase(new PrismaTransactionsRepositorie, new PrismaAccountRepositorie)
     //const doesTheLoggedInUserOwnsTheAccountThatWannaAccess = null
     try{
-        const Transaction =  (await Main.execute({data})).Transaction
+        const Transaction =  (await Main.execute({data:{accountId,Title,Type,Value}})).Transaction
         //console.log(Transaction)
         res.status(201).send({
             Description:"created Transaction successfully",

@@ -1,4 +1,9 @@
 
+    - Fix server please
+   
+   
+   
+   
     - In Transaction and account routes implements the midleware that checks if the user ownls the Account that wanna deposit in 
     - tests thw swagger.yml implementation using js-yml lib
 
@@ -8,9 +13,6 @@
 
     - fix transaction /get route return
 
-    - in transaction /post substitute accountID by JWT token use 
-
-    - end the values updatea 
 ## Front End request
 
     Tags para transações 

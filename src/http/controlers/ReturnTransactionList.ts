@@ -11,6 +11,7 @@ export async function ReturnTransactionList(req:FastifyRequest,res:FastifyReply)
 
     try{
         const response = await Main.execute({UserId})
+        console.log(response)
         res.status(200).send(response)
     }catch(err){
         if(err instanceof UserDoesNotExists){

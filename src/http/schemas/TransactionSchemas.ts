@@ -9,7 +9,6 @@ export const CreateTransactionSchema = {
             Title: z.string(),
             Value: z.number(),
             Type:  z.enum(["DEP","SAL"]),
-            accountId:z.string().uuid(),
         }),
         response:{
             201:z.object({
@@ -101,7 +100,7 @@ export const UpdateTransactionSchema = {
     preHandler:[VerifyJWT]
 }
 
-export const ReturnTransactionLisSchemat = {
+export const ReturnTransactionListSchema = {
     schema:{
         tags:["Transaction"],
         description:"Route Used to return the Transactions List of an User.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",

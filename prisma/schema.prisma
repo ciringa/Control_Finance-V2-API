@@ -13,6 +13,24 @@ enum Type {
   DEP
   SAL
 }
+enum TransactionCategories {
+  //para saques 
+  Alimentacao 
+  Educacao
+  Laser
+  Saude
+  Eletronicos
+  Compras
+  Beleza
+  Veiculo
+  Roupas
+
+  // para depositos 
+  Investimento
+  Salario
+  Comissao
+  Outro
+}
 model User{
   Id String @id @default(uuid())
   Email String @unique
@@ -50,6 +68,8 @@ model Transaction {
   Title String 
   Value Float
   Type Type 
+
+  Categories TransactionCategories?
 
   AccountNew Account @relation(fields: [accountId], references: [Id])
   accountId String
