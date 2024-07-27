@@ -7,9 +7,9 @@
     - In Transaction and account routes implements the midleware that checks if the user ownls the Account that wanna deposit in 
     - tests thw swagger.yml implementation using js-yml lib
 
-    - goal delete and update function
+    - goal delete 
 
-    - add mark goal as completed controler and all the http bullshit 
+    - add mark goal as completed Schema
 
     - fix transaction /get route return
 

@@ -33,6 +33,25 @@ export const RegisterGoalSchema = {
     },preHandler:[VerifyJWT]
 }
 
+
+export const MarkGoalAsCompleted = {
+    schema:{
+        tags:["Goals"],
+        description:"Route used to mark a Goal as completed, Requires A jwt token",
+        params:z.object({
+            GoalId:z.string().uuid()
+        }),
+        response:{
+            200:z.object({
+                CompletedAt:z.date().nullable(),
+                CreatedAt:z.date()
+            }),
+            400:z.object({
+                Description:z.string()
+            })
+        }
+    },preHandler:[VerifyJWT]
+}
 export const UpdateGoalValueSchema = {
     schema:{
         tags:["Goals"],
