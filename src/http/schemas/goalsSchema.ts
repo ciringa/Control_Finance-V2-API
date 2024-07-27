@@ -34,7 +34,7 @@ export const RegisterGoalSchema = {
 }
 
 
-export const MarkGoalAsCompleted = {
+export const MarkGoalAsCompletedSchema = {
     schema:{
         tags:["Goals"],
         description:"Route used to mark a Goal as completed, Requires A jwt token",

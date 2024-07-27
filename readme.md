@@ -6,7 +6,10 @@
 
 Esta é a segunda versão do control finance, um projeto FullStack em desenvolvimento com parceria do meu amigo <a href="https://github.com/ismael-henrique-dev">Ismael Henrique</a>. O projeto em questão objetiva aplicar em prática e desenvolver conhecimentos de alguns dos principais conceitos em uso no mercado. Acesse o <a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">frontEnd da aplicação</a>
 
+## Features 💻
 
+- Sistema de controle monetario completo 
+-  
 
 ## Rodando o Projeto 🚀
 
