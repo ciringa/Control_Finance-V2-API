@@ -175,3 +175,20 @@ export const ReturnGoalListValidated = {
         }
     },preHandler:[VerifyJWT]
 }
+
+
+export const DelteGoalSchema = {
+    schema:{
+        tags:["Goal"],
+        description:"Route Used to delete the goal. needs a JWT token Authentication",
+        params:z.object({
+            GoalId:z.string().uuid()
+        }),
+        response:{
+            400:z.object({
+                Description:z.string(),
+            })
+        }
+    },
+    preHandler:[VerifyJWT]
+}

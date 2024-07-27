@@ -53,4 +53,8 @@ export class InMemoryGoalsRepositorie implements goalsRepositorie{
 
         return this.list[findIndex] || null
     }
+    async delete(GoalId: string){
+        const findSingle = this.list.findIndex(item => item.Id == GoalId)
+        this.list.splice(findSingle)
+    }
 }

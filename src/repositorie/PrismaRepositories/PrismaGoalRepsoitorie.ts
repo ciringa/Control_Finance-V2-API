@@ -61,4 +61,11 @@ export class PrismaGoalRepositorie implements goalsRepositorie{
 
         return updatedGoal
     }
+    async delete(GoalId: string){
+        await prisma.goals.delete({
+            where:{
+                Id:GoalId
+            }
+        })
+    }
 }

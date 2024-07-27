@@ -9,7 +9,9 @@ Esta é a segunda versão do control finance, um projeto FullStack em desenvolvi
 ## Features 💻
 
 - Sistema de controle monetario completo 
--  
+- Sistema completo de login e singup utilizando de tokens JWT
+- Documentação completa com Swagger
+- Testagem autonôma do Vite 
 
 ## Rodando o Projeto 🚀
 
