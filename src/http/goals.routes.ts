@@ -14,5 +14,5 @@ export async function  GoalsRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().put("/value/:GoalId/:Value",UpdateGoalValueSchema,UpdateGoalValueControler)
     app.withTypeProvider<ZodTypeProvider>().put("/update/:GoalId",UpdateGoalSchema,UpdateGoalControler)
     app.withTypeProvider<ZodTypeProvider>().put("/complete/:GoalId",MarkGoalAsCompletedSchema,MarkGoalAsCompletedControler)
-    app.withTypeProvider<ZodTypeProvider>().put("/delete/:GoalId",DelteGoalSchema,DeleteGoalControler)
+    app.withTypeProvider<ZodTypeProvider>().delete("/delete/:GoalId",DelteGoalSchema,DeleteGoalControler)
 }

@@ -179,7 +179,7 @@ export const ReturnGoalListValidated = {
 
 export const DelteGoalSchema = {
     schema:{
-        tags:["Goal"],
+        tags:["Goals"],
         description:"Route Used to delete the goal. needs a JWT token Authentication",
         params:z.object({
             GoalId:z.string().uuid()

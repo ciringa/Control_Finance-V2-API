@@ -9,6 +9,10 @@ export const CreateTransactionSchema = {
             Title: z.string(),
             Value: z.number(),
             Type:  z.enum(["DEP","SAL"]),
+            accountId:z.string().uuid(),
+            Categories:z.enum([
+                "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+            ]).optional()
         }),
         response:{
             201:z.object({
@@ -19,11 +23,13 @@ export const CreateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable()
                 })
             }),
-            404:z.object({
-                Description:z.string(),
-            })
+            404:z.string(),
+            401:z.string()
         }
     },
     preHandler:[VerifyJWT]
@@ -45,6 +51,9 @@ export const DeleteTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable()
                 }),
                 Account:z.object({
                     Value:z.number(),
@@ -67,6 +76,9 @@ export const UpdateTransactionSchema = {
             Title:  z.string().optional(),
             Value:z.number().optional(),
             Type: z.enum(["DEP","SAL"]).optional(),
+            Categories:z.enum([
+                "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+            ]).optional()
         }),
         paramm:z.object({
             TrId:z.string().uuid()
@@ -79,6 +91,9 @@ export const UpdateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ])
                 }),
                 New:z.object({
                     Id: z.string().uuid(),
@@ -86,6 +101,9 @@ export const UpdateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ])
                 }),
                 AccountValue:z.object({
                     Old:z.number(),
@@ -112,6 +130,9 @@ export const ReturnTransactionListSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable()
                 }))
             }),
             400:z.object({

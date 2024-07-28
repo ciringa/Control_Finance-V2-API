@@ -4,6 +4,7 @@ import { Account, Type } from "@prisma/client";
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
 import { AccountDoesNotExists } from "../../src/services/Error/MissedResourcesError";
+import { InvalidTagProvidedToTransactionType } from "../../src/services/Error/WrongProvidedParams";
 
 
 var accountRepositorie:InMemoryAccountRepositorie
@@ -68,4 +69,32 @@ it("should be able to update the value based in transaction type",async()=>{
     })
     expect(second.Account.Value).toBe(460)
     expect(second.Account.Id).toBe(createdAccount.Id)
+})
+
+it("should be able to categorize a transaction",async()=>{
+    const {Id} = createdAccount
+    const SUT = await createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.DEP,Value:240,Categories:"Comissao"
+        }
+    })
+
+    expect(SUT.Transaction.Categories).toBe("Comissao")
+})
+
+it("should not be able to categorize a transaction in a diferente type",async()=>{
+    const {Id} = createdAccount
+    //From SAL TYpe
+    await expect(createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.SAL,Value:240,Categories:"Comissao"
+        }
+    })).rejects.toBeInstanceOf(InvalidTagProvidedToTransactionType)
+    //From DEP type
+    await expect(createTransactionUseCase.execute({
+        data:{
+            accountId:Id,Title:"randomTransaction",Type:Type.DEP,Value:240,Categories:"Beleza"
+        }
+    })).rejects.toBeInstanceOf(InvalidTagProvidedToTransactionType)
+
 })

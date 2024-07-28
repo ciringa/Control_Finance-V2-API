@@ -20,6 +20,9 @@ export const SearcSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable()
                 })).max(3),
                 Accounts:z.array(z.object({
                     Id: z.string().uuid(),

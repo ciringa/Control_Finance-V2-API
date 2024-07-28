@@ -25,5 +25,8 @@ app.register(fastifyJwt,{
 app.addHook("preHandler",async(req,res)=>{
     console.log(req.routeOptions)
 })
+app.addHook("onError",async(request, reply, error)=>{
+    console.log(error)
+})
 
 app.register(Router)

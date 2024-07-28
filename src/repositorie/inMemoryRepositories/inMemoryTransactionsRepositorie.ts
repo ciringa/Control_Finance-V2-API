@@ -1,4 +1,4 @@
-import { Prisma, Transaction, Type } from "@prisma/client";
+import { Prisma, Transaction, TransactionCategories, Type } from "@prisma/client";
 import { TransactionsRepositorie } from "../transactions.repositorie";
 import { randomUUID } from "crypto";
 
@@ -10,7 +10,8 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
             Title:String(data.Title),
             Type:data.Type as Type,
             Value:Number(data.Value),
-            Id:String(randomUUID())
+            Id:String(randomUUID()),
+            Categories:data.Categories as TransactionCategories
         }
         this.list.push(_data)
         return _data
@@ -43,7 +44,8 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
             Title: data.Title || Original.Title,
             Type: data.Type || Original.Type,
             Value: data.Value || Original.Value,
-            Id:Original.Id
+            Id:Original.Id,
+            Categories:data.Categories as TransactionCategories || Original.Categories
         }
         return this.list[findIndex]
     }
