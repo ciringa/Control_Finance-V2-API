@@ -3,6 +3,7 @@ import { AccountRepositorie } from "../repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
 import { userRepositorie } from "../repositorie/user.repositorie";
 import { UserDoesNotExists } from "./Error/MissedResourcesError";
+import { ReturnPercentagesList, TransactionCategorieList } from "../utils/PercentageTransactionCategorieCalc";
 
 
 interface AccountStatistcsRequest{
@@ -18,7 +19,8 @@ interface AccountStatistcsReply{
     },
     Relative:{
         DEP:number,
-        SAL:number
+        SAL:number,
+        PercentageOfReturnByCategorie:TransactionCategorieList
     }
 }
 export class AccountStatistcsUseCase {
@@ -61,7 +63,8 @@ export class AccountStatistcsUseCase {
             },
             Relative:{
                 DEP: TransactionList.length*(totalDep/100),
-                SAL: TransactionList.length*(totalSal/100)
+                SAL: TransactionList.length*(totalSal/100),
+                PercentageOfReturnByCategorie:ReturnPercentagesList(TransactionList)
             }
         }
     }

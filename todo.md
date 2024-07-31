@@ -6,9 +6,12 @@
 
     - fix transaction /get route return
 
+    - add percentage statistic info
 
 ## Front End request
 
-    Tags para transações 
+    Tags para transações (X)
     create a Guest Route (X)
+    Analise de grafico
+    incrementar rotas de estatisticas com informaçoes de categorias para transações 
     Oauth2 validaçao de login e senha usando o google 

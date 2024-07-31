@@ -52,3 +52,45 @@ export const ReturnAccountDataSchema = {
     preHandler:[VerifyJWT]
 }
 
+
+export const ReturnAccountStatistic = {
+    schema:{
+        tags:["User","Statics"],
+        description:"Return User statistic, includes raw number and percentage number. Recieves an JWT Token",
+        response:{
+            201:z.object({
+                Data:z.object({
+                    TotalAccount:z.number(),
+                    TotalAccountTransactions:z.number(),
+                    DEP:z.number(),
+                    SAL:z.number(),
+                }),
+                Relative:z.object({
+                    DEP:z.number(),
+                    SAL:z.number(),
+                    PercentageOfReturnByCategorie:z.object({
+                        Alimentacao: z.number(),
+                        Educacao:z.number(),
+                        Laser:z.number(),
+                        Saude:z.number(),
+                        Eletronicos: z.number(),
+                        Compras:z.number(),
+                        Beleza: z.number(),
+                        Veiculo:z.number(),
+                        Roupas: z.number(),
+                        Investimento:z.number(),
+                        Comissao:z.number(),
+                        Salario:z.number(),
+                        Outro: z.number(),
+                    })
+                })
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            
+        }
+    },
+    preHandler:[VerifyJWT]
+}
+
