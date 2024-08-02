@@ -82,15 +82,21 @@ export const ReturnAccountStatistic = {
                         Comissao:z.number(),
                         Salario:z.number(),
                         Outro: z.number(),
+                    }),
+                    AccountState:z.object({
+        
                     })
+                 })
+                }),
+                400:z.object({
+                    Description:z.string(),
                 })
-            }),
-            400:z.object({
-                Description:z.string(),
-            })
+            }
+
             
-        }
-    },
-    preHandler:[VerifyJWT]
-}
+        },
+        preHandler:[VerifyJWT]
+    }
+
+
 

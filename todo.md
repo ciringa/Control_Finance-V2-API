@@ -6,12 +6,14 @@
 
     - fix transaction /get route return
 
-    - add percentage statistic info
+    - in search route make goals return 
+
+    - write a test file about statics route
 
 ## Front End request
 
     Tags para transações (X)
     create a Guest Route (X)
     Analise de grafico
-    incrementar rotas de estatisticas com informaçoes de categorias para transações 
+    incrementar rotas de estatisticas com informaçoes de categorias para transações (x)
     Oauth2 validaçao de login e senha usando o google 

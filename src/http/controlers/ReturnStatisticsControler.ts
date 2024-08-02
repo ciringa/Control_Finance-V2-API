@@ -11,6 +11,7 @@ export async function ReturnStatisticControler(req:FastifyRequest, res:FastifyRe
     const Main = new AccountStatistcsUseCase(new PrismaUsersRepositorie, new PrismaAccountRepositorie,new PrismaTransactionsRepositorie)
     try{
         const response = await Main.execute({userId})
+
         res.status(200).send(response)
     }catch(err){
         if( err instanceof UserDoesNotExists){

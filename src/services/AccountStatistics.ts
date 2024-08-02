@@ -21,21 +21,24 @@ interface AccountStatistcsReply{
         DEP:number,
         SAL:number,
         PercentageOfReturnByCategorie:TransactionCategorieList
+    },
+    AccountState:{
+        
     }
 }
 export class AccountStatistcsUseCase {
     constructor(private usersRepositorie:userRepositorie, private accountRepositorie:AccountRepositorie, private transactionRepositorie:TransactionsRepositorie){}
     async execute({userId}:AccountStatistcsRequest):Promise<AccountStatistcsReply | {}>{
-        //check if there's any user with the specified email adress
+        //check if the user exists
         const doesTheUserExists = await this.usersRepositorie.findById(userId)
         if(!doesTheUserExists){
             throw new UserDoesNotExists
         }
+        //checks if the user has any account wich can be found
         const doesTheUserHasAnyAccount = await this.accountRepositorie.findByUser(userId)
-        if(doesTheUserHasAnyAccount?doesTheUserHasAnyAccount[0]:null){
-            return {
-
-            }
+        if(!doesTheUserHasAnyAccount){
+            //will never get here i hope
+            return {}
         }
         var TransactionList:Transaction[] = [], totalDep:number=0, totalSal:number=0
         const returnAccountUserList = doesTheUserHasAnyAccount
@@ -44,8 +47,7 @@ export class AccountStatistcsUseCase {
             returnAllTransactions?.forEach(element => {
                 TransactionList.push(element)
             });
-        })  
-
+        }) 
         TransactionList.forEach(async Element=>{
             if(Element.Type=="DEP"){
                 totalDep+=1
