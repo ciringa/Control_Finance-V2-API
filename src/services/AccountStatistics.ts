@@ -1,9 +1,10 @@
-import { Transaction } from "@prisma/client";
+import { Account, Transaction } from "@prisma/client";
 import { AccountRepositorie } from "../repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
 import { userRepositorie } from "../repositorie/user.repositorie";
 import { UserDoesNotExists } from "./Error/MissedResourcesError";
 import { ReturnPercentagesList, TransactionCategorieList } from "../utils/PercentageTransactionCategorieCalc";
+import { returnUserAccountInfoUseCase } from "./returnUserAccountInfo";
 
 
 interface AccountStatistcsRequest{
@@ -23,7 +24,19 @@ interface AccountStatistcsReply{
         PercentageOfReturnByCategorie:TransactionCategorieList
     },
     AccountState:{
-        
+        Alimentacao: number;
+        Educacao: number;
+        Laser: number;
+        Saude: number;
+        Eletronicos: number;
+        Compras: number;
+        Beleza: number;
+        Veiculo: number;
+        Roupas: number;
+        Investimento: number;
+        Comissao: number;
+        Salario: number;
+        Outro: number;
     }
 }
 export class AccountStatistcsUseCase {
@@ -40,14 +53,18 @@ export class AccountStatistcsUseCase {
             //will never get here i hope
             return {}
         }
-        var TransactionList:Transaction[] = [], totalDep:number=0, totalSal:number=0
-        const returnAccountUserList = doesTheUserHasAnyAccount
-        returnAccountUserList?.forEach(async Element=>{
-            const returnAllTransactions = await this.transactionRepositorie.findByAccount(Element.Id)
-            returnAllTransactions?.forEach(element => {
-                TransactionList.push(element)
-            });
-        }) 
+        var TransactionList:Transaction[] = []
+        var totalDep:number=0, totalSal:number=0
+        const func = async (Element:Account)=>{
+            const thisAccountReturnList = await this.transactionRepositorie.findByAccount(Element.Id)
+            if(thisAccountReturnList){
+                TransactionList = TransactionList.concat(thisAccountReturnList)
+            }
+        }
+        for(let i =0;i<doesTheUserHasAnyAccount.length;i++){
+            await func(doesTheUserHasAnyAccount[i])
+        }
+
         TransactionList.forEach(async Element=>{
             if(Element.Type=="DEP"){
                 totalDep+=1
@@ -55,7 +72,8 @@ export class AccountStatistcsUseCase {
                 totalSal += 1
             }
         })
-        
+
+
         return {
             Data:{
                 TotalAccount:doesTheUserHasAnyAccount?.length,
@@ -64,9 +82,9 @@ export class AccountStatistcsUseCase {
                 SAL:totalSal
             },
             Relative:{
-                DEP: TransactionList.length*(totalDep/100),
-                SAL: TransactionList.length*(totalSal/100),
-                PercentageOfReturnByCategorie:ReturnPercentagesList(TransactionList)
+                DEP: (totalDep / TransactionList.length) * 100,
+                SAL: (totalSal / TransactionList.length) * 100,
+                PercentageOfReturnByCategorie:await ReturnPercentagesList(TransactionList)
             }
         }
     }
