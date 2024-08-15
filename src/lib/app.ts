@@ -22,9 +22,11 @@ app.register(fastifySwaggerUi, {
 app.register(fastifyJwt,{
     secret: JWT_SECRET
 })
+/*
 app.addHook("preHandler",async(req,res)=>{
     console.log(req.routeOptions)
 })
+*/
 app.addHook("onError",async(request, reply, error)=>{
     console.log(error)
 })

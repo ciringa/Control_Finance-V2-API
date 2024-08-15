@@ -9,4 +9,4 @@ const dotEnvSchema = z.object({
 })
 
 //export these information if they are properly valid 
-export const {HOST,PORT,SALT,JWT_SECRET} = dotEnvSchema.parse(process.env)
+export const {HOST,PORT,SALT,JWT_SECRET} = dotEnvSchema.parse(process.env) //throw error in parse if wrong

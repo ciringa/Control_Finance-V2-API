@@ -50,7 +50,7 @@ export class AccountStatistcsUseCase {
         //checks if the user has any account wich can be found
         const doesTheUserHasAnyAccount = await this.accountRepositorie.findByUser(userId)
         if(!doesTheUserHasAnyAccount){
-            //will never get here i hope
+            //Eu espero que nunca caia aqui !!!
             return {}
         }
         var TransactionList:Transaction[] = []
