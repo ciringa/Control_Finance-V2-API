@@ -21,13 +21,16 @@ export class ReturnTransactionByUserUseCase{
             } 
             var TransactionList:Transaction[] = []
             const returnAccountUserList = await this.accountRepositorie.findByUser(UserId)
-            returnAccountUserList?.forEach(async Element=>{
-                const returnAllTransactions = await this.transactionRepositorie.findByAccount(Element.Id)
-                returnAllTransactions?.forEach(element => {
-                    TransactionList.push(element)
-                });
-            })
-            
+            if(returnAccountUserList){
+                for(let i = 0;i<returnAccountUserList.length;i++){
+                    var Element = returnAccountUserList[i]
+                    const returnAllTransactions = await this.transactionRepositorie.findByAccount(Element.Id)
+                    returnAllTransactions?.forEach(element => {
+                        TransactionList.push(element)
+                    });
+                }
+            }
+            //console.log(TransactionList)
         return{
             TransactionList,
         }

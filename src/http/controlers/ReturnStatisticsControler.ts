@@ -4,11 +4,13 @@ import { PrismaUsersRepositorie } from "../../repositorie/PrismaRepositories/Pri
 import { PrismaAccountRepositorie } from "../../repositorie/PrismaRepositories/PrismaAccountRepositorie";
 import { PrismaTransactionsRepositorie } from "../../repositorie/PrismaRepositories/PrismaTransactions";
 import { UserDoesNotExists } from "../../services/Error/MissedResourcesError";
+import { PrismaGoalRepositorie } from "../../repositorie/PrismaRepositories/PrismaGoalRepsoitorie";
 
 export async function ReturnStatisticControler(req:FastifyRequest, res:FastifyReply) {
     const userId = req.user.sub
 
-    const Main = new AccountStatistcsUseCase(new PrismaUsersRepositorie, new PrismaAccountRepositorie,new PrismaTransactionsRepositorie)
+    const Main = new AccountStatistcsUseCase(new PrismaUsersRepositorie, new PrismaAccountRepositorie,
+                                             new PrismaTransactionsRepositorie, new PrismaGoalRepositorie)
     try{
         const response = await Main.execute({userId})
 

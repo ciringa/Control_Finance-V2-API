@@ -1,9 +1,9 @@
 import { FastifyInstance } from "fastify";
-import { CreateAccountControler } from "./controlers/CreateAccountControler";
+import { CreateAccountControler } from "../controlers/CreateAccountControler";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { CreateAccountSchema, DelteAccountSchema, ReturnAccountDataSchema } from "./schemas/accountSchemas";
-import { ReturnAccountStatiscticControler } from "./controlers/ReturnAccountsStatisticControler";
-import { DeleteAccountControler } from "./controlers/DeleteAccount";
+import { CreateAccountSchema, DelteAccountSchema, ReturnAccountDataSchema } from "../schemas/accountSchemas";
+import { ReturnAccountStatiscticControler } from "../controlers/ReturnAccountsStatisticControler";
+import { DeleteAccountControler } from "../controlers/DeleteAccount";
 
 export async function  AccountRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post("/register",CreateAccountSchema,CreateAccountControler)

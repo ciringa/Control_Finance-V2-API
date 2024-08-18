@@ -11,3 +11,9 @@ export class InvalidPassword extends Error{
         super("Invalid Password, try to use ")
     }
 }
+
+export class GoalCantBeValidated extends Error{
+    constructor(){
+        super("the specified goal can't be validated")
+    }
+}

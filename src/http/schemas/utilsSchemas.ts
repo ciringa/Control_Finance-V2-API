@@ -30,7 +30,16 @@ export const SearcSchema = {
                     Value: z.number(),
                     userId: z.string().uuid(),
                 })).max(3),
-                Goals:z.null()
+                Goals:z.array(z.object({
+                    Id:z.string().uuid(),
+                    Title:z.string(),
+                    Value: z.number(),
+                    TargetedValue:z.number(),
+                    CreatedAt:z.date(),
+                    CompletedAt: z.date().nullable(),
+                    EndTime:z.date(),
+                    userId: z.string().uuid(),
+                }))
             }),
             404:z.object({
                 Description:z.string(),

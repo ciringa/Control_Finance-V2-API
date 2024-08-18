@@ -12,7 +12,8 @@ export async function MarkGoalAsCompletedControler(req:FastifyRequest,res:Fastif
     const Main = new MarkGoalAsCompletedUseCase(new PrismaGoalRepositorie)
     try{
         const resp = await Main.execute({GoalId})
-        res.status(200).send(res)
+        console.log(resp)
+        res.status(200).send(resp)
     }catch(err){
         if(err instanceof GoalDoesNotExists){
             res.status(400).send({

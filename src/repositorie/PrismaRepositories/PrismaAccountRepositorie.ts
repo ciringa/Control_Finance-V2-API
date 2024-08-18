@@ -54,10 +54,12 @@ export class PrismaAccountRepositorie implements AccountRepositorie{
             where:{
                 userId,
                 Name:{
-                    contains:Query
+                    contains:Query,
+                     mode: "insensitive"
                 }
             },
-            take:Page*3,skip:(Page-1)*3
+            skip: (Page-1)*3,
+            take:Page*3
         })
         return returnQuery 
     }

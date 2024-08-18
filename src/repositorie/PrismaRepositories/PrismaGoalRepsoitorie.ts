@@ -25,7 +25,8 @@ export class PrismaGoalRepositorie implements goalsRepositorie{
             where:{
                 userId:UserId,
                 Title:{
-                    contains:Query
+                    contains:Query,
+                    mode: "insensitive"
                 }
             },
             skip: (Page-1)*3,

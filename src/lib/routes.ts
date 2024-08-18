@@ -1,10 +1,10 @@
 import { FastifyInstance } from "fastify";
-import { AutheticateRoutes } from "../http/auth.routes";
-import { TransactionRoutes } from "../http/transaction.routes";
-import { userRoutes } from "../http/user.routes";
-import { AccountRoutes } from "../http/account.routes";
-import { utilRoutes } from "../http/utils.routes";
-import { GoalsRoutes } from "../http/goals.routes";
+import { AutheticateRoutes } from "../http/routes/auth.routes";
+import { TransactionRoutes } from "../http/routes/transaction.routes";
+import { userRoutes } from "../http/routes/user.routes";
+import { AccountRoutes } from "../http/routes/account.routes";
+import { utilRoutes } from "../http/routes/utils.routes";
+import { GoalsRoutes } from "../http/routes/goals.routes";
 
 
 export async function Router(app:FastifyInstance) {

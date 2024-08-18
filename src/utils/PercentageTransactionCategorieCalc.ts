@@ -30,7 +30,6 @@ export async function ReturnPercentagesList(data: Transaction[]) {
     data.forEach(Element => {
         if (Element.Categories != null) {
             total += 1;
-
             switch (Element.Categories) {
                 case "Alimentacao":
                     Values.Alimentacao += 1;

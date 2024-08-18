@@ -1,7 +1,7 @@
 import { Prisma, Goals } from "@prisma/client";
 import { goalsRepositorie } from "../goals.repositorie";
 import { randomUUID } from "crypto";
-import { number } from "zod";
+import { date, number } from "zod";
 
 
 export class InMemoryGoalsRepositorie implements goalsRepositorie{
@@ -12,7 +12,7 @@ export class InMemoryGoalsRepositorie implements goalsRepositorie{
             Title:String(data.Title),
             userId:String(data.userId),
             CreatedAt:new Date(),
-            CompletedAt:null,
+            CompletedAt:data.CompletedAt!=null?new Date(String(data.CompletedAt)):null,
             Id:randomUUID(),
             Value:Number(data.Value),
             TargetedValue:Number(data.TargetedValue) || 0

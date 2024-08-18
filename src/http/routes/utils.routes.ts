@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { SearchControler } from "./controlers/SearchControler";
-import { SearcSchema } from "./schemas/utilsSchemas";
+import { SearchControler } from "../controlers/SearchControler";
+import { SearcSchema } from "../schemas/utilsSchemas";
 
 
 export async function  utilRoutes(app:FastifyInstance) {

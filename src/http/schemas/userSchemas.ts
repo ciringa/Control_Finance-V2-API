@@ -84,19 +84,10 @@ export const ReturnAccountStatistic = {
                         Outro: z.number(),
                     }),
                     AccountState:z.object({
-                        Alimentacao:  z.number(),
-                        Educacao: z.number(),
-                        Laser:  z.number(),
-                        Saude: z.number(),
-                        Eletronicos: z.number(),
-                        Compras:  z.number(),
-                        Beleza:  z.number(),
-                        Veiculo: z.number(),
-                        Roupas:  z.number(),
-                        Investimento: z.number(),
-                        Comissao: z.number(),
-                        Salario: z.number(),
-                        Outro: z.number(),
+                        AndamentoDasMetas:z.enum(["Danger","Ok","Good"]),
+                        Economista:z.enum(["Danger","Ok","Good"]),
+                        GastosEssenciais:z.enum(["Danger","Ok","Good"]),
+                        Investimentos:z.enum(["Danger","Ok","Good"])
                     })
                  })
                 }),
