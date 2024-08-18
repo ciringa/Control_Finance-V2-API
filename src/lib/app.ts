@@ -4,11 +4,8 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifySwagger from "@fastify/swagger";
 import { swggerConfig } from "./swagger";
 import { fastifyJwt} from "@fastify/jwt";
-import { JWT_SECRET } from "./env";
-import { Router } from "./routes";
-import { load } from "js-yaml";
-import { readFileSync } from "fs";
-
+import { JWT_SECRET, NODE_ENV } from "./env";
+import { Router } from "../http/routes";
 
 export const app = fastify()
 
@@ -22,13 +19,17 @@ app.register(fastifySwaggerUi, {
 app.register(fastifyJwt,{
     secret: JWT_SECRET
 })
-/*
-app.addHook("preHandler",async(req,res)=>{
-    console.log(req.routeOptions)
-})
-*/
-app.addHook("onError",async(request, reply, error)=>{
-    console.log(error)
-})
+NODE_ENV =="DEV"?(
+    app.addHook("preHandler",async(req,res)=>{
+        console.log(req.routeOptions)
+    }),
+    app.addHook("onError",async(request, reply, error)=>{
+        console.log(error)
+    })
+):(
+    console.log("aplication is running....")
+)
+
+
 
 app.register(Router)

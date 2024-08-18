@@ -92,3 +92,26 @@ export const DelteAccountSchema = {
     },
     preHandler:[VerifyJWT]
 }
+
+export const RenameAccountSchema = {
+    schema:{
+        tags:["Account"],
+        description:"Route Used to rename an specified account by recieving its account id as parameter. needs a JWT token Authentication",
+        params:z.object({
+            AcId:z.string().uuid()
+        }),
+        body:z.object({
+            Name: z.string(),
+        }),
+        response:{
+            201:z.object({
+                Description:z.string(),
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            
+        }
+    },
+    preHandler:[VerifyJWT]
+}

@@ -2,9 +2,9 @@ import { prisma } from "../lib/prisma";
 import { TransactionCategorieList } from "./PercentageTransactionCategorieCalc";
 
 export enum Status {
-    Danger, // red flag
-    Ok, // yellow flag
-    Good // green flag
+    Danger = "Danger", // red flag
+    Ok = "Ok", // yellow flag
+    Good = "Good" // green flag
 }
 export interface opnionList {
     AndamentoDasMetas: Status, // checks if the metas are greater than a preseted amount
