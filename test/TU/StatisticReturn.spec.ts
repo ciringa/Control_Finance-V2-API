@@ -139,7 +139,10 @@ describe("should be able to evaluate the user", async () => {
           max: 100,
           min: 50,
         }),
-        Categories:i>9? getRandomItem(["Educacao","Saude","Alimentacao"]):"Beleza"
+        Categories:
+          i > 9
+            ? getRandomItem(["Educacao", "Saude", "Alimentacao"])
+            : "Beleza",
       });
     }
     const userId = user.Id;
@@ -171,7 +174,8 @@ describe("should be able to evaluate the user", async () => {
           max: 100,
           min: 50,
         }),
-        Categories:i % 2 ?"Salario":getRandomItem(["Beleza","Eletronicos"])
+        Categories:
+          i % 2 ? "Salario" : getRandomItem(["Beleza", "Eletronicos"]),
       });
     }
     const userId = user.Id;

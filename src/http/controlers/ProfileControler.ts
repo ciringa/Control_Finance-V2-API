@@ -9,13 +9,13 @@ export async function ReturnProfile(req:FastifyRequest,res:FastifyReply) {
     const Main = new ProfileUseCase(new PrismaUsersRepositorie)
 
     try{
-
         const Profile = await Main.execute({Id})
         //console.log(Profile)
         res.status(200).send({
             Description:"successfully returned info",
             Profile:Profile.Profile
         })
+        res.redirect("http.cat/200")
     }catch(err){
         if(err instanceof UserDoesNotExists){
             res.status(404).send({

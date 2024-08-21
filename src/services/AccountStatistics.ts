@@ -12,7 +12,6 @@ import { goalsRepositorie } from "../repositorie/goals.repositorie";
 interface AccountStatistcsRequest{
     userId:string
 }
-
 interface AccountStatistcsReply{
     Data:{
         TotalAccount:number,
