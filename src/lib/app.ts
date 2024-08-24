@@ -19,6 +19,16 @@ app.register(fastifySwaggerUi, {
 app.register(fastifyJwt,{
     secret: JWT_SECRET
 })
+
+//register CORS
+app.register(require('fastify-cors'), { 
+    origin: true, // Permite todas as origens. Para restringir, você pode especificar uma URL, como 'http://localhost:3000'
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+    credentials: true // Permite o envio de cookies e headers de autorização entre o frontend e o backend
+});
+
+
 NODE_ENV =="DEV"?(
     app.addHook("preHandler",async(req,res)=>{
         console.log(req.routeOptions)

@@ -10,7 +10,7 @@ import { DeleteGoalControler } from "../controlers/DeleteGoalControler";
 
 export async function  GoalsRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post("/create",RegisterGoalSchema,RegisterGoal)
-    app.withTypeProvider<ZodTypeProvider>().get("/",ReturnGoalListValidated,ReturnGoalListControler)
+    app.withTypeProvider<ZodTypeProvider>().get("",ReturnGoalListValidated,ReturnGoalListControler)
     app.withTypeProvider<ZodTypeProvider>().put("/value/:GoalId/:Value",UpdateGoalValueSchema,UpdateGoalValueControler)
     app.withTypeProvider<ZodTypeProvider>().put("/update/:GoalId",UpdateGoalSchema,UpdateGoalControler)
     app.withTypeProvider<ZodTypeProvider>().put("/complete/:GoalId",MarkGoalAsCompletedSchema,MarkGoalAsCompletedControler)
