@@ -10,7 +10,7 @@
 </body>
 
 <script>
-    fetch("https://control-finance-v2-api.onrender.com/")
+    fetch("https://control-finance-v2-api.onrender.com/users/register")
     .then(res=>res.json())
     .then(res=>document.getElementById("API").textContent = res.text)
     .catch(error=>document.getElementById("API").textContent = error.message)
