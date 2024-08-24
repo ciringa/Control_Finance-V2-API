@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS test</title>
+</head>
+<body>
+    <output id="API"></output>
+</body>
+
+<script>
+    fetch("https://control-finance-v2-api.onrender.com/")
+    .then(res=>res.json())
+    .then(res=>document.getElementById("API").textContent = res.text)
+    .catch(error=>document.getElementById("API").textContent = error.message)
+</script>
+</html>

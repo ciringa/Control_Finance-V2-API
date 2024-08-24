@@ -6,6 +6,7 @@ import { swggerConfig } from "./swagger";
 import { fastifyJwt} from "@fastify/jwt";
 import { JWT_SECRET, NODE_ENV } from "./env";
 import { Router } from "../http/routes";
+import cors from "@fastify/cors"
 
 export const app = fastify()
 
@@ -21,7 +22,7 @@ app.register(fastifyJwt,{
 })
 
 //register CORS
-app.register(require('fastify-cors'), { 
+app.register(cors, { 
     origin: true, // Permite todas as origens. Para restringir, você pode especificar uma URL, como 'http://localhost:3000'
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
