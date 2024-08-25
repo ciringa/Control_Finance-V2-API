@@ -23,5 +23,10 @@ export class InMemoryUserRepositorie implements userRepositorie{
         const returnObject = this.list.find(item => item.Id == Id)
         return returnObject || null
     }
-
+    async delete(Id: string) {
+        const findSingle = this.list.findIndex(item => item.Id == Id)
+        this.list.splice(findSingle)
+        return this.list[findSingle]
+    }
+    
 }

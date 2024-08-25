@@ -102,5 +102,52 @@ export const ReturnAccountStatistic = {
         preHandler:[VerifyJWT]
     }
 
+export const UserDeleteSchema = {
+    schema:{
+        tags:["User"],
+        description:"delete user. Recieves an JWT Token",
+        response:{
+            201:z.object({
+                Description:z.string(),
+                result:z.object({
+                    TotalTransactionsDeleted: z.number(),
+                    TotalAccountsDeleted:z.number(),
+                    deletedUser:z.object({
+                        Id: z.string().uuid(),
+                        Email:z.string().email(),
+                        Senha:z.string(),
+                        UsernName: z.string(),
+                    })
+                }),
 
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            }
 
+            
+        },
+        preHandler:[VerifyJWT]
+}
+export const UserResetSchema = {
+    schema:{
+        tags:["User"],
+        description:"Resets user account deleting all its accounts and transactions. Recieves an JWT Token",
+        response:{
+            201:z.object({
+                Description:z.string(),
+                result:z.object({
+                    TotalTransactionsDeleted: z.number(),
+                    TotalAccountsDeleted:z.number(),
+                })
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            }
+
+            
+        },
+        preHandler:[VerifyJWT]
+}
