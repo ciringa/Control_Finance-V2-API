@@ -1,5 +1,6 @@
 
 import { jsonSchemaTransform } from "fastify-type-provider-zod";
+import { API_VERSION } from "./env";
 
 
 
@@ -9,7 +10,7 @@ export const swggerConfig = {
     info: {
         title: 'Control Finance APi',
         description:`<h1>Control Finance V2 API Documentation</h1><br>Welcome this is the control finance api documentation Control finance 2 is a fullscale monetary management aplication<ul><li><a href="https://github.com/ciringa">Creator Profile</a></li><li><a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">FrontEnd Example</a></li></ul>`,
-        version: '1.0.4',
+        version: API_VERSION,
     },
     tags:[
         {name:"User",description:"Routes used to User management including registration and account delete functions"},

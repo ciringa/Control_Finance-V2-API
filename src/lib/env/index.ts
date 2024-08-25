@@ -6,8 +6,9 @@ const dotEnvSchema = z.object({
     PORT:z.string(),
     SALT:z.string(),
     JWT_SECRET:z.string(),
-    NODE_ENV: z.enum(["DEV","DEPLOY","TESTS"])
+    NODE_ENV: z.enum(["DEV","DEPLOY","TESTS"]),
+    API_VERSION:z.string()
 })
 
 //export these information if they are properly valid 
-export const {HOST,PORT,SALT,JWT_SECRET,NODE_ENV} = dotEnvSchema.parse(process.env) //throw error in parse if wrong
+export const {HOST,PORT,SALT,JWT_SECRET,NODE_ENV,API_VERSION} = dotEnvSchema.parse(process.env) //throw error in parse if wrong

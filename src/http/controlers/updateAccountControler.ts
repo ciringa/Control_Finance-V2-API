@@ -10,7 +10,10 @@ export async function updateAccountNameControler(req:FastifyRequest,res:FastifyR
         AcId:z.string().uuid()
     }).parse(req.params)
     const data = z.object({
-        Name: z.string(),
+        Name:z.string(),
+        Value:z.number().optional(),
+        Description:z.string().optional(),
+        Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]).optional(),
     }).parse(req.body)
     const main = new updateAccount(new PrismaAccountRepositorie)
     try{

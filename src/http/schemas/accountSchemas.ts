@@ -9,7 +9,8 @@ export const CreateAccountSchema = {
         body:z.object({
             Name:z.string(),
             Value:z.number().optional(),
-            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
+            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
+            Description:z.string().optional()
         }),
         response:{
             201:z.object({
@@ -20,6 +21,7 @@ export const CreateAccountSchema = {
                         Name: z.string(),
                         Value: z.number(),
                         userId: z.string().uuid(),
+                        Description:z.string().optional(),
                         Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
                     })
                 })
@@ -45,7 +47,8 @@ export const ReturnAccountDataSchema = {
                     Name: z.string(),
                     Value: z.number(),
                     userId: z.string().uuid(),
-                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
+                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
+                    Description:z.string().optional(),
                 }),
                 statistic:z.object({
                         Deposit:z.number(),
@@ -103,10 +106,12 @@ export const UpdateAccountSchema = {
         description:"Route Used to update an specified account by recieving its account id as parameter. needs a JWT token Authentication",
         params:z.object({
             AcId:z.string().uuid(),
-            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
         }),
         body:z.object({
-            Name: z.string(),
+            Name:z.string(),
+            Value:z.number().optional(),
+            Description:z.string().optional(),
+            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]).optional(),
         }),
         response:{
             201:z.object({

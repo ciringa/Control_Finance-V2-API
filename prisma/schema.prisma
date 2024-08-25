@@ -49,6 +49,7 @@ model Account{
   Id String @id @default(uuid())
   Name String
   Value Float @default(0)
+  Description String? 
   UserNew User @relation(fields: [userId],references: [Id])
   userId String
   Type AccountType @default(Poupanca)

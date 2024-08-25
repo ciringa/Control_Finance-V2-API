@@ -10,6 +10,8 @@ export async function CreateAccountControler(req:FastifyRequest, res:FastifyRepl
     const bodySchema = z.object({
         Name:z.string(),
         Value:z.number().optional(),
+        Description:z.string().optional(),
+        Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
     })
     const {Name,Value} = bodySchema.parse(req.body)
     const userId = req.user.sub

@@ -22,13 +22,16 @@ export const SearcSchema = {
                     accountId:z.string().uuid(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
+                    ]).nullable(),
+                    CreatedAt:z.date()
                 })).max(3),
                 Accounts:z.array(z.object({
                     Id: z.string().uuid(),
                     Name: z.string(),
                     Value: z.number(),
                     userId: z.string().uuid(),
+                    Description:z.string().optional(),
+                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
                 })).max(3),
                 Goals:z.array(z.object({
                     Id:z.string().uuid(),

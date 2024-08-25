@@ -10,7 +10,7 @@ openapi:
         <li><a href="https://github.com/ciringa">Creator Profile</a></li>
         <li><a href="https://github.com/ismael-henrique-dev/Control-Finance-v2">FrontEnd Example</a></li>
       </ul>
-    version: '1.0.4'
+    version: '1.0.5'
   tags:
     - name: "User"
       description: "Routes used to User management including registration and account delete functions"
