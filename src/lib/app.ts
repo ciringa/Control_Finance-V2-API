@@ -8,15 +8,19 @@ import { JWT_SECRET, NODE_ENV } from "./env";
 import { Router } from "../http/routes";
 import cors from "@fastify/cors"
 
+// Setup a fastify instance
 export const app = fastify()
 
-app.setValidatorCompiler(validatorCompiler);
+//validation methods used for zod and swagger
+app.setValidatorCompiler(validatorCompiler); 
 app.setSerializerCompiler(serializerCompiler);
 
+//Fastify Swagger linkage
 app.register(fastifySwagger, swggerConfig);
 app.register(fastifySwaggerUi, {
     routePrefix: '/docs',
 });
+//register fastifyJWT
 app.register(fastifyJwt,{
     secret: JWT_SECRET
 })
@@ -29,7 +33,7 @@ app.register(cors, {
     credentials: true // Permite o envio de cookies e headers de autorização entre o frontend e o backend
 });
 
-
+// Changes development mode based in NODE_ENV Development mode
 NODE_ENV =="DEV"?(
     app.addHook("preHandler",async(req,res)=>{
         console.log(req.routeOptions)
@@ -42,5 +46,5 @@ NODE_ENV =="DEV"?(
 )
 
 
-
+//Register APlication Routes where all the API's routes are registered
 app.register(Router)

@@ -112,14 +112,14 @@ export const UserDeleteSchema = {
                 result:z.object({
                     TotalTransactionsDeleted: z.number(),
                     TotalAccountsDeleted:z.number(),
-                    deletedUser:z.object({
-                        Id: z.string().uuid(),
-                        Email:z.string().email(),
-                        Senha:z.string(),
-                        UsernName: z.string(),
-                    })
+                    TotalGoalsDeleted:z.number()
                 }),
-
+                deletedUser:z.object({
+                    Id: z.string().uuid(),
+                    Email:z.string().email(),
+                    Senha:z.string(),
+                    UsernName: z.string(),
+                })
             }),
             400:z.object({
                 Description:z.string(),
@@ -140,6 +140,7 @@ export const UserResetSchema = {
                 result:z.object({
                     TotalTransactionsDeleted: z.number(),
                     TotalAccountsDeleted:z.number(),
+                    TotalGoalsDeleted:z.number()
                 })
             }),
             400:z.object({

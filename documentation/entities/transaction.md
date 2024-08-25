@@ -67,3 +67,7 @@ Relacionamento com a <a href="./account.md">contas</a> à qual a transação per
 Chave estrangeira para a tabela de <a href="./account.md">contas</a>. Todas as transações pertecem a alguma conta
 
 ``accountId (String)``
+
+Data da criação da transação 
+
+``CreatedAt (dateTime)``

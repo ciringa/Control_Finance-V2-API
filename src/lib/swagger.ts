@@ -21,6 +21,10 @@ export const swggerConfig = {
         {name:"Statics",description:"Routes used to return standard informations"},
     ],
     servers: [],
+    externalDocs: {
+        description: 'External docs',
+        url: './documentation/setup'
+    },
     },
     swagger:{
         swagger:"2.0.0"
