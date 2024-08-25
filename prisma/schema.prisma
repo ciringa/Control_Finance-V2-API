@@ -12,6 +12,12 @@ enum Type {
   DEP
   SAL
 }
+enum AccountType { 
+  Carteira
+  ContaBancaria
+  Poupanca
+  CorretoraDeInvestimentos
+}
 enum TransactionCategories {
   //para saques 
   Alimentacao 
@@ -45,6 +51,7 @@ model Account{
   Value Float @default(0)
   UserNew User @relation(fields: [userId],references: [Id])
   userId String
+  Type AccountType @default(Poupanca)
   TransactionsList Transaction[]
 }
 
@@ -67,7 +74,7 @@ model Transaction {
   Title String 
   Value Float
   Type Type 
-
+  CreatedAt DateTime @default(now())
   Categories TransactionCategories?
 
   AccountNew Account @relation(fields: [accountId], references: [Id])

@@ -23,6 +23,7 @@ export const CreateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ]).nullable()
@@ -51,6 +52,7 @@ export const DeleteTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ]).nullable()
@@ -91,6 +93,7 @@ export const UpdateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ])
@@ -101,6 +104,7 @@ export const UpdateTransactionSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ])
@@ -130,6 +134,7 @@ export const ReturnTransactionListSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ]).nullable()

@@ -41,6 +41,7 @@ export const ReturnAccountDataSchema = {
                     Name:z.string(),
                     Value:z.number(),
                     userId:z.string().uuid(),
+                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
                 })).nullable()
             }),
             404:z.object({

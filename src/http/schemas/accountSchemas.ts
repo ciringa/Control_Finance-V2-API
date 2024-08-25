@@ -9,6 +9,7 @@ export const CreateAccountSchema = {
         body:z.object({
             Name:z.string(),
             Value:z.number().optional(),
+            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
         }),
         response:{
             201:z.object({
@@ -19,6 +20,7 @@ export const CreateAccountSchema = {
                         Name: z.string(),
                         Value: z.number(),
                         userId: z.string().uuid(),
+                        Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
                     })
                 })
             }),
@@ -43,6 +45,7 @@ export const ReturnAccountDataSchema = {
                     Name: z.string(),
                     Value: z.number(),
                     userId: z.string().uuid(),
+                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
                 }),
                 statistic:z.object({
                         Deposit:z.number(),
@@ -58,6 +61,7 @@ export const ReturnAccountDataSchema = {
                     Value: z.number(),
                     Type:  z.enum(["DEP","SAL"]),
                     accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
                     ]).nullable()
@@ -93,12 +97,13 @@ export const DelteAccountSchema = {
     preHandler:[VerifyJWT]
 }
 
-export const RenameAccountSchema = {
+export const UpdateAccountSchema = {
     schema:{
         tags:["Account"],
-        description:"Route Used to rename an specified account by recieving its account id as parameter. needs a JWT token Authentication",
+        description:"Route Used to update an specified account by recieving its account id as parameter. needs a JWT token Authentication",
         params:z.object({
-            AcId:z.string().uuid()
+            AcId:z.string().uuid(),
+            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
         }),
         body:z.object({
             Name: z.string(),
