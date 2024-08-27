@@ -24,7 +24,7 @@ export const swggerConfig = {
     servers: [],
     externalDocs: {
         description: 'External docs',
-        url: './documentation/setup'
+        url: 'https://github.com/ciringa/Control_Finance-V2-API/tree/main/documentation'
     },
     },
     swagger:{

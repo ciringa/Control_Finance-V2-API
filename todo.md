@@ -1,8 +1,8 @@
 
     - make goal update value sum value (currently it's just updating the value)
     - end user avaliation 3/4 (statistics route) (test needed)
-    - user delete route(needs to delete every single resource in the aplication)
-    - fazer com que as rotas de resetar conta tambem deletem todas as metas 
+    - Fazer com quem o createdAt possa ser definido pelo frontend
+    - Rota de atualizaçao de usuario 
 ## Front End request
 
     Tags para transações (X)

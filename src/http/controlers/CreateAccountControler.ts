@@ -22,6 +22,7 @@ export async function CreateAccountControler(req:FastifyRequest, res:FastifyRepl
         const CreateAccount = await Main.execute({data:{
             Name,Value,userId
         }})
+        console.log(CreateAccount)
         //if success returns this
         res.status(201).send({
             Description:"successfully created",
