@@ -21,10 +21,6 @@ export const CreateAccountSchema = {
                         Name: z.string(),
                         Value: z.number(),
                         userId: z.string().uuid(),
-<<<<<<< HEAD
-=======
-                        Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
->>>>>>> bd5751f8e6917d0f6a16e76934273935cf70a71e
                     })
                 })
             }),
