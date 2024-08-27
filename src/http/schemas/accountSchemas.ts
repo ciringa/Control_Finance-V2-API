@@ -21,7 +21,7 @@ export const CreateAccountSchema = {
                         Name: z.string(),
                         Value: z.number(),
                         userId: z.string().uuid(),
-                        Description:z.string().nullable(),
+                        Description:z.string().nullable().optional(),
                         Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
                     })
                 })
