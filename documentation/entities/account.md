@@ -1,6 +1,15 @@
 # Account
 Representa uma conta bancaria de um usuário no sistema.
 
+
+## Tipo de conta
+As contas podem ser definidas a partir dos seguintes tipos:
+
+    Carteira
+    ContaBancaria
+    Poupanca
+    CorretoraDeInvestimentos
+
 ## Campos
 
 
@@ -27,3 +36,7 @@ Chave estrangeira para a tabela de usuários.
 Lista de transações associadas a esta conta.
 
 ``TransactionsList (Transaction[])``
+
+Descrição da conta
+
+``Description (String?)``

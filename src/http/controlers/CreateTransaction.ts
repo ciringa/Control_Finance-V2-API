@@ -14,14 +14,17 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
         accountId:z.string().uuid(),
         Categories:z.enum([
             "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-        ]).optional()
+        ]).optional(),
+        CreatedAt:z.union([z.string(),z.date()]).optional()
     })
 
-    const data = bodySchema.parse(req.body)
+    const {CreatedAt,Title,Type,Value,accountId,Categories} = bodySchema.parse(req.body)
     const Main = new CreateTransactionUseCase(new PrismaTransactionsRepositorie, new PrismaAccountRepositorie)
     //const doesTheLoggedInUserOwnsTheAccountThatWannaAccess = null
     try{
-        const Transaction =  await Main.execute({data})
+        const Transaction =  await Main.execute({data:{
+            accountId,Title,Type,Value,Categories,CreatedAt
+        }})
         //console.log(Transaction)
         res.status(201).send({
             Description:"created Transaction successfully",

@@ -28,7 +28,9 @@ export const ReturnAccountDataSchema = {
         response:{
             201:z.object({
                 Statics:z.object({
-                    sum:z.number() 
+                    sum:z.number(),
+                    totalWithdraw:z.number(),
+                    totalDeposit:z.number(),
                 }),
                 AccountStatics:z.array(z.object({
                     sum:z.number(),
