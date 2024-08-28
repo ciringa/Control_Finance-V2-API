@@ -3,6 +3,7 @@ import { AccountRepositorie } from "../repositorie/account.repositorie";
 import { userRepositorie } from "../repositorie/user.repositorie";
 import { UserDoesNotExists } from "./Error/MissedResourcesError";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
+import { start } from "repl";
 
 interface returnUserAccountListUseCaseRequest{
     userId:string
@@ -57,22 +58,26 @@ export class returnUserAccountInfoUseCase{
                 //return transaction list from the account
                 var buildUpObject:returnWithdrawAndOthers = {accountTitle:"",DepositValue:0,sum:0,WithdrawValue:0}
                 const specifiedTransaction = await this.transactionRepositorie.findByAccount(AccountList[i].Id)
-                specifiedTransaction?.forEach(async Element=>{
-                    if(Element.Type=="DEP"){
-                        buildUpObject.DepositValue += Element.Value
-                        buildUpObject.sum += Element.Value
-
-                        GlobalStatics.totalDeposit+=Element.Value
-                    }else{
-                        //sends to AccountStatics
-                        buildUpObject.WithdrawValue += Element.Value
-                        buildUpObject.sum -= Element.Value
-                        //sends to global statics
-                        GlobalStatics.totalWithdraw+=Element.Value
+                if(specifiedTransaction){
+                    for(let j=0;j<specifiedTransaction?.length;j++){
+                        var Element = specifiedTransaction[j]
+                        if(Element.Type=="DEP"){
+                            buildUpObject.DepositValue += Element.Value
+                            buildUpObject.sum += Element.Value
+    
+                            GlobalStatics.totalDeposit+=Element.Value
+                        }else{
+                            //sends to AccountStatics
+                            buildUpObject.WithdrawValue += Element.Value
+                            buildUpObject.sum -= Element.Value
+                            //sends to global statics
+                            GlobalStatics.totalWithdraw+=Element.Value
+                        }
                     }
-                })
-                buildUpObject.accountTitle == AccountList[i].Name
-
+                }
+                var starterValue = AccountList[i].Value - buildUpObject.sum
+                buildUpObject.accountTitle = AccountList[i].Name
+                buildUpObject.sum+=starterValue
                 AccountStatics.push(buildUpObject)
             }
         }

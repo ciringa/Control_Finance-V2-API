@@ -1,6 +1,7 @@
 import { Account, AccountType, Prisma } from "@prisma/client";
 import { AccountRepositorie } from "../account.repositorie";
 import { randomUUID } from "crypto";
+import { string } from "zod";
 
 export class InMemoryAccountRepositorie implements AccountRepositorie{
     public list:Account[] = []
@@ -10,7 +11,8 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
             userId:String(data.userId),
             Id:String(randomUUID()),
             Value:data.Value || 0,
-            Type:data.Type as AccountType
+            Type:data.Type as AccountType,
+            Description:String(data.Description)
         }
         this.list.push(_data)
         return _data
@@ -41,7 +43,8 @@ export class InMemoryAccountRepositorie implements AccountRepositorie{
             Name:data.Name || Original.Name,
             Value: data.Value || Original.Value,
             Id:Original.Id,
-            Type:data.Type as AccountType
+            Type:data.Type as AccountType,
+            Description:String(data.Description)
         }
         return this.list[findIndex]
     }

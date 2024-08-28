@@ -6,7 +6,7 @@ const dotEnvSchema = z.object({
     PORT:z.string(),
     SALT:z.string(),
     JWT_SECRET:z.string(),
-    NODE_ENV: z.enum(["DEV","DEPLOY","TESTS"]),
+    NODE_ENV: z.enum(["DEV","DEPLOY","test"]),
     API_VERSION:z.string()
 })
 
