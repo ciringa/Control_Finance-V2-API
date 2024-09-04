@@ -54,7 +54,6 @@ export const ReturnAccountDataSchema = {
                         Total:z.number(),
                         sum:z.number(),
                         TransactionAmount:z.number().nullable(),
-                    
                 }),
                 TransactionList:z.array(z.object({
                     Id: z.string().uuid(),

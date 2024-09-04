@@ -5,6 +5,8 @@ import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryReposi
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
 import { AccountDoesNotExists } from "../../src/services/Error/MissedResourcesError";
 import { InvalidTagProvidedToTransactionType } from "../../src/services/Error/WrongProvidedParams";
+import { faker } from "@faker-js/faker";
+import { getRandomItem } from "../../src/utils/choose";
 
 
 var accountRepositorie:InMemoryAccountRepositorie
@@ -16,7 +18,7 @@ beforeEach(async()=>{
     accountRepositorie = new InMemoryAccountRepositorie()
     transactionRepositorie = new InMemoryTransactionsRepositorie()
 
-    createdAccount = {Name:"testName",userId:"randomUserId",Id:"randomId",Value:300}
+    createdAccount = {Name:"testName",userId:"randomUserId",Id:"randomId",Value:300,Description:faker.lorem.text(),Type:getRandomItem(["Carteira"])}
     accountRepositorie.list.push(createdAccount)
     createTransactionUseCase = new CreateTransactionUseCase(transactionRepositorie,accountRepositorie)
 })

@@ -37,6 +37,8 @@ export const ReturnAccountDataSchema = {
                     WithdrawValue:z.number(),
                     DepositValue:z.number(),
                     accountTitle:z.string(),
+                    AcId:z.string().uuid(),
+                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
                 }).nullable()),
                 AccountList:z.array(z.object({
                     Id: z.string().uuid(),

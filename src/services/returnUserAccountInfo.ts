@@ -1,4 +1,4 @@
-import { Account, Transaction } from "@prisma/client";
+import { Account, AccountType, Transaction } from "@prisma/client";
 import { AccountRepositorie } from "../repositorie/account.repositorie";
 import { userRepositorie } from "../repositorie/user.repositorie";
 import { UserDoesNotExists } from "./Error/MissedResourcesError";
@@ -15,6 +15,8 @@ interface returnUserAccountListUseCaseResponse{
         totalDeposit:number
     },
     AccountStatics:{
+        AcId:string,
+        Type:AccountType,
         sum:number,
         WithdrawValue:number,
         DepositValue:number,
@@ -40,6 +42,8 @@ export class returnUserAccountInfoUseCase{
 
         //Sum the value of the Account List
         interface returnWithdrawAndOthers{
+            AcId:string,
+            Type:AccountType,
             sum:number,
             WithdrawValue:number,
             DepositValue:number,
@@ -56,7 +60,7 @@ export class returnUserAccountInfoUseCase{
             for(let i=0; i<AccountList.length; i++){
                 GlobalStatics.sum = (GlobalStatics.sum + AccountList[i].Value)
                 //return transaction list from the account
-                var buildUpObject:returnWithdrawAndOthers = {accountTitle:"",DepositValue:0,sum:0,WithdrawValue:0}
+                var buildUpObject:returnWithdrawAndOthers = {accountTitle:"",DepositValue:0,sum:0,WithdrawValue:0,AcId:"",Type:"Carteira"}
                 const specifiedTransaction = await this.transactionRepositorie.findByAccount(AccountList[i].Id)
                 if(specifiedTransaction){
                     for(let j=0;j<specifiedTransaction?.length;j++){
@@ -78,6 +82,8 @@ export class returnUserAccountInfoUseCase{
                 var starterValue = AccountList[i].Value - buildUpObject.sum
                 buildUpObject.accountTitle = AccountList[i].Name
                 buildUpObject.sum+=starterValue
+                buildUpObject.AcId = AccountList[i].Id
+                buildUpObject.Type = AccountList[i].Type
                 AccountStatics.push(buildUpObject)
             }
         }
