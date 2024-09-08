@@ -4,6 +4,8 @@ import { userRepositorie } from "../repositorie/user.repositorie";
 import { UserDoesNotExists } from "./Error/MissedResourcesError";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
 import { start } from "repl";
+import { groupTransactionsByMonthAndYear } from "../lib/GroupByDate";
+import { log } from "console";
 
 interface returnUserAccountListUseCaseRequest{
     userId:string
@@ -54,7 +56,7 @@ export class returnUserAccountInfoUseCase{
             totalWithdraw:number,
             totalDeposit:number
         }
-        var transactionList:Transaction[],AccountStatics:returnWithdrawAndOthers[]=[]
+        var transactionList:Transaction[]=[],AccountStatics:returnWithdrawAndOthers[]=[]
         var GlobalStatics:ReturnGlobalInfo = {sum:0,totalDeposit:0,totalWithdraw:0}
         if(AccountList){
             for(let i=0; i<AccountList.length; i++){
@@ -77,7 +79,9 @@ export class returnUserAccountInfoUseCase{
                             //sends to global statics
                             GlobalStatics.totalWithdraw+=Element.Value
                         }
+                        transactionList.push(Element)
                     }
+
                 }
                 var starterValue = AccountList[i].Value - buildUpObject.sum
                 buildUpObject.accountTitle = AccountList[i].Name
@@ -88,11 +92,10 @@ export class returnUserAccountInfoUseCase{
             }
         }
 
-
         return{
             Statics:GlobalStatics,
             AccountStatics,
-            AccountList
+            AccountList,
         }
     }
 }

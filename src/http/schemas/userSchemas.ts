@@ -57,7 +57,7 @@ export const ReturnAccountDataSchema = {
     preHandler:[VerifyJWT]
 }
 
-
+//Isso aqui tem muitas chances de dar merda depois 
 export const ReturnAccountStatistic = {
     schema:{
         tags:["User","Statics"],
@@ -87,14 +87,25 @@ export const ReturnAccountStatistic = {
                         Comissao:z.number(),
                         Salario:z.number(),
                         Outro: z.number(),
-                    }),
-                    AccountState:z.object({
-                        AndamentoDasMetas:z.enum(["Danger","Ok","Good"]),
-                        Economista:z.enum(["Danger","Ok","Good"]),
-                        GastosEssenciais:z.enum(["Danger","Ok","Good"]),
-                        Investimentos:z.enum(["Danger","Ok","Good"])
                     })
-                 })
+                 }),
+                 TransactionsByDate:z.record(z.string(), z.array(z.object({
+                    Id: z.string().uuid(),
+                    Title: z.string(),
+                    Value: z.number(),
+                    Type:  z.enum(["DEP","SAL"]),
+                    accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable()
+                 }))),
+                 AccountState:z.object({
+                    AndamentoDasMetas:z.enum(["Danger","Ok","Good"]),
+                    Economista:z.enum(["Danger","Ok","Good"]),
+                    GastosEssenciais:z.enum(["Danger","Ok","Good"]),
+                    Investimentos:z.enum(["Danger","Ok","Good"])
+                })
                 }),
                 400:z.object({
                     Description:z.string(),

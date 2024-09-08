@@ -59,7 +59,6 @@ it("should be able to return the user account list",async()=>{
     const SUT = await ReturnUserAccountList.execute({
         userId:createUser.Id
     })
-    console.log(SUT);
     
     expect(SUT.AccountList).toHaveLength(3)
     expect(SUT.Statics.sum).toBe(600)

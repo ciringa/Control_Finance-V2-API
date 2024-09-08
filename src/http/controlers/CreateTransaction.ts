@@ -15,7 +15,7 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
         Categories:z.enum([
             "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
         ]).optional(),
-        CreatedAt:z.union([z.string(),z.date()]).optional()
+        CreatedAt:z.date().optional()
     })
 
     const {CreatedAt,Title,Type,Value,accountId,Categories} = bodySchema.parse(req.body)

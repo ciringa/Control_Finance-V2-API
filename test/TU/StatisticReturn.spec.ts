@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { userRepositorie } from "../../src/repositorie/user.repositorie";
 import { AccountRepositorie } from "../../src/repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../../src/repositorie/transactions.repositorie";
@@ -12,6 +12,8 @@ import { AccountStatistcsUseCase } from "../../src/services/AccountStatistics";
 import { goalsRepositorie } from "../../src/repositorie/goals.repositorie";
 import { InMemoryGoalsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryGoalsRepositorie";
 import { Status } from "../../src/utils/ReturnUserOpnionList";
+import { date } from "zod";
+import { now } from "lodash";
 
 var UserRepositorie: userRepositorie;
 var accountRepositorie: AccountRepositorie;
@@ -184,4 +186,35 @@ describe("should be able to evaluate the user", async () => {
     expect(returned.AccountState.AndamentoDasMetas).toEqual(Status.Danger);
     expect(returned.AccountState.GastosEssenciais).toEqual(Status.Danger);
   });
+  it("should be able to separate between months",async()=>{
+     //ta mal otimizado mas fodase
+     for (let i = 0; i <= 22; i++) {
+      transactions[i] = await transactionRepositorie.create({
+        accountId: i % 2 ? account[0].Id : account[1].Id,
+        Title: faker.lorem.word(),
+        Type: i % 2 ? "DEP" : "SAL",
+        Value: faker.number.int({
+          max: 100,
+          min: 50,
+        }),
+        Categories:
+          i % 2 ? "Salario" : getRandomItem(["Beleza", "Eletronicos"]),
+        CreatedAt:faker.date.past({
+          years:4,
+          refDate:new Date()
+        })
+      });
+    }
+    transactions[transactions.length] = await transactionRepositorie.create({
+      accountId: account[0].Id,
+      Title: "Transaçao criada hoje",
+      Type:"DEP",
+      Value: 5000,
+      Categories:"Salario" ,
+      CreatedAt:new Date()
+    });
+    const userId = user.Id;
+    const returned = await sut.execute({ userId });
+    expect(returned.TransactionsByDate["2024-09"][0].Title).toBe("Transaçao criada hoje")
+  })
 });

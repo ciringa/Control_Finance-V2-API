@@ -11,7 +11,7 @@ export class InMemoryTransactionsRepositorie implements TransactionsRepositorie{
             Type:data.Type as Type,
             Value:Number(data.Value),
             Id:String(randomUUID()),
-            CreatedAt:new Date(),
+            CreatedAt:data.CreatedAt!=undefined ? new Date(data.CreatedAt) : new Date(),
             Categories:data.Categories as TransactionCategories
         }
         this.list.push(_data)

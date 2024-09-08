@@ -6,6 +6,8 @@ import { UserDoesNotExists } from "./Error/MissedResourcesError";
 import { ReturnPercentagesList, TransactionCategorieList } from "../utils/PercentageTransactionCategorieCalc";
 import { opnionList, Status } from "../utils/ReturnUserOpnionList";
 import { goalsRepositorie } from "../repositorie/goals.repositorie";
+import { log } from "console";
+import { groupTransactionsByMonthAndYear } from "../lib/GroupByDate";
 
 
 
@@ -24,7 +26,8 @@ interface AccountStatistcsReply{
         SAL:number,
         PercentageOfReturnByCategorie:TransactionCategorieList
     },
-    AccountState:opnionList
+    AccountState:opnionList,
+    TransactionsByDate:Record<string, Transaction[]>
 }
 export class AccountStatistcsUseCase {
     constructor(private usersRepositorie:userRepositorie, private accountRepositorie:AccountRepositorie, private transactionRepositorie:TransactionsRepositorie, private GoalsRepositorie:goalsRepositorie){}
@@ -124,6 +127,11 @@ export class AccountStatistcsUseCase {
         }
         //Investiment check(criteria: checks if the user has invested at least 25% in its deposits)
         
+
+        //Return Account List by month 
+        //filter transactionList by month 
+        const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
+
         return {
             Data:{
                 TotalAccount:doesTheUserHasAnyAccount?.length,
@@ -141,7 +149,8 @@ export class AccountStatistcsUseCase {
                 Economista:EconomiaStatus,
                 GastosEssenciais:GastosStatus,
                 Investimentos:Status.Ok //needs to refactor the criteria
-            }
+            },
+            TransactionsByDate,
         }
     }
 }
