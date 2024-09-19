@@ -13,14 +13,14 @@ export async function CreateAccountControler(req:FastifyRequest, res:FastifyRepl
         Description:z.string().optional(),
         Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
     })
-    const {Name,Value} = bodySchema.parse(req.body)
+    const {Name,Value,Type,Description} = bodySchema.parse(req.body)
     const userId = req.user.sub
     const Main = new CreateAccountUseCase(new PrismaAccountRepositorie, new PrismaUsersRepositorie)
 
     try{
         //trys to run CreateAccountUseCase sending "data"
         const CreateAccount = await Main.execute({data:{
-            Name,Value,userId
+            Name,Value,userId,Description,Type
         }})
         console.log({
             Description:"successfully created",

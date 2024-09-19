@@ -58,8 +58,11 @@ Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documenta
 <img alt="Static Badge" src="https://img.shields.io/badge/faker-8.4.1-green?style=flat-square&logoColor=blue">
 </div>
 
+# O que Aprendi durante o projeto? 🧩
 
-
+- Vantagens e desvantagens de tecnologias como o swagger e fastify.
+- Utilização de bibliotecas até então desconhecidas para mim (multer,lodash,bcryptjs,faker e js-yaml).
+- Novos conhecimentos sobre validação, tipagem estática do typeScript e utilização de decorators. 
 
 # Vantagens do Uso do TypeScript ⬆️
 TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação. Durante o desenvolvimento do **Control Finance V2 API** as principais vantagens que me fizeram escolher o **TypeScript** foram: 

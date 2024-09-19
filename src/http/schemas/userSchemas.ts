@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
+import { upload } from "../../lib/multerConfig";
+
 
 export const RegisterUserSchema = {
     schema:{
@@ -166,4 +168,24 @@ export const UserResetSchema = {
             
         },
         preHandler:[VerifyJWT]
+}
+//user image upload schema be carefull with this
+export const UserProfileUploadPictureSchema = {
+    schema:{
+        tags:["User"],
+        description:"Changes the user profile image. Recieves an JWT Token",
+        response:{
+            201:z.object({
+                Description:z.string()
+            }),
+            400:z.object({
+                Description:z.string(),
+            })
+            }
+
+            
+        },
+        preHandler:[VerifyJWT, function(){
+            upload.single("avatar") // sets up an spected upload of a single file called avatar 
+        }]
 }

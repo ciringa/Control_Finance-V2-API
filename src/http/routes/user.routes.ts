@@ -6,6 +6,7 @@ import { ReturnAccountInfo } from "../controlers/returnUserAccountInfoControler"
 import { ReturnStatisticControler } from "../controlers/ReturnStatisticsControler";
 import { DeleteUserControler } from "../controlers/DeleteUserAccount";
 import { ResetUserAccountControler } from "../controlers/ResetUserAccountControler";
+import { UserImageUploadControler } from "../controlers/UserImageUpload";
 
 export async function userRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post("/register",RegisterUserSchema,RegisterUserControler)
@@ -13,4 +14,5 @@ export async function userRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().get("/statistic",ReturnAccountStatistic,ReturnStatisticControler)
     app.withTypeProvider<ZodTypeProvider>().delete("/delete",UserDeleteSchema,DeleteUserControler)
     app.withTypeProvider<ZodTypeProvider>().delete("/reset",UserResetSchema,ResetUserAccountControler)
+    app.withTypeProvider<ZodTypeProvider>().post("/profile/image",UserImageUploadControler)
 }
