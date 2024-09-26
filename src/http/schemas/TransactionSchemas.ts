@@ -97,7 +97,7 @@ export const UpdateTransactionSchema = {
                     CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ])
+                    ]).nullable()
                 }),
                 New:z.object({
                     Id: z.string().uuid(),
@@ -108,7 +108,7 @@ export const UpdateTransactionSchema = {
                     CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ])
+                    ]).nullable()
                 }),
                 AccountValue:z.object({
                     Old:z.number(),

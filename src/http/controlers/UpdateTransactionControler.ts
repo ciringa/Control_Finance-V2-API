@@ -24,7 +24,7 @@ export async function UpdateTransaction(req:FastifyRequest,res:FastifyReply) {
         res.status(200).send(response)
     }catch(err){
         if(err instanceof TransactionDoesNotExists){
-            res.send(400).send({
+            res.status(400).send({
                 Description:"Transaction does not exists. Please provide a transaction id or a valid one"
             })
         }
