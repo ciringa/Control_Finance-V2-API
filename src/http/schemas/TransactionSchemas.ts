@@ -1,4 +1,4 @@
-import z from "zod";
+import z, { string } from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
 
 export const CreateTransactionSchema = {
@@ -138,7 +138,8 @@ export const ReturnTransactionListSchema = {
                     CreatedAt:z.date(),
                     Categories:z.enum([
                         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
+                    ]).nullable(),
+                    AccountTitle:z.string()
                 }))
             }),
             400:z.object({

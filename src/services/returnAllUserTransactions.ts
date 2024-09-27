@@ -1,4 +1,4 @@
-import { Transaction } from "@prisma/client";
+import { Transaction, TransactionCategories, Type } from "@prisma/client";
 import { AccountRepositorie } from "../repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../repositorie/transactions.repositorie";
 import { userRepositorie } from "../repositorie/user.repositorie";
@@ -12,8 +12,19 @@ interface ReturnAllTransactionsFromUserRequest{
     userId:string
 }
 
+type preTransaction = {
+    Id: string;
+    Title: string;
+    Value: number;
+    Type: Type;
+    CreatedAt: Date;
+    Categories: TransactionCategories | null;
+    accountId: string;
+    AccountTitle: string;
+};
+
 interface ReturnAllTransactionsFromUserResponse{
-    TransactionList:Transaction[]
+    TransactionList:preTransaction[]
 }
 
 
@@ -32,13 +43,22 @@ export class ReturnAllTransactionsFromUserUseCase{
             if(!doesTheUserExists){
                 throw new UserDoesNotExists
             }   
-            var TransactionList:Transaction[] = []
+            var TransactionList:preTransaction[] = []
             const AccountList = await this.accountRepositorie.findByUser(userId)
             if(AccountList){
                 for(let i =0;i<AccountList?.length;i++){
                     var ReturnAccountTransactionList = await this.transactionsRepositorie.findByAccount(AccountList[i].Id)
                     if(ReturnAccountTransactionList){
-                        TransactionList = TransactionList.concat(ReturnAccountTransactionList)
+                        var ps:preTransaction[] = []
+                        for(let j = 0; j<ReturnAccountTransactionList.length;j++){
+                            const {Categories,CreatedAt,Id,Title,Type,Value,accountId} = ReturnAccountTransactionList[j]
+                            const AccountTitle = AccountList[i].Name
+                            let p:preTransaction = {
+                                accountId,AccountTitle,Categories,CreatedAt,Id,Title,Type,Value
+                            } 
+                            ps = ps.concat(p)
+                        }
+                        TransactionList = TransactionList.concat(ps)
                     }
 
                 }
