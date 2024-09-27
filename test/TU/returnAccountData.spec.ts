@@ -1,7 +1,7 @@
 import { expect, it,beforeEach} from "vitest";
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
-import { returnAccountDataUseCase } from "../../src/services/ReturnAccountData";
+import { returnAccountDataUseCase } from "../../src/services/Account/ReturnAccountData";
 import { Account, Type } from "@prisma/client";
 
 const data = {

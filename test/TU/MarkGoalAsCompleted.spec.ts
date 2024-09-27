@@ -1,5 +1,5 @@
 import { beforeEach, it } from "vitest";
-import { MarkGoalAsCompletedUseCase } from "../../src/services/MarkGoalAsCompleted";
+import { MarkGoalAsCompletedUseCase } from "../../src/services/Goals/MarkGoalAsCompleted";
 import { InMemoryGoalsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryGoalsRepositorie";
 import { faker } from "@faker-js/faker";
 import { randomUUID } from "crypto";

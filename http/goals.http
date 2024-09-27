@@ -1,0 +1,27 @@
+### Add value to goal
+PUT http://127.0.0.1:2333/goals/value/981be09f-0bd4-4855-893f-1422bc9dba83/200
+User-Agent: insomnia/9.3.3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+### Mark goal as Completed
+PUT http://127.0.0.1:2333/goals/complete/55303ba8-b2e6-48cc-9117-6259cea24dc4
+User-Agent: insomnia/9.3.3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+### Return goals List validated
+GET http://127.0.0.1:2333/goals
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWUwOTNkYi0yM2JmLTRjMjEtOTA5MC0xMzhhMGE0Y2ZkNjciLCJpYXQiOjE3MjAzNTg0MTh9.ija5oFocvDyBd-GgH2pZNLJSWAGR6zuDpqK6xhFIIrs
+
+### Create a Goal
+POST http://127.0.0.1:2333/goals/create
+Content-Type: application/json
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+{
+  "EndTime": "2024-09-24T15:06:17.173Z",
+  "Title": "Comprar um carro",
+  "TargetedValue": 20000,
+  "Value": 3900
+}

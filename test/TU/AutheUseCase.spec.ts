@@ -3,9 +3,9 @@ import { beforeEach, expect,it} from "vitest";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
 import { Prisma, User } from "@prisma/client";
 import { AuthUseCase } from "../../src/services/Authenticate";
-import { RegisterUserUseCase } from "../../src/services/RegisterUser";
+import { RegisterUserUseCase } from "../../src/services/User/RegisterUser";
 import { faker, Faker } from "@faker-js/faker";
-import { UserDoesNotExists } from "../../src/services/Error/MissedResourcesError";
+import { UserDoesNotExists } from "../../src/services/.Error/MissedResourcesError";
 
 const Userdata:Prisma.UserCreateInput = {
     Email:faker.internet.email(),

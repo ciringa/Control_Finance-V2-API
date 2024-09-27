@@ -8,7 +8,7 @@ import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryR
 import { Account, Transaction, User } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 import { getRandomItem } from "../../src/utils/choose";
-import { AccountStatistcsUseCase } from "../../src/services/AccountStatistics";
+import { AccountStatistcsUseCase } from "../../src/services/Analytics/AccountStatistics";
 import { goalsRepositorie } from "../../src/repositorie/goals.repositorie";
 import { InMemoryGoalsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryGoalsRepositorie";
 import { Status } from "../../src/utils/ReturnUserOpnionList";

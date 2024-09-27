@@ -3,7 +3,7 @@ import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositor
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { faker } from "@faker-js/faker";
-import { ReturnAllTransactionsFromUserUseCase } from "../../src/services/returnAllUserTransactions";
+import { ReturnAllTransactionsFromUserUseCase } from "../../src/services/Transactions/returnAllUserTransactions";
 import { Account, User } from "@prisma/client";
 
 var userRepositorie:InMemoryUserRepositorie
@@ -46,5 +46,6 @@ beforeEach(async()=>{
 it("should be able to return all the transactions from an User",async () => {
     const {Id} = baseUser;
     const returnV = await SUT.execute({userId:Id})
+    console.log(returnV)
     expect(returnV.TransactionList[0].Categories).toBe("Salario")
 })

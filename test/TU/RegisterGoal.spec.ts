@@ -6,7 +6,7 @@ import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositor
 import { faker } from "@faker-js/faker";
 import { Prisma } from "@prisma/client";
 import { randomUUID } from "crypto";
-import { RegisterGoalUseCase } from "../../src/services/RegisterGoal";
+import { RegisterGoalUseCase } from "../../src/services/Goals/RegisterGoal";
 
 
 var CreateUser = {

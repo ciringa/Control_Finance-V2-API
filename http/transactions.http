@@ -1,0 +1,29 @@
+
+### Return All Transactions
+GET http://127.0.0.1:2333/transaction
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGFmMjc3OC03ZjQ3LTQ2ZTMtYTA4ZS0yYjlkNzU5MWY1MTIiLCJpYXQiOjE3MjczNjUyNzh9.Ras9ONr1bY18OFBimr2XNAEJrrQDDOgr1wO0vEbgzXc
+
+### Update Transaction
+PUT http://127.0.0.1:2333/transaction/update/80dbf4c1-68b9-44ff-899c-9d27a04a1245
+Content-Type: application/json
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+{
+  "Type": "SAL"
+}
+
+### Create Transaction
+POST http://127.0.0.1:2333/transaction/create
+Content-Type: application/json
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+{
+  "Title": "Feira do mês",
+  "Value": 1200,
+  "Type": "SAL",
+  "accountId": "9c76445a-92fd-445c-a3f0-750abea3cc6c",
+  "Categories": "Compras"
+}

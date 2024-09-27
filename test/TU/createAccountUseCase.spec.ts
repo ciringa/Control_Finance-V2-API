@@ -3,8 +3,8 @@ import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositor
 import { beforeEach, expect,it } from "vitest";
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { Prisma, User } from "@prisma/client";
-import { CreateAccountUseCase } from "../../src/services/CreateAccount";
-import { UserDoesNotExists } from "../../src/services/Error/MissedResourcesError";
+import { CreateAccountUseCase } from "../../src/services/Account/CreateAccount";
+import { UserDoesNotExists } from "../../src/services/.Error/MissedResourcesError";
 
 
 const Userdata:Prisma.UserCreateInput = {

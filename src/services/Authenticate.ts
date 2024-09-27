@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { userRepositorie } from "../repositorie/user.repositorie";
-import { UserDoesNotExists } from "./Error/MissedResourcesError";
-import { InvalidPassword } from "./Error/ValidationErrors";
+import { UserDoesNotExists } from "./.Error/MissedResourcesError";
+import { InvalidPassword } from "./.Error/ValidationErrors";
 
 
 interface AuthUseCaseParams{

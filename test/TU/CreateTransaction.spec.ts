@@ -1,10 +1,10 @@
 import { beforeEach, expect, it } from "vitest";
-import { CreateTransactionUseCase } from "../../src/services/CreateTransaction";
+import { CreateTransactionUseCase } from "../../src/services/Transactions/CreateTransaction";
 import { Account, Type } from "@prisma/client";
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
-import { AccountDoesNotExists } from "../../src/services/Error/MissedResourcesError";
-import { InvalidTagProvidedToTransactionType } from "../../src/services/Error/WrongProvidedParams";
+import { AccountDoesNotExists } from "../../src/services/.Error/MissedResourcesError";
+import { InvalidTagProvidedToTransactionType } from "../../src/services/.Error/WrongProvidedParams";
 import { faker } from "@faker-js/faker";
 import { getRandomItem } from "../../src/utils/choose";
 

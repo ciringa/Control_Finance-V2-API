@@ -4,9 +4,9 @@ import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryR
 import { Account, Prisma, Transaction, Type } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 import { randomUUID } from "crypto";
-import { CreateTransactionUseCase } from "../../src/services/CreateTransaction";
-import { UpdateTransactionUseCase } from "../../src/services/UpdateTransaction";
-import { CantUpdateInformedData } from "../../src/services/Error/WrongProvidedParams";
+import { CreateTransactionUseCase } from "../../src/services/Transactions/CreateTransaction";
+import { CantUpdateInformedData } from "../../src/services/.Error/WrongProvidedParams";
+import { UpdateTransactionUseCase } from "../../src/services/Transactions/UpdateTransaction";
 
 
 const accountData:Prisma.AccountUncheckedCreateInput = {

@@ -1,7 +1,7 @@
 import { beforeEach,expect,it } from "vitest";
 import { InMemoryGoalsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryGoalsRepositorie";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
-import { ReturnGoalListUseCase } from "../../src/services/ReturnGoalsList";
+import { ReturnGoalListUseCase } from "../../src/services/Goals/ReturnGoalsList";
 import { faker } from "@faker-js/faker";
 import { User } from "@prisma/client";
 

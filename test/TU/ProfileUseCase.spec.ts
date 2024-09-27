@@ -1,7 +1,7 @@
 import { beforeEach, expect, it } from "vitest";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
 import { Prisma, User } from "@prisma/client";
-import { ProfileUseCase } from "../../src/services/profile";
+import { ProfileUseCase } from "../../src/services/User/profile";
 import { create } from "domain";
 
 const data:Prisma.UserCreateInput = {

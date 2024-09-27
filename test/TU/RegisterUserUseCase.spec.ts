@@ -1,8 +1,8 @@
 import { beforeEach, expect, it } from "vitest";
-import { RegisterUserUseCase } from "../../src/services/RegisterUser";
+import { RegisterUserUseCase } from "../../src/services/User/RegisterUser";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
 import { Prisma } from "@prisma/client";
-import { EmailAlreadyExists } from "../../src/services/Error/ValidationErrors";
+import { EmailAlreadyExists } from "../../src/services/.Error/ValidationErrors";
 import { compare } from "bcryptjs";
 
 const data:Prisma.UserCreateInput = {

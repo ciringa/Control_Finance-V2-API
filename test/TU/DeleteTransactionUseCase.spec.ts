@@ -4,9 +4,9 @@ import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryR
 import { Account, Prisma, Transaction, Type } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 import { randomUUID } from "crypto";
-import { DeleteTransactionsUseCase } from "../../src/services/DeleteTransaction";
-import { TransactionDoesNotExists } from "../../src/services/Error/MissedResourcesError";
-import { CreateTransactionUseCase } from "../../src/services/CreateTransaction";
+import { DeleteTransactionsUseCase } from "../../src/services/Transactions/DeleteTransaction";
+import { TransactionDoesNotExists } from "../../src/services/.Error/MissedResourcesError";
+import { CreateTransactionUseCase } from "../../src/services/Transactions/CreateTransaction";
 
 
 const accountData:Prisma.AccountUncheckedCreateInput = {
