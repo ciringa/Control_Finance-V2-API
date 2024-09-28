@@ -36,6 +36,15 @@ enum TransactionCategories {
   Comissao
   Outro
 }
+
+enum GoalCategory {
+  FundoDeEmergencia
+  CartaoDeCredito
+  EconomiaParaGrandesCompras
+  EducacaoFinanceira
+  
+}
+
 model User{
   Id String @id @default(uuid())
   Email String @unique
