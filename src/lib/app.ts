@@ -8,13 +8,15 @@ import { JWT_SECRET, NODE_ENV } from "./env";
 import { Router } from "../http/routes";
 import cors from "@fastify/cors"
 import multer from "fastify-multer";
-import { multerConfig } from "./multerConfig";
+
 
 
 // Setup a fastify instance
 export const app = fastify()
 
-app.register(multerConfig)
+//setup multer for file management
+app.register(multer.contentParser)
+
 
 //validation methods used for zod and swagger
 app.setValidatorCompiler(validatorCompiler); 
