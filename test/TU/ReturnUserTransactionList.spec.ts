@@ -46,6 +46,5 @@ beforeEach(async()=>{
 it("should be able to return all the transactions from an User",async () => {
     const {Id} = baseUser;
     const returnV = await SUT.execute({userId:Id})
-    console.log(returnV)
     expect(returnV.TransactionList[0].Categories).toBe("Salario")
 })

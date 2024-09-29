@@ -7,4 +7,5 @@ export interface userRepositorie {
     findById(Id:String):Promise<User | null>
     create(data:Prisma.UserCreateInput):Promise<User>
     delete(Id:string):Promise<User>
+    update(data:Partial<User>,userId:string):Promise<User>
 }

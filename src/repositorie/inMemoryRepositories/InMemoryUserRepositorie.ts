@@ -28,5 +28,16 @@ export class InMemoryUserRepositorie implements userRepositorie{
         this.list.splice(findSingle)
         return this.list[findSingle]
     }
+    async update(data: Partial<User>, userId: string){
+        const findUnique = this.list.findIndex(item=> item.Id = userId)
+        const OldUser = this.list[findUnique]
+        this.list[findUnique] = {
+            Email: data.Email || OldUser.Email,
+            Id: OldUser.Id,
+            Senha: data.Senha || OldUser.Senha,
+            UsernName:data.UsernName || OldUser.UsernName
+        }
+        return this.list[findUnique]
+    }
     
 }

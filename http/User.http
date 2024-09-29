@@ -1,0 +1,20 @@
+### Register an User(online)
+POST http://127.0.0.1:2333/users/register
+Content-Type: application/json
+User-Agent: insomnia/9.2.0
+
+{
+    "Email": "Vidraceiro@gmail.com",
+    "Senha": "Laura123",
+    "UsernName": "Laura de Matos"
+}
+
+### Update user
+PUT http://127.0.0.1:2333/users/update
+Content-Type:application/json
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+{   
+    "Senha":"Coca-Cola"
+}

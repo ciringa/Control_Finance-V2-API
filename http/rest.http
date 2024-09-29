@@ -1,13 +1,4 @@
-### Register an User(online)
-POST https://control-finance-v2-api.onrender.com/users/register
-Content-Type: application/json
-User-Agent: insomnia/9.2.0
 
-{
-    "Email": "IsmaelHenrique@gmail.com",
-    "Senha": "Laura123",
-    "UsernName": "Laura de Matos"
-}
 
 ### Search Elements by Query
 GET http://127.0.0.1:2333/search/a/1

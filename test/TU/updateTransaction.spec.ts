@@ -44,7 +44,6 @@ it("should be able to update a transaction",async ()=>{
     const SUT = await UseCase.execute({Id:createdTransaction.Id,data:{
         Title:"NovaTransaçao"
     }})
-    console.log(SUT)
     expect(SUT.Old.Title).toBe(createdTransaction.Title)
     expect(SUT.New.Title).toBe("NovaTransaçao")
     

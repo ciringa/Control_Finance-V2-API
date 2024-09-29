@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
 import { upload } from "../../lib/multerConfig";
+import { FastifyRouteSchemaDef } from "fastify/types/schema";
+import { ZodTypeProvider } from "fastify-type-provider-zod";
 
 
 export const RegisterUserSchema = {
@@ -188,4 +190,37 @@ export const UserProfileUploadPictureSchema = {
         preHandler:[VerifyJWT, function(){
             upload.single("avatar") // sets up an spected upload of a single file called avatar 
         }]
+}
+
+export const updateUserSchema = {
+    schema:{
+        tags:["User"],
+        description:"Updated the user profile. Recieves an JWT Token",
+        body:z.object({
+            Email: z.string().optional(),
+            Senha: z.string().optional(),
+            UsernName:z.string().optional(),
+        }),
+        response:{
+            201:z.object({
+                Description:z.string(),
+                Content:
+                z.object({
+                    Id: z.string().uuid(),
+                    Email:z.string().email(),
+                    Senha:z.string(),
+                    UsernName: z.string(),
+                })
+            }),
+            404:z.object({
+                Description:z.string(),
+                Error:z.string()
+            }),
+            401:z.object({
+                Description:z.string(),
+                Error:z.string()
+            })
+            }
+        },
+        preHandler:[VerifyJWT]
 }

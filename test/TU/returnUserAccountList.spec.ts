@@ -2,11 +2,11 @@
 import { InMemoryAccountRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryAccountRepositorie";
 import { beforeEach, expect ,it} from "vitest";
 import { Account, Prisma, User } from "@prisma/client";
-import { returnUserAccountInfoUseCase } from "../../src/services/returnUserAccountInfo";
 import { InMemoryUserRepositorie } from "../../src/repositorie/inMemoryRepositories/InMemoryUserRepositorie";
 import { InMemoryTransactionsRepositorie } from "../../src/repositorie/inMemoryRepositories/inMemoryTransactionsRepositorie";
 import { faker } from "@faker-js/faker";
 import { getRandomItem } from "../../src/utils/choose";
+import { returnUserAccountInfoUseCase } from "../../src/services/User/returnUserAccountInfo";
 
 const UserData:Prisma.UserCreateInput = {
     Email:"testEmail@gmail.com",
