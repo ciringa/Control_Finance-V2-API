@@ -1,5 +1,6 @@
 import z from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
+import { upload } from "../../lib/multerConfig";
 
 export const SearcSchema = {
     schema:{
@@ -51,3 +52,13 @@ export const SearcSchema = {
     },
     preHandler:[VerifyJWT]
 }
+
+export const uploadImageRoute = {
+    schema:{
+    tags:["Utils"],
+    description:"Route used to Search transactions, Goals and accounts by recieving an Query and Page as parameter. Returns paginated by 3 elements for each page",
+},
+    preHandler:[upload.single("avatar")]
+}
+
+

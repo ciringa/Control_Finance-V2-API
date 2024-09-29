@@ -1,9 +1,7 @@
 
-    - make goal update value sum value (currently it's just updating the value)
     - end user avaliation 3/4 (statistics route) (test needed)
     - Fazer com quem o createdAt possa ser definido pelo frontend
-    - Rota de atualizaçao de usuario 
-    
+    - Still working in supabase upload features 
 ## Front End request
 
     Tags para transações (X)
