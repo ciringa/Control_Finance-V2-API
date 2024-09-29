@@ -3,6 +3,8 @@ import { VerifyJWT } from "../midleware/VerifyJwt";
 import { upload } from "../../lib/multerConfig";
 import { FastifyRouteSchemaDef } from "fastify/types/schema";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
+import { UserZodSchema } from "../../dtos/zod/User";
+import { AccountZodSchema } from "../../dtos/zod/Account";
 
 
 export const RegisterUserSchema = {
@@ -44,18 +46,11 @@ export const ReturnAccountDataSchema = {
                     AcId:z.string().uuid(),
                     Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
                 }).nullable()),
-                AccountList:z.array(z.object({
-                    Id: z.string().uuid(),
-                    Name:z.string(),
-                    Value:z.number(),
-                    userId:z.string().uuid(),
-                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"])
-                })).nullable()
+                AccountList:z.array(AccountZodSchema).nullable()
             }),
             404:z.object({
                 Description:z.string(),
             })
-            
         }
     },
     preHandler:[VerifyJWT]
@@ -133,12 +128,7 @@ export const UserDeleteSchema = {
                     TotalAccountsDeleted:z.number(),
                     TotalGoalsDeleted:z.number()
                 }),
-                deletedUser:z.object({
-                    Id: z.string().uuid(),
-                    Email:z.string().email(),
-                    Senha:z.string(),
-                    UsernName: z.string(),
-                })
+                deletedUser:UserZodSchema
             }),
             400:z.object({
                 Description:z.string(),
@@ -204,13 +194,7 @@ export const updateUserSchema = {
         response:{
             201:z.object({
                 Description:z.string(),
-                Content:
-                z.object({
-                    Id: z.string().uuid(),
-                    Email:z.string().email(),
-                    Senha:z.string(),
-                    UsernName: z.string(),
-                })
+                Content:UserZodSchema
             }),
             404:z.object({
                 Description:z.string(),

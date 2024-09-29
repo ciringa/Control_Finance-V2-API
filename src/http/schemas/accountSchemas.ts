@@ -1,6 +1,7 @@
 import z from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
 import { ZodTypeProvider} from "fastify-type-provider-zod";
+import { AccountZodSchema } from "../../dtos/zod/Account";
 
 export const CreateAccountSchema = {
     schema:{
@@ -16,13 +17,7 @@ export const CreateAccountSchema = {
             201:z.object({
                 Description:z.string(),
                 CreateAccount:z.object({
-                    createdObject:z.object({
-                        Id: z.string().uuid(),
-                        Name: z.string(),
-                        Value: z.number(),
-                        userId: z.string().uuid(),
-                        Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
-                    })
+                    createdObject:AccountZodSchema
                 })
             }),
             404:z.object({
@@ -41,14 +36,7 @@ export const ReturnAccountDataSchema = {
         }),
         response:{
             201:z.object({
-                Account:z.object({
-                    Id: z.string().uuid(),
-                    Name: z.string(),
-                    Value: z.number(),
-                    userId: z.string().uuid(),
-                    Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]),
-                    Description:z.string().optional(),
-                }),
+                Account:AccountZodSchema,
                 statistic:z.object({
                         Deposit:z.number(),
                         Withdraw:z.number(),

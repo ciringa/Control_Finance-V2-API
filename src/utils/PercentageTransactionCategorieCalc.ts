@@ -1,20 +1,7 @@
 import { Transaction } from "@prisma/client";
+import { TransactionCategorieList } from "../dtos/enuns/TransactionCategoriesList";
 
-export interface TransactionCategorieList {
-    Alimentacao: number;
-    Educacao: number;
-    Laser: number;
-    Saude: number;
-    Eletronicos: number;
-    Compras: number;
-    Beleza: number;
-    Veiculo: number;
-    Roupas: number;
-    Investimento: number;
-    Comissao: number;
-    Salario: number;
-    Outro: number;
-}
+
 
 export async function ReturnPercentagesList(data: Transaction[]) {
     let Values: TransactionCategorieList = {

@@ -1,5 +1,6 @@
 import z from "zod"
 import { VerifyJWT } from "../midleware/VerifyJwt"
+import { UserZodSchema } from "../../dtos/zod/User"
 
 export const LoginSchema = {
     schema:{
@@ -38,12 +39,7 @@ export const ProfileSchema = {
         response:{
             200:z.object({
                 Description:z.string(),
-                Profile:z.object({
-                    Id: z.string().uuid(),
-                    Email:z.string().email(),
-                    Senha:z.string(),
-                    UsernName: z.string(),
-                })
+                Profile:UserZodSchema
             }),
             404:z.object({
                 Description:z.string(),

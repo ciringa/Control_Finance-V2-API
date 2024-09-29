@@ -3,11 +3,12 @@ import { AccountRepositorie } from "../../repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../../repositorie/transactions.repositorie";
 import { userRepositorie } from "../../repositorie/user.repositorie";
 import { UserDoesNotExists } from "../.Error/MissedResourcesError";
-import { ReturnPercentagesList, TransactionCategorieList } from "../../utils/PercentageTransactionCategorieCalc";
+import { ReturnPercentagesList } from "../../utils/PercentageTransactionCategorieCalc";
 import { opnionList, Status } from "../../utils/ReturnUserOpnionList";
 import { goalsRepositorie } from "../../repositorie/goals.repositorie";
 import { log } from "console";
 import { groupTransactionsByMonthAndYear } from "../../lib/GroupByDate";
+import { TransactionCategorieList } from "../../dtos/enuns/TransactionCategoriesList";
 
 
 
