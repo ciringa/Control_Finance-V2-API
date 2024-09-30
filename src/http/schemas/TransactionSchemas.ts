@@ -1,5 +1,6 @@
 import z, { string } from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
+import { TransactionZodSchema } from "../../dtos/zod/Transactions";
 
 export const CreateTransactionSchema = {
     schema:{
@@ -18,17 +19,7 @@ export const CreateTransactionSchema = {
         response:{
             201:z.object({
                 Description:z.string(),
-                Transaction:z.object({
-                    Id: z.string().uuid(),
-                    Title: z.string(),
-                    Value: z.number(),
-                    Type:  z.enum(["DEP","SAL"]),
-                    accountId:z.string().uuid(),
-                    CreatedAt:z.date(),
-                    Categories:z.enum([
-                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
-                })
+                Transaction:TransactionZodSchema
             }),
             404:z.string(),
             401:z.string()
@@ -47,17 +38,7 @@ export const DeleteTransactionSchema = {
         }),
         response:{
             201:z.object({
-                Transaction:z.object({
-                    Id: z.string().uuid(),
-                    Title: z.string(),
-                    Value: z.number(),
-                    Type:  z.enum(["DEP","SAL"]),
-                    accountId:z.string().uuid(),
-                    CreatedAt:z.date(),
-                    Categories:z.enum([
-                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
-                }),
+                Transaction:TransactionZodSchema,
                 Account:z.object({
                     Value:z.number(),
                     Id:z.string().uuid()
@@ -88,28 +69,8 @@ export const UpdateTransactionSchema = {
         }),
         response:{
             200:z.object({
-                Old:z.object({
-                    Id: z.string().uuid(),
-                    Title: z.string(),
-                    Value: z.number(),
-                    Type:  z.enum(["DEP","SAL"]),
-                    accountId:z.string().uuid(),
-                    CreatedAt:z.date(),
-                    Categories:z.enum([
-                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
-                }),
-                New:z.object({
-                    Id: z.string().uuid(),
-                    Title: z.string(),
-                    Value: z.number(),
-                    Type:  z.enum(["DEP","SAL"]),
-                    accountId:z.string().uuid(),
-                    CreatedAt:z.date(),
-                    Categories:z.enum([
-                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable()
-                }),
+                Old:TransactionZodSchema,
+                New:TransactionZodSchema,
                 AccountValue:z.object({
                     Old:z.number(),
                     New:z.number()
@@ -129,18 +90,7 @@ export const ReturnTransactionListSchema = {
         description:"Route Used to return the Transactions List of an User.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
         response:{
             200:z.object({
-                TransactionList:z.array(z.object({
-                    Id: z.string().uuid(),
-                    Title: z.string(),
-                    Value: z.number(),
-                    Type:  z.enum(["DEP","SAL"]),
-                    accountId:z.string().uuid(),
-                    CreatedAt:z.date(),
-                    Categories:z.enum([
-                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
-                    ]).nullable(),
-                    AccountTitle:z.string()
-                }))
+                TransactionList:z.array(TransactionZodSchema)
             }),
             400:z.object({
                 Description:z.string(),

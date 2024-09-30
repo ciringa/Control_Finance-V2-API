@@ -52,6 +52,7 @@ model User{
   UsernName String
   AccountList Account[]
   GoalList Goals[]
+  ProfileUrl String? 
 }
 
 model Account{
