@@ -4,7 +4,7 @@ User-Agent: insomnia/9.3.3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
 
 ### Mark goal as Completed
-PUT http://127.0.0.1:2333/goals/complete/55303ba8-b2e6-48cc-9117-6259cea24dc4
+PUT http://127.0.0.1:2333/goals/complete/
 User-Agent: insomnia/9.3.3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
 
@@ -20,8 +20,19 @@ User-Agent: insomnia/9.3.2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
 
 {
-  "EndTime": "2024-09-24T15:06:17.173Z",
-  "Title": "Comprar um carro",
+  "EndTime": "2024-10-24T15:06:17.173Z",
+  "Title": "Comprar o IF",
   "TargetedValue": 20000,
   "Value": 3900
+}
+
+### update Goal
+
+PUT  http://127.0.0.1:2333/goals/update/b100d091-bca3-4410-8b81-924e65b7c21e
+Content-Type: application/json
+User-Agent: insomnia/9.3.2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+
+{
+  "Title": "Comprar um pistolao"
 }

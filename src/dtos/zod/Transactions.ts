@@ -10,5 +10,4 @@ export const TransactionZodSchema = z.object({
     Categories:z.enum([
         "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
     ]).nullable(),
-    AccountTitle:z.string()
 })
