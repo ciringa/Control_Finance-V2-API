@@ -7,6 +7,6 @@ export const GoalsZodSchema = z.object({
     TargetedValue:z.number(),
     CreatedAt:z.date(),
     CompletedAt: z.date().nullable(),
-    EndTime:z.date(),
+    EndTime:z.union([z.date(),z.string()]),
     userId: z.string().uuid(),
 })
