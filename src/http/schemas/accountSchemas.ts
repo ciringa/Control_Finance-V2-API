@@ -96,7 +96,7 @@ export const UpdateAccountSchema = {
         body:z.object({
             Name:z.string().optional(),
             Description:z.string().optional(),
-           Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]).optional(),
+            Type:z.enum(["Carteira","Poupanca","ContaBancaria","CorretoraDeInvestimentos"]).optional(),
         }),
         response:{
             201:z.object({

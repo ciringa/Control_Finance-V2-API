@@ -90,7 +90,18 @@ export const ReturnTransactionListSchema = {
         description:"Route Used to return the Transactions List of an User.Checks if the current Logged user is owner of the refered <Account>. needs a JWT token Authentication",
         response:{
             200:z.object({
-                TransactionList:z.array(TransactionZodSchema)
+                TransactionList:z.array(z.object({
+                    Id: z.string().uuid(),
+                    Title: z.string(),
+                    Value: z.number(),
+                    Type:  z.enum(["DEP","SAL"]),
+                    accountId:z.string().uuid(),
+                    CreatedAt:z.date(),
+                    Categories:z.enum([
+                        "Alimentacao", "Educacao","Laser","Saude","Eletronicos","Compras","Beleza","Veiculo","Roupas","Investimento","Salario","Comissao","Outro"
+                    ]).nullable(),
+                    AccountTitle:z.string().nullable()
+                }))
             }),
             400:z.object({
                 Description:z.string(),

@@ -25,7 +25,7 @@ export async function CreateTransaction(req:FastifyRequest,res:FastifyReply){
         const Transaction =  await Main.execute({data:{
             accountId,Title,Type,Value,Categories,CreatedAt
         }})
-        //console.log(Transaction)
+        console.log(Transaction)
         res.status(201).send({
             Description:"created Transaction successfully",
             Transaction:Transaction.Transaction
