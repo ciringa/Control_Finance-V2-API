@@ -8,5 +8,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyO
 ### Account Statistics values
 GET http://127.0.0.1:2333/users/statistic
 User-Agent: insomnia/9.3.2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyOS1kZDk2LTRjOTktYjc5Mi02NDA5YzlkYjEzNWQiLCJpYXQiOjE3MjMzODYzMjN9.r4f-7DjCajpzzVh27ANKRCrnyVuHbt_WsxPIrTRQJxo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGFmMjc3OC03ZjQ3LTQ2ZTMtYTA4ZS0yYjlkNzU5MWY1MTIiLCJpYXQiOjE3Mjc5MTc1NDB9.dlXkQKyJQNBVxj7Kiu_C-u00UsmbgmOXGkDux9KdQ94
 

@@ -25,9 +25,28 @@ interface AccountStatistcsReply{
     Relative:{
         DEP:number,
         SAL:number,
-        PercentageOfReturnByCategorie:TransactionCategorieList
+        PercentageOfReturnByCategorie:TransactionCategorieList,
+        PercentageOfReturnByDep:{
+            Salario: number;
+            Investimento: number;
+            Comissao: number;
+            Outro: number;
+        },
+        PercentageOfReturnBySal:{
+            Alimentacao: number;
+            Educacao: number;
+            Laser: number;
+            Saude: number;
+            Eletronicos: number;
+            Compras: number;
+            Beleza: number;
+            Veiculo: number;
+            Roupas: number;
+            Outro: number;
+        }
     },
     AccountState:opnionList,
+
     TransactionsByDate:Record<string, Transaction[]>
 }
 export class AccountStatistcsUseCase {
@@ -132,7 +151,8 @@ export class AccountStatistcsUseCase {
         //Return Account List by month 
         //filter transactionList by month 
         const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
-
+        const percentageList = await ReturnPercentagesList(TransactionList)
+        const {Alimentacao,Beleza,Comissao,Compras,Educacao,Eletronicos,Investimento,Laser,Outro,Roupas,Salario,Saude,Veiculo} = percentageList
         return {
             Data:{
                 TotalAccount:doesTheUserHasAnyAccount?.length,
@@ -143,7 +163,13 @@ export class AccountStatistcsUseCase {
             Relative:{
                 DEP: (totalDep / TransactionList.length) * 100,
                 SAL: (totalSal / TransactionList.length) * 100,
-                PercentageOfReturnByCategorie:await ReturnPercentagesList(TransactionList)
+                PercentageOfReturnByCategorie:percentageList,
+                PercentageOfReturnByDep:{
+                    Comissao,Investimento,Outro,Salario
+                },
+                PercentageOfReturnBySal:{
+                    Alimentacao,Beleza,Compras,Educacao,Eletronicos,Laser,Outro,Roupas,Saude,Veiculo
+                }
             },
             AccountState:{
                 AndamentoDasMetas: metasStatus,
