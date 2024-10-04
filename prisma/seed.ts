@@ -22,8 +22,7 @@ async function seed() {
                 Senha:faker.internet.password(),
                 UsernName:faker.internet.userName(),            
             }
-    })
-
+        })
     }
     var aList:Account[] = []
     for(let i=0;i<5;i++){
