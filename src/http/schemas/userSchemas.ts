@@ -86,6 +86,13 @@ export const ReturnAccountStatistic = {
                         Comissao:z.number(),
                         Salario:z.number(),
                         Outro: z.number(),
+                    }),
+                    PercentageOfReturnByDep:z.object({
+                        Comissao:z.number(),Investimento:z.number(),Outro:z.number(),Salario:z.number()
+                    }),
+                    PercentageOfReturnBySal:z.object({
+                        Alimentacao:z.number(),Beleza:z.number(),Compras:z.number(),Educacao:z.number(),
+                        Eletronicos:z.number(),Laser:z.number(),Outro:z.number(),Roupas:z.number(),Saude:z.number(),Veiculo:z.number()
                     })
                  }),
                  TransactionsByDate:z.record(z.string(), z.array(z.object({
