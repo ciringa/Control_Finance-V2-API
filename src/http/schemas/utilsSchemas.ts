@@ -1,6 +1,8 @@
 import z from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
 import { upload } from "../../lib/multerConfig";
+import { ZodTypeProvider } from "fastify-type-provider-zod";
+import { UserZodSchema } from "../../dtos/zod/User";
 
 export const SearcSchema = {
     schema:{
@@ -55,10 +57,19 @@ export const SearcSchema = {
 
 export const uploadImageRoute = {
     schema:{
-    tags:["Utils"],
-    description:"Route used to Search transactions, Goals and accounts by recieving an Query and Page as parameter. Returns paginated by 3 elements for each page",
+    tags:["Utils","User"],
+    description:"Route used to upload Profile picture. Requires a jwt token and a html uploaded file with tagname 'avatar'. Returns the public url of the image and stores it in the provided user. Requires a jwt token.",
+    response:{
+        200:z.object({
+            id:z.string(),
+            path:z.string(),
+            fullPath:z.string(),
+            FileUrl:z.string().optional(),
+            user:UserZodSchema
+        })
+    }
 },
-    preHandler:[upload.single("avatar")]
+    preHandler:[VerifyJWT,upload.single("avatar")]
 }
 
 
