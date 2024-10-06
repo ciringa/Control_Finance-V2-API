@@ -6,12 +6,42 @@
     <title>CORS test</title>
 </head>
 <body>
-    <form action="http://127.0.0.1:2333/upload/profile" method="post" enctype="multipart/form-data">
-        <input type="file" name="avatar"  />
+    <form id="uploadForm">
+        <input type="file" name="avatar" id="avatar" />
         <input type="submit" value="Clique aqui" />
     </form>
 </body>
 
+
 <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const form = event.target;
+        const formData = new FormData(form); // Cria o FormData com os dados do formulário
+
+        // Aqui você insere o seu Bearer Token
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGFmMjc3OC03ZjQ3LTQ2ZTMtYTA4ZS0yYjlkNzU5MWY1MTIiLCJpYXQiOjE3Mjc5MTc1NDB9.dlXkQKyJQNBVxj7Kiu_C-u00UsmbgmOXGkDux9KdQ94';
+
+        try {
+            const response = await fetch('http://127.0.0.1:2333/upload/profile', {
+                method: 'POST',
+                body: formData, // Envia os dados do formulário
+                headers: {
+                    'Authorization': `Bearer ${token}` // Adiciona o Bearer Token no cabeçalho
+                }
+            });
+
+            // Verifica se a resposta foi bem-sucedida
+            if (response.ok) {
+                const result = await response.json(); // Caso a resposta seja em JSON
+                console.log('Upload bem-sucedido:', result);
+            } else {
+                console.error('Erro no upload:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    });
 </script>
 </html>

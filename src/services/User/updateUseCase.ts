@@ -22,14 +22,14 @@ export class updateUserUseCase {
         if(data.Id){
             throw new CantUpdateInformedData
         }
-        var {Email,UsernName,Senha} = data
+        var {Email,UsernName,Senha,ProfileUrl} = data
         if(Senha){
             Senha = await hash(Senha,9)
         }else{
             Senha = doesTheUserExists.Senha
         }
         const updated = await this.UserRepositorie.update({
-            Email,UsernName,Senha
+            Email,UsernName,Senha,ProfileUrl
         },userId)
         
         return updated 
