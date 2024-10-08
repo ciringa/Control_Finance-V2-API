@@ -15,17 +15,14 @@ export async function UpdateGoalControler(req:FastifyRequest,res:FastifyReply) {
         Title:z.string().optional(),
         Value: z.number().optional(),
         TargetedValue:z.number().optional(),
-        EndTime:z.union([z.date(),z.string()]),
+        EndTime:z.string(),
     }).parse(req.body)
 
     const {GoalId} = paramSchema.parse(req.params)
-    if(typeof EndTime ==  "string"){
-        EndTime = new Date(EndTime)
-    }
     const Main = new UpdateGoalCValueUseCase(new PrismaGoalRepositorie)
     try{
         const returned = await Main.execute({GoalId,updateData:{
-            EndTime,Value,Title,TargetedValue
+            EndTime:new Date(EndTime),Value,Title,TargetedValue
         }})
 
         res.status(200).send(returned)

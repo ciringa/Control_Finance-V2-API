@@ -74,7 +74,7 @@ export const UpdateGoalSchema = {
             Title:z.string().optional(),
             Value: z.number().optional(),
             TargetedValue:z.number().optional(),
-            EndTime:z.date().optional(),
+            EndTime:z.string().optional(),
         }),
         response:{
             200:z.object({

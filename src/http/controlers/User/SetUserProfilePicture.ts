@@ -5,6 +5,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import { randomUUID } from "crypto";
 import { updateUserUseCase } from "../../../services/User/updateUseCase";
 import { PrismaUsersRepositorie } from "../../../repositorie/PrismaRepositories/PrismaUserRepositorie";
+import { unlink } from "fs";
 
 export async function SetUserProfilePicture(req:MulterRequest,res:FastifyReply) {
     const file = req.file
@@ -20,7 +21,14 @@ export async function SetUserProfilePicture(req:MulterRequest,res:FastifyReply) 
                 }
             })
             const {FileUrl,fullPath,id,path} = response
-            
+            unlink(file.path, (err) => {
+                if (err) {
+                  console.error(`Error removing file: ${err}`);
+                  return;
+                }
+              
+                console.log(`File ${file.path} has been successfully removed.`);
+              });
             res.status(200).send({
                 id,path,fullPath,FileUrl,user:tryToUpload
             })
