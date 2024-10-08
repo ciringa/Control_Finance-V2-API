@@ -27,12 +27,12 @@ export class ReturnGoalListUseCase{
             const ReturnGoalsList = await this.goalRepositorie.findByUser(UserId)
             var unCompleted:Goals[]= [],Completed:Goals[]= [],Expired:Goals[] = []
             ReturnGoalsList?.forEach(async Element =>{
-                if(Element.Value>=Element.TargetedValue && Element.CompletedAt!=null){
-                    Completed.push(Element)
+                if(Element.Value>=Element.TargetedValue || Element.CompletedAt!=null){
+                        Completed.push(Element)
                 }else if(isDateAfter(Element.EndTime,new Date())){
-                    Expired.push(Element)
+                        Expired.push(Element)
                 }else{
-                    unCompleted.push(Element)
+                        unCompleted.push(Element)
                 }
             })
         return {

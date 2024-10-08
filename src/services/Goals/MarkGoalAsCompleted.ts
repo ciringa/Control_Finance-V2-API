@@ -24,7 +24,7 @@ export class MarkGoalAsCompletedUseCase {
             throw new GoalDoesNotExists
         }
         //checks if the goal can not be validated
-        if(DoesTheGoalExists.Value<=DoesTheGoalExists.TargetedValue && !isDateAfter(DoesTheGoalExists.EndTime, new Date())){
+        if(DoesTheGoalExists.Value<=DoesTheGoalExists.TargetedValue || !isDateAfter(DoesTheGoalExists.EndTime, new Date())){
             throw new GoalCantBeValidated
         }
         const markAsCompleted = await this.goalRepositorie.markAsCompleted(GoalId)
