@@ -27,7 +27,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTExYjAyO
 }
 
 ### update Goal
-
 PUT  http://127.0.0.1:2333/goals/update/7bdc800f-3dff-4474-b7c3-2cc0c6fc8308
 Content-Type: application/json
 User-Agent: insomnia/9.3.2

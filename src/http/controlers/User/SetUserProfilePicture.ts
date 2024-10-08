@@ -21,6 +21,7 @@ export async function SetUserProfilePicture(req:MulterRequest,res:FastifyReply) 
                 }
             })
             const {FileUrl,fullPath,id,path} = response
+            //deletes the file
             unlink(file.path, (err) => {
                 if (err) {
                   console.error(`Error removing file: ${err}`);
