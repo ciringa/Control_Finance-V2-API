@@ -8,8 +8,6 @@ interface MarkGoalAsCompletedRequest {
     GoalId:string
 }
 
-
-
 interface MarkGoalAsCompletedResponse {
     CompletedAt:Date | null,
     CreatedAt:Date
