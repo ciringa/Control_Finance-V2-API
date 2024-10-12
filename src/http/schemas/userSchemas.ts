@@ -14,7 +14,7 @@ export const RegisterUserSchema = {
         body:z.object({
             Email:z.string().email(),
             Senha: z.string(),
-            UsernName: z.string(),
+            UserName: z.string(),
         }),
         response:{
             201:z.object({

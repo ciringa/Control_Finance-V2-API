@@ -84,8 +84,9 @@ export class AccountStatistcsUseCase {
         })
         //som
         var metasStatus:Status = Status.Ok
-        var GastosStatus:Status
-        var EconomiaStatus:Status
+        var GastosStatus:Status;
+        var EconomiaStatus:Status;
+        var InvestimentStatus:Status;
         //checkIf the user is completing the goals 
         const GoalsList = await this.GoalsRepositorie.findByUser(userId)
         var completedAmount:number = 0 
@@ -135,6 +136,12 @@ export class AccountStatistcsUseCase {
             GastosStatus = Status.Danger
         }
 
+        //Return Account List by month 
+        //filter transactionList by month 
+        const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
+        const percentageList = await ReturnPercentagesList(TransactionList)
+
+
         //Economy check (criteria : checks if the account has a good balance income)
         if(totalDep>=totalSal){
             if(totalDep>=totalSal+2000){
@@ -146,12 +153,15 @@ export class AccountStatistcsUseCase {
             EconomiaStatus = Status.Danger
         }
         //Investiment check(criteria: checks if the user has invested at least 25% in its deposits)
-        
+        if(percentageList.Investimento>=25){
+            InvestimentStatus = Status.Good
+        }else if(percentageList.Investimento>=15){
+            InvestimentStatus = Status.Ok
+        }else{
+            InvestimentStatus = Status.Danger
+        }
 
-        //Return Account List by month 
-        //filter transactionList by month 
-        const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
-        const percentageList = await ReturnPercentagesList(TransactionList)
+
         const {Alimentacao,Beleza,Comissao,Compras,Educacao,Eletronicos,Investimento,Laser,Outro,Roupas,Salario,Saude,Veiculo} = percentageList
         return {
             Data:{
@@ -175,7 +185,7 @@ export class AccountStatistcsUseCase {
                 AndamentoDasMetas: metasStatus,
                 Economista:EconomiaStatus,
                 GastosEssenciais:GastosStatus,
-                Investimentos:Status.Ok //needs to refactor the criteria
+                Investimentos:InvestimentStatus //needs to refactor the criteria
             },
             TransactionsByDate,
         }
