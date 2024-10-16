@@ -1,6 +1,7 @@
 node_modules
+
 # Keep environment variables out of version control
 .env
 
-# Keep temporary upload trash out of the way
+# Keep temporary upload trash out of the version control
 .temp
