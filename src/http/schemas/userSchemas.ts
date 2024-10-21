@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
-import { upload } from "../../lib/multerConfig";
+import { upload } from "../../lib/multer/multerConfig";
 import { FastifyRouteSchemaDef } from "fastify/types/schema";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { UserZodSchema } from "../../dtos/zod/User";

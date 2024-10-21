@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { MulterRequest } from "../../../lib/multerConfig";
+import { MulterRequest } from "../../../lib/multer/multerConfig";
 import { SupabaseUseCase } from "../../../services/Useful/SupabaseUploadsUseCases";
 import { supabase } from "../../../lib/supabaseClient";
 import { randomUUID } from "crypto";

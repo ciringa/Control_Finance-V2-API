@@ -8,6 +8,7 @@ import { JWT_SECRET, NODE_ENV } from "./env";
 import { Router } from "../http/routes";
 import cors from "@fastify/cors"
 import multer from "fastify-multer";
+import fastifyCookie from "@fastify/cookie";
 
 
 
@@ -31,6 +32,9 @@ app.register(fastifySwaggerUi, {
 app.register(fastifyJwt,{
     secret: JWT_SECRET
 })
+
+//Register cookies
+app.register(fastifyCookie,{})
 
 //register CORS
 app.register(cors, { 

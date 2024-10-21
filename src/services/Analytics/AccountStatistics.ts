@@ -7,7 +7,7 @@ import { ReturnPercentagesList } from "../../utils/PercentageTransactionCategori
 import { opnionList, Status } from "../../utils/ReturnUserOpnionList";
 import { goalsRepositorie } from "../../repositorie/goals.repositorie";
 import { log } from "console";
-import { groupTransactionsByMonthAndYear } from "../../lib/GroupByDate";
+import { groupTransactionsByMonthAndYear } from "../../utils/GroupByDate";
 import { TransactionCategorieList } from "../../dtos/enuns/TransactionCategoriesList";
 
 
