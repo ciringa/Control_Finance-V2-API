@@ -1,6 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { RecoveryCodeUseCase } from "../../../../services/Useful/PasswordRecovery/GenerateRecoveryCode";
-import { updateUserController } from "../../User/updateUse";
 import { updateUserUseCase } from "../../../../services/User/updateUseCase";
 import { PrismaUsersRepositorie } from "../../../../repositorie/PrismaRepositories/PrismaUserRepositorie";
 import z from "zod";
@@ -12,15 +11,19 @@ export async function RecoveryPasswordController(req:FastifyRequest,res:FastifyR
         ProvidedCode:z.string(),
         NewPassword:z.string(),
         TriggerEmail:z.string()
-    }).parse(req.params)
-    const CompareService = new RecoveryCodeUseCase();
+    }).parse(req.body)
     const repositorie = new PrismaUsersRepositorie
+    const CompareService = new RecoveryCodeUseCase(repositorie);
     const EditUser = new updateUserUseCase(repositorie);
+
+    //get cookies
     const RecoverCode = req.cookies.Recovery
+
     try{
         if(RecoverCode){
             const user = await repositorie.findByEmail(TriggerEmail);
             if(user){
+                console.log(RecoverCode,ProvidedCode)
                 if(await CompareService.CompareRecoveryCode(RecoverCode,ProvidedCode)){
                     //proceeds to update the user
                     const updateUserCode = await EditUser.execute({

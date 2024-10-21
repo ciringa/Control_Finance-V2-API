@@ -4,9 +4,9 @@ Content-Type: application/json
 User-Agent: insomnia/9.2.0
 
 {
-    "Email": "Vidraceiro@gmail.com",
-    "Senha": "Laura123",
-    "UsernName": "Laura de Matos"
+    "Email": "banoh94584@digopm.com",
+    "Senha": "test",
+    "UsernName": "vidraceiro foda"
 }
 
 ### Update user

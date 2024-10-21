@@ -1,5 +1,4 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
 import { ResetUserAccountUseCase } from "../../../services/User/ResetUser";
 import { PrismaUsersRepositorie } from "../../../repositorie/PrismaRepositories/PrismaUserRepositorie";
 import { PrismaAccountRepositorie } from "../../../repositorie/PrismaRepositories/PrismaAccountRepositorie";

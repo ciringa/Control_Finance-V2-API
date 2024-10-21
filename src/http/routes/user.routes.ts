@@ -9,6 +9,7 @@ import { RegisterUserControler } from "../controlers/User/RegisterUserControler"
 import { updateUserController } from "../controlers/User/updateUse";
 
 
+
 export async function userRoutes(app:FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post("/register",RegisterUserSchema,RegisterUserControler)
     app.withTypeProvider<ZodTypeProvider>().get("/account",ReturnAccountDataSchema,ReturnAccountInfo)
