@@ -8,8 +8,8 @@
     "dev": "tsx watch src/server",
     "dev:ui": "prisma studio"
   },
-  "prisma":{
-    "seed":"tsx prisma/seed.ts"
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "@types/lodash": "^4.17.7",
     "@types/multer": "^1.4.12",
     "@types/node": "^20.14.9",
+    "@types/nodemailer": "^6.4.16",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
@@ -35,6 +36,7 @@
     "fastify-type-provider-zod": "^2.0.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
+    "nodemailer": "^6.9.15",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3",
     "vitest": "^1.6.0",
