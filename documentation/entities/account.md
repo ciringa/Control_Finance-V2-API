@@ -12,7 +12,6 @@ As contas podem ser definidas a partir dos seguintes tipos:
 
 ## Campos
 
-
 Identificador único da conta.
 
 ``Id (String, chave primária)``

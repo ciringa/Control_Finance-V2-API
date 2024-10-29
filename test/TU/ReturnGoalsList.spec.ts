@@ -39,3 +39,17 @@ it("should be able to return goals", async()=>{
     //console.log(SUT)
     expect(SUT.CompletedGoals[0].Title).toBe(goalRepositorie.list[0].Title)
 })
+
+it("should be able to mark a goal as completed and return it if true", async()=>{
+    const completedGoal = goalRepositorie.create({
+        CompletedAt:new Date(),
+        Title:"CHECK",
+        EndTime:faker.date.past(),
+        userId:user.Id,
+        Value:200,
+        TargetedValue:400
+    })
+    const SUT = await UseCase.execute({UserId:user.Id})
+    console.log(SUT)
+    expect(SUT.CompletedGoals[0].Title).toBe(goalRepositorie.list[0].Title)
+})

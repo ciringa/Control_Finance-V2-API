@@ -1,5 +1,5 @@
+import { TransactionCategorieList } from "../dtos/enuns/TransactionCategoriesList";
 import { prisma } from "../lib/prisma";
-import { TransactionCategorieList } from "./PercentageTransactionCategorieCalc";
 
 export enum Status {
     Danger = "Danger", // red flag

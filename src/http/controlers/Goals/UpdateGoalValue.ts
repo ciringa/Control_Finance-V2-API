@@ -11,6 +11,7 @@ export async function UpdateGoalValueControler(req:FastifyRequest,res:FastifyRep
     const paramSchema = z.object({
         GoalId:z.string(),
         Value:z.string(),
+        
     })
     const {GoalId,Value} = paramSchema.parse(req.params)
     const Main = new UpdateGoalCValueUseCase(new PrismaGoalRepositorie)

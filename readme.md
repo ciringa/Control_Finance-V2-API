@@ -47,6 +47,12 @@ http://127.0.0.1:2333/docs
 ```
 Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documentação</a>
 
+### Database seed 🌱
+para popular o banco de dados com dados ficticios rode:
+```
+npx prisma db seed
+```
+
 # Tech Stack 
 <div align="center">
 <img alt="Static Badge" src="https://img.shields.io/badge/dotenv-16.4.5-blue?style=flat-square&logoColor=blue">
@@ -54,8 +60,10 @@ Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documenta
 <img alt="Static Badge" src="https://img.shields.io/badge/prisma-5.16.1-blue?style=flat-square&logoColor=blue">
 <img alt="Static Badge" src="https://img.shields.io/badge/typescript-5.5.3-blue?style=flat-square&logoColorr=blue">
 <img alt="Static Badge" src="https://img.shields.io/badge/vitest-1.6.0-orange?style=flat-square&logoColorr=blue">
+<img alt="Static Badge" src="https://img.shields.io/badge/multer-2.0.3-green?style=flat-square&logoColor=blue">
 <img alt="Static Badge" src="https://img.shields.io/badge/zod-3.23.8-red?style=flat-square&logoColor=blue">
 <img alt="Static Badge" src="https://img.shields.io/badge/faker-8.4.1-green?style=flat-square&logoColor=blue">
+
 </div>
 
 # O que Aprendi durante o projeto? 🧩
@@ -63,6 +71,9 @@ Ou acesse <a href="https://control-finance-v2-api-1.onrender.com/docs">Documenta
 - Vantagens e desvantagens de tecnologias como o swagger e fastify.
 - Utilização de bibliotecas até então desconhecidas para mim (multer,lodash,bcryptjs,faker e js-yaml).
 - Novos conhecimentos sobre validação, tipagem estática do typeScript e utilização de decorators. 
+- Uso de DTOS e Schemas como tambem o aprimoramento de conhecimentos sobre o TypeScript.
+- Gerenciamento de arquivos e imagens utilizando do serviço <a href="https://supabase.com/">Supabase</a> como também o modulo Node:FS. 
+- a importância de testes E2E e da utilização de BRANCHS no Github 
 
 # Vantagens do Uso do TypeScript ⬆️
 TypeScript é uma linguagem de programação de código aberto desenvolvida pela Microsoft que é um superconjunto do JavaScript, adicionando tipagem estática opcional. Isso significa que você pode definir tipos para variáveis, funções e objetos, o que ajuda a evitar erros comuns em tempo de compilação. Durante o desenvolvimento do **Control Finance V2 API** as principais vantagens que me fizeram escolher o **TypeScript** foram: 
@@ -76,8 +87,8 @@ Durante o desenvolvimento do CT2, o uso extensivo de TypeScript tornou-se crucia
 
 ## Vantagens do Uso de Tokens JWT para aplicaçoes backend ⚙️
 
-O uso de tokens JWT (JSON Web Tokens) em aplicações backend oferece várias vantagens significativas. Primeiramente, os JWTs são auto-contidos, o que significa que todas as informações necessárias para a autenticação e autorização estão embutidas no próprio token, eliminando a necessidade de consultas constantes ao banco de dados. Além disso, eles são seguros e podem ser assinados digitalmente, garantindo a integridade dos dados e impedindo alterações maliciosas. A portabilidade dos tokens JWT facilita a implementação de autenticação entre diferentes serviços e plataformas, proporcionando uma experiência de usuári o mais fluida. Por fim, os JWTs são leves e baseados em padrões amplamente adotados, como JSON, o que os torna eficientes para transmissões via HTTP e fáceis de implementar com
+O uso de tokens JWT (JSON Web Tokens) em aplicações backend oferece várias vantagens significativas. Primeiramente, os JWTs são auto-contidos, o que significa que todas as informações necessárias para a autenticação e autorização estão embutidas no próprio token, eliminando a necessidade de consultas constantes ao banco de dados. Além disso, eles são seguros e podem ser assinados digitalmente, garantindo a integridade dos dados e impedindo alterações maliciosas. A portabilidade dos tokens JWT facilita a implementação de autenticação entre diferentes serviços e plataformas, proporcionando uma experiência de usuário mais fluida. Por fim, os JWTs são leves e baseados em padrões amplamente adotados, como JSON, o que os torna eficientes para transmissões via HTTP e fáceis de implementar.
 
 ## por que usar testes automatizados (as vantagens do Vite)
 Usar <strong>testes automatizados</strong> é essencial para garantir a qualidade e a eficiência no desenvolvimento de software, e o <strong>Vite</strong>, uma ferramenta moderna de build, traz diversas vantagens nesse aspecto. Com sua velocidade impressionante, o Vite reduz significativamente o tempo de feedback durante os testes, permitindo detectar e corrigir erros mais rapidamente. Além disso, sua arquitetura baseada em módulos ES nativos facilita a configuração e a integração com bibliotecas de testes populares, como Jest e Cypress. Isso resulta em um ambiente de desenvolvimento mais ágil e produtivo, onde os desenvolvedores podem se concentrar mais na escrita de código de qualidade do que na resolução de problemas de configuração e desempenho. A adoção de testes automatizados com Vite não só melhora a confiabilidade do software, mas também aumenta a confiança da equipe de desenvolvimento na entrega contínua de novas funcionalidades. 
-O vite é a melhor escolha para a realizaçao de <strong>testes automatizados</strong> e no Control Finance V2 foi essencial para garantir o pleno funcionamento da aplicação dando ao desenvolvedor certeza absoluta de que a aplicaçao funcionará nos conformes do que é exigido pelo <strong>FrontEnd</strong> 
+O vite é a melhor escolha para a realizaçao de <strong>testes automatizados</strong> e no Control Finance V2 foi essencial para garantir o pleno funcionamento da aplicação dando ao desenvolvedor certeza absoluta de que a aplicaçao funcionará nos conformes do que é exigido pelo <strong>FrontEnd</strong>.

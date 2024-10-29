@@ -10,7 +10,8 @@ export class InMemoryUserRepositorie implements userRepositorie{
             Email:String(data.Email),
             Senha:String(data.Senha),
             UsernName:String(data.UsernName),
-            Id:String(randomUUID())
+            Id:String(randomUUID()),
+            ProfileUrl:String(data.ProfileUrl)
         }
         this.list.push(_data)
         return  _data
@@ -35,7 +36,8 @@ export class InMemoryUserRepositorie implements userRepositorie{
             Email: data.Email || OldUser.Email,
             Id: OldUser.Id,
             Senha: data.Senha || OldUser.Senha,
-            UsernName:data.UsernName || OldUser.UsernName
+            UsernName:data.UsernName || OldUser.UsernName,
+            ProfileUrl:data.ProfileUrl || OldUser.ProfileUrl
         }
         return this.list[findUnique]
     }

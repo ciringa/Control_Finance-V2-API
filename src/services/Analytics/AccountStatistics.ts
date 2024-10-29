@@ -3,11 +3,12 @@ import { AccountRepositorie } from "../../repositorie/account.repositorie";
 import { TransactionsRepositorie } from "../../repositorie/transactions.repositorie";
 import { userRepositorie } from "../../repositorie/user.repositorie";
 import { UserDoesNotExists } from "../.Error/MissedResourcesError";
-import { ReturnPercentagesList, TransactionCategorieList } from "../../utils/PercentageTransactionCategorieCalc";
+import { ReturnPercentagesList } from "../../utils/PercentageTransactionCategorieCalc";
 import { opnionList, Status } from "../../utils/ReturnUserOpnionList";
 import { goalsRepositorie } from "../../repositorie/goals.repositorie";
 import { log } from "console";
 import { groupTransactionsByMonthAndYear } from "../../lib/GroupByDate";
+import { TransactionCategorieList } from "../../dtos/enuns/TransactionCategoriesList";
 
 
 
@@ -24,9 +25,28 @@ interface AccountStatistcsReply{
     Relative:{
         DEP:number,
         SAL:number,
-        PercentageOfReturnByCategorie:TransactionCategorieList
+        PercentageOfReturnByCategorie:TransactionCategorieList,
+        PercentageOfReturnByDep:{
+            Salario: number;
+            Investimento: number;
+            Comissao: number;
+            Outro: number;
+        },
+        PercentageOfReturnBySal:{
+            Alimentacao: number;
+            Educacao: number;
+            Laser: number;
+            Saude: number;
+            Eletronicos: number;
+            Compras: number;
+            Beleza: number;
+            Veiculo: number;
+            Roupas: number;
+            Outro: number;
+        }
     },
     AccountState:opnionList,
+
     TransactionsByDate:Record<string, Transaction[]>
 }
 export class AccountStatistcsUseCase {
@@ -64,8 +84,9 @@ export class AccountStatistcsUseCase {
         })
         //som
         var metasStatus:Status = Status.Ok
-        var GastosStatus:Status
-        var EconomiaStatus:Status
+        var GastosStatus:Status;
+        var EconomiaStatus:Status;
+        var InvestimentStatus:Status;
         //checkIf the user is completing the goals 
         const GoalsList = await this.GoalsRepositorie.findByUser(userId)
         var completedAmount:number = 0 
@@ -115,6 +136,12 @@ export class AccountStatistcsUseCase {
             GastosStatus = Status.Danger
         }
 
+        //Return Account List by month 
+        //filter transactionList by month 
+        const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
+        const percentageList = await ReturnPercentagesList(TransactionList)
+
+
         //Economy check (criteria : checks if the account has a good balance income)
         if(totalDep>=totalSal){
             if(totalDep>=totalSal+2000){
@@ -126,12 +153,16 @@ export class AccountStatistcsUseCase {
             EconomiaStatus = Status.Danger
         }
         //Investiment check(criteria: checks if the user has invested at least 25% in its deposits)
-        
+        if(percentageList.Investimento>=25){
+            InvestimentStatus = Status.Good
+        }else if(percentageList.Investimento>=15){
+            InvestimentStatus = Status.Ok
+        }else{
+            InvestimentStatus = Status.Danger
+        }
 
-        //Return Account List by month 
-        //filter transactionList by month 
-        const TransactionsByDate = groupTransactionsByMonthAndYear(TransactionList)
 
+        const {Alimentacao,Beleza,Comissao,Compras,Educacao,Eletronicos,Investimento,Laser,Outro,Roupas,Salario,Saude,Veiculo} = percentageList
         return {
             Data:{
                 TotalAccount:doesTheUserHasAnyAccount?.length,
@@ -142,13 +173,19 @@ export class AccountStatistcsUseCase {
             Relative:{
                 DEP: (totalDep / TransactionList.length) * 100,
                 SAL: (totalSal / TransactionList.length) * 100,
-                PercentageOfReturnByCategorie:await ReturnPercentagesList(TransactionList)
+                PercentageOfReturnByCategorie:percentageList,
+                PercentageOfReturnByDep:{
+                    Comissao,Investimento,Outro,Salario
+                },
+                PercentageOfReturnBySal:{
+                    Alimentacao,Beleza,Compras,Educacao,Eletronicos,Laser,Outro,Roupas,Saude,Veiculo
+                }
             },
             AccountState:{
                 AndamentoDasMetas: metasStatus,
                 Economista:EconomiaStatus,
                 GastosEssenciais:GastosStatus,
-                Investimentos:Status.Ok //needs to refactor the criteria
+                Investimentos:InvestimentStatus //needs to refactor the criteria
             },
             TransactionsByDate,
         }

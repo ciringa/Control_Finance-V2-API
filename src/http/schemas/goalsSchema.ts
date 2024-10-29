@@ -1,6 +1,7 @@
 
 import z from "zod";
 import { VerifyJWT } from "../midleware/VerifyJwt";
+import { GoalsZodSchema } from "../../dtos/zod/Goals";
 
 
 export const RegisterGoalSchema = {
@@ -15,16 +16,7 @@ export const RegisterGoalSchema = {
         }),
         response:{
             201:z.object({
-                CreatedGoal:z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    TargetedValue:z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                })
+                CreatedGoal:GoalsZodSchema
             }),
             400:z.object({
                 Description:z.string()
@@ -62,26 +54,8 @@ export const UpdateGoalValueSchema = {
         }),
         response:{
             200:z.object({
-                updatedGoal:z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    TargetedValue:z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                }).nullable(),
-                OldGoal:z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    TargetedValue:z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                })
+                updatedGoal:GoalsZodSchema.nullable(),
+                OldGoal:GoalsZodSchema
             }),
             400:z.object({
                 Description:z.string()
@@ -100,30 +74,12 @@ export const UpdateGoalSchema = {
             Title:z.string().optional(),
             Value: z.number().optional(),
             TargetedValue:z.number().optional(),
-            EndTime:z.date().optional(),
+            EndTime:z.string().optional(),
         }),
         response:{
             200:z.object({
-                updatedGoal:z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    TargetedValue:z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                }).nullable(),
-                OldGoal:z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    TargetedValue:z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                })
+                updatedGoal:GoalsZodSchema.nullable(),
+                OldGoal:GoalsZodSchema
             }),
             400:z.object({
                 Description:z.string()
@@ -138,36 +94,9 @@ export const ReturnGoalListValidated = {
         description:"returns goals in 3 categories, expired (goals that can no longer be completed because they have expired), completed (routes that have already been completed) and ongoing. Requires A jwt token with user auth ",
         response:{
             200:z.object({
-                unCompletedGoals:z.array(z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                    TargetedValue:z.number()
-                }).nullable()),
-                ExpiredGoals:z.array(z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                    TargetedValue:z.number()
-                }).nullable()),
-                CompletedGoals:z.array(z.object({
-                    Id:z.string().uuid(),
-                    Title:z.string(),
-                    Value: z.number(),
-                    CreatedAt:z.date(),
-                    CompletedAt: z.date().nullable(),
-                    EndTime:z.date(),
-                    userId: z.string().uuid(),
-                    TargetedValue:z.number()
-                }).nullable()),
+                unCompletedGoals:z.array(GoalsZodSchema.nullable()),
+                ExpiredGoals:z.array(GoalsZodSchema.nullable()),
+                CompletedGoals:z.array(GoalsZodSchema.nullable()),
             }),
             400:z.object({
                 Description:z.string()
