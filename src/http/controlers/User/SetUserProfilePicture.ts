@@ -2,15 +2,6 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { MulterRequest } from "../../../lib/multerConfig";
 import { SupabaseUseCase } from "../../../services/Useful/SupabaseUploadsUseCases";
 import { supabase } from "../../../lib/supabaseClient";
-<<<<<<< HEAD
-
-export async function SetUserProfilePicture(req:MulterRequest,res:FastifyReply) {
-    const file = req.file
-    const sup = new SupabaseUseCase(supabase)
-    try{
-        const response = sup.uploadFile(file,"User Avatar",`temp/uploads/${file.filename}`)
-        res.send(response)
-=======
 import { randomUUID } from "crypto";
 import { updateUserUseCase } from "../../../services/User/updateUseCase";
 import { PrismaUsersRepositorie } from "../../../repositorie/PrismaRepositories/PrismaUserRepositorie";
@@ -46,13 +37,8 @@ export async function SetUserProfilePicture(req:MulterRequest,res:FastifyReply) 
             res.status(500)
         }
 
->>>>>>> da275fb6f11080e4c380e7fd31f1dfb06bc47f12
     }catch(err){
         console.log(err)
         res.send(err)
     }
-<<<<<<< HEAD
-    res.send(file)
-=======
->>>>>>> da275fb6f11080e4c380e7fd31f1dfb06bc47f12
 }

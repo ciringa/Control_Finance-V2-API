@@ -8,6 +8,7 @@ import { hash } from "bcryptjs";
 interface updateUserRequest{
     data: Partial<User>,
     userId:string
+    ProfileUrl:string
 }
 
 export class updateUserUseCase {
